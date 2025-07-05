@@ -10,11 +10,17 @@ export const transitions = {
   default: 'all 0.3s ease'
 }
 
-const baseHSL = colorHSLVariants(223, 18, 20)
+export const baseBlue = colorHSLVariants(200, 100, 50)
+export const baseGreen = colorHSLVariants(100, 100, 50)
+export const baseRed = colorHSLVariants(0, 100, 50)
+export const baseCyan = colorHSLVariants(180, 100, 50)
 
 export const theme = {
   colors: {
-    ...baseHSL,
+    baseBlue: baseBlue,
+    baseGreen: baseGreen,
+    baseRed: baseRed,
+    baseCyan: baseCyan,
     primaryColor: '#011627',
     secondaryColor: '#023864',
     thirdColor: '#0d6efd',

@@ -11,7 +11,34 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${theme.colors.primaryColor};
-    color: ${theme.colors.textColor};
+    background-color: ${theme.colors.baseBlue.light40};
+    color: ${theme.colors.baseBlue.light50};
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .overlayBlur {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .overlayDarck {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  pointer-events: none;
   }
 `;
