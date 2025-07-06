@@ -1,11 +1,11 @@
 import { StyledLink } from '@/components/ui/Button/ButtonStyles'
-import { theme } from '@/styles/theme'
+import { theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const FooterContainer = styled.footer`
   padding: 32px 0;
-  background: linear-gradient(100deg, ${theme.colors.baseCyan.dark40}, ${theme.colors.baseCyan.dark20});
-  border-top: 5px solid ${theme.colors.baseCyan.dark};
+  background: linear-gradient(100deg, ${theme.colors.baseBlue.dark20}, ${theme.colors.baseBlue.dark40});
+  border-top: 5px solid ${theme.colors.baseBlue.dark};
 `
 
 export const FooterContent = styled.div`
@@ -42,19 +42,23 @@ export const SocialLinks = styled.div`
   gap: 12px;
 
   ${StyledLink} {
-    padding: 10px;
+    padding: 8px;
     border-radius: 50%;
-    font-size: 24px;
-    background-color: ${theme.colors.baseCyan.dark30};
-    border: 2px solid ${theme.colors.baseCyan.dark30};
+    background-color: ${theme.colors.baseBlue.dark};
+    border: 2px solid ${theme.colors.baseBlue.dark};
+    color: ${theme.colors.baseBlue.light50};
+    transition: ${transitions.default};
+
+    svg {
+      font-size: 32px;
+    }
 
     &:hover {
-      background-color: ${theme.colors.baseCyan.light20};
-      border: 2px solid ${theme.colors.baseCyan.light20};
-
-      svg {
-        color: ${theme.colors.baseCyan.dark30};
-      }
+      background-color: ${theme.colors.baseBlue.dark40};
+      border: 2px solid ${theme.colors.baseBlue.dark40};
+      box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
+      color: ${theme.colors.baseCyan.light};
+      transition: ${transitions.default};
     }
   }
 `
@@ -62,11 +66,11 @@ export const SocialLinks = styled.div`
 export const FooterText = styled.p`
   font-size: 14px;
   font-weight: 600;
-  color: ${theme.colors.baseCyan.light20};
+  color: ${theme.colors.baseBlue.light20};
 `
 
 export const FooterCopy = styled.p`
   font-size: 12px;
   font-weight: 600;
-  color: ${theme.colors.baseCyan.light20};
+  color: ${theme.colors.baseBlue.light20};
 `

@@ -6,8 +6,8 @@ export const HeaderContainer = styled.header`
   height: 80px;
   display: flex;
   align-items: center;
-  background: linear-gradient(100deg, ${theme.colors.baseCyan.dark40}, ${theme.colors.baseCyan.dark20});
-  border-bottom: 5px solid ${theme.colors.baseCyan.dark};
+  background: linear-gradient(100deg, ${theme.colors.baseBlue.dark40}, ${theme.colors.baseBlue.dark20});
+  border-bottom: 5px solid ${theme.colors.baseBlue.dark};
 `
 
 export const HeaderNav = styled.nav`
@@ -25,15 +25,16 @@ export const HeaderUl = styled.ul`
   list-style: none;
 
   ${StyledLink} {
-    background-color: ${theme.colors.baseCyan.dark};
-    border: 2px solid ${theme.colors.baseCyan.dark};
-    color: ${theme.colors.baseCyan.light50};
+    background-color: ${theme.colors.baseBlue.dark};
+    border: 2px solid ${theme.colors.baseBlue.dark};
+    color: ${theme.colors.baseBlue.light50};
     transition: ${transitions.default};
 
     &:hover {
-      background-color: ${theme.colors.baseCyan.dark40};
-      border: 2px solid ${theme.colors.baseCyan.dark40};
-      color: ${theme.colors.baseCyan.light20};
+      background-color: ${theme.colors.baseBlue.dark40};
+      border: 2px solid ${theme.colors.baseBlue.dark40};
+      box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
+      color: ${theme.colors.baseCyan.light};
       transition: ${transitions.default};
     }
   }
@@ -53,11 +54,11 @@ export const HeaderCart = styled.div`
 
     svg {
       font-size: 32px;
-      color: ${theme.colors.baseCyan.light20};
+      color: ${theme.colors.baseBlue.light20};
       transition: ${transitions.default};
 
       &:hover {
-        color: ${theme.colors.baseCyan.dark40};
+        color: ${theme.colors.baseBlue.dark40};
         transition: ${transitions.default};
       }
     }
@@ -84,14 +85,15 @@ export const HeaderLogin = styled.div`
   gap: 12px;
 
   ${StyledLink} {
-    background-color: ${theme.colors.baseCyan.dark};
-    border: 2px solid ${theme.colors.baseCyan.dark};
-    color: ${theme.colors.baseCyan.light50};
+    background-color: ${theme.colors.baseBlue.dark};
+    border: 2px solid ${theme.colors.baseBlue.dark};
+    color: ${theme.colors.baseBlue.light50};
 
     &:hover {
-      background-color: ${theme.colors.baseCyan.dark40};
-      border: 2px solid ${theme.colors.baseCyan.dark40};
-      color: ${theme.colors.baseCyan.light20};
+      background-color: ${theme.colors.baseBlue.dark40};
+      border: 2px solid ${theme.colors.baseBlue.dark40};
+      box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
+      color: ${theme.colors.baseCyan.light};
     }
   }
 `

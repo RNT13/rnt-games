@@ -10,8 +10,8 @@ export const SectionContainer = styled.section<Omit<SectionProps, 'light' | 'dar
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseCyan.light30 : theme.colors.baseCyan.dark30)};
-  color: ${props => (props.$bgColor === 'light' ? theme.colors.baseCyan.dark30 : theme.colors.baseCyan.light30)};
+  background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+  color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
 `
 
 export const SectionContent = styled.div`

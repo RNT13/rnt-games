@@ -67,5 +67,12 @@ export const ButtonDiv = styled.div`
   ${StyledButton} {
     background-color: ${theme.colors.baseBlue.dark};
     border: 2px solid ${theme.colors.baseBlue.dark};
+
+    &:hover {
+      background-color: ${theme.colors.baseBlue.dark40};
+      border: 2px solid ${theme.colors.baseBlue.dark40};
+      box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
+      color: ${theme.colors.baseCyan.light};
+    }
   }
 `
