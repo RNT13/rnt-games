@@ -16,7 +16,6 @@ const BaseButton = css`
   padding: 6px 12px;
   cursor: pointer;
   text-decoration: none;
-  font-weight: 800;
   background-color: ${theme.colors.baseBlue.dark};
   border: 2px solid ${theme.colors.baseBlue.dark};
   color: ${theme.colors.baseBlue.light50};

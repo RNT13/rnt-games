@@ -3,13 +3,16 @@
 import Footer from "@/components/layout/Footer/Footer"
 import Header from "@/components/layout/Header/Header"
 import Section from "@/components/layout/Section/Section"
+import { Gamelist } from "@/components/ui/GameList/GameList"
 import { Hero } from "@/components/ui/Hero/Hero"
+import { games } from "@/models/gameModels"
 
 export default function Home() {
   return (
     <>
       <Header />
       <Hero />
+      <Gamelist title={"Game"} $bgColor={"dark"} games={games} />
       <Section title="Seção 1" $bgColor="light">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat ad optio ipsam quis ipsum numquam veritatis repellendus unde architecto consectetur repudiandae nam quaerat deleniti exercitationem doloremque, nostrum consequatur accusamus! Amet!</p>
       </Section>

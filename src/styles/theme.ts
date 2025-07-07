@@ -10,7 +10,7 @@ export const transitions = {
   default: 'all 0.3s ease'
 }
 
-export const baseBlue = colorHSLVariants(200, 80, 50)
+export const baseBlue = colorHSLVariants(220, 80, 50)
 export const baseGreen = colorHSLVariants(100, 100, 50)
 export const baseRed = colorHSLVariants(0, 100, 50)
 export const baseCyan = colorHSLVariants(180, 150, 50)
