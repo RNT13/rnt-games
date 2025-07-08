@@ -10,10 +10,15 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: ${theme.colors.baseBlue.light40};
     color: ${theme.colors.baseBlue.light50};
   }
+
 
   .container {
     max-width: 1200px;

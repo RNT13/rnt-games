@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { HiShoppingCart } from "react-icons/hi";
-import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderNav, HeaderRight, HeaderUl } from "./HeaderStyles";
+import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderNav, HeaderRegister, HeaderRight, HeaderUl } from "./HeaderStyles";
 
 export default function Header() {
   return (
@@ -12,13 +12,16 @@ export default function Header() {
         </HeaderLogo>
         <HeaderUl>
           <li>
-            <Button href="/#" title="Link 1" />
+            <Button href="#home" title="Home" />
           </li>
           <li>
-            <Button href="/#" title="Link 2" />
+            <Button href="#games" title="Games" />
           </li>
           <li>
-            <Button href="/#" title="Link 3" />
+            <Button href="#coming-soon" title="Coming Soon" />
+          </li>
+          <li>
+            <Button href="#category" title="Category" />
           </li>
         </HeaderUl>
         <HeaderRight>
@@ -30,8 +33,10 @@ export default function Header() {
           </HeaderCart>
           <HeaderLogin>
             <Button href="/#" title="Login" />
-            <Button href="/#" title="Register" />
           </HeaderLogin>
+          <HeaderRegister>
+            <Button href="/#" title="Register" />
+          </HeaderRegister>
         </HeaderRight>
       </HeaderNav>
     </HeaderContainer>

@@ -7,6 +7,7 @@ export type SectionProps = {
 }
 
 export const SectionContainer = styled.section<Omit<SectionProps, 'light' | 'dark'>>`
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -44,3 +44,7 @@ export const StyledButton = styled.button`
 export const StyledLink = styled(Link)`
   ${BaseButton}
 `
+
+export const StyledA = styled.a`
+  ${BaseButton}
+`

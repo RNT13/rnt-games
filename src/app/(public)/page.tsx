@@ -10,13 +10,21 @@ import { SoonGames, games, mockCategories } from "@/models/gameModels"
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Header />
-      <Hero />
-      <Gamelist title="Games" $bgColor={"light"} games={games} />
-      <ComingSoonGamesList title="Coming Soon" $bgColor={"dark"} soonGames={SoonGames} />
-      <Category title="Category" $bgColor="light" categories={mockCategories} />
+      <section id="home">
+        <Hero />
+      </section>
+      <section id="games">
+        <Gamelist title="Games" $bgColor={"light"} games={games} />
+      </section>
+      <section id="coming-soon">
+        <ComingSoonGamesList title="Coming Soon" $bgColor={"dark"} soonGames={SoonGames} />
+      </section>
+      <section id="category">
+        <Category title="Category" $bgColor="light" categories={mockCategories} />
+      </section>
       <Footer />
-    </>
+    </main >
   )
 }
