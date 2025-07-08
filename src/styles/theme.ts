@@ -7,7 +7,7 @@ export const media = {
 }
 
 export const transitions = {
-  default: 'all 0.3s ease'
+  default: 'all 0.2s ease'
 }
 
 export const baseBlue = colorHSLVariants(220, 80, 50)

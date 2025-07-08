@@ -3,20 +3,20 @@ import { GameType } from "@/types/GameType"
 import { Card } from "../Card/Card"
 import { GameListContainer, GameListContent } from "./GameListStyles"
 
-type GameListProps = {
-  title: string
+interface GameListProps {
   $bgColor: 'light' | 'dark'
   games: GameType[]
   id?: string
+  title: string
 }
 
-export const Gamelist = ({ title, $bgColor, games }: GameListProps) => {
+export const Gamelist = ({ $bgColor, games, title }: GameListProps) => {
   return (
     <GameListContainer>
-      <Section title={title} $bgColor={$bgColor}  >
+      <Section $bgColor={$bgColor} href="/#" title={title}>
         <GameListContent>
-          {games.map((game) => (
-            <Card game={game} key={game.id} />
+          {games.slice(0, 8).map((game) => (
+            <Card game={game} key={game.id} $bgColor={$bgColor} />
           ))}
         </GameListContent>
       </Section>

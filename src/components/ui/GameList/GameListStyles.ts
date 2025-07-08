@@ -1,6 +1,8 @@
 import { styled } from 'styled-components'
 
-export const GameListContainer = styled.div``
+export const GameListContainer = styled.div`
+  width: 100%;
+`
 
 export const GameListContent = styled.ul`
   display: grid;

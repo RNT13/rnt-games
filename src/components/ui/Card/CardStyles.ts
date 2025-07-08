@@ -1,17 +1,47 @@
 'use client'
 
-import { theme } from '@/styles/theme'
+import { theme, transitions } from '@/styles/theme'
 import Image from 'next/image'
 import { styled } from 'styled-components'
 import { StyledButton } from '../Button/ButtonStyles'
 
+export type CardProps = {
+  $bgColor: 'light' | 'dark'
+}
+
 export const CardContainer = styled.div``
 
-export const CardContent = styled.div`
+export const CardContent = styled.div<CardProps>`
   height: 100%;
-  background-color: ${theme.colors.baseBlue.dark40};
   border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: ${transitions.default};
+  background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark40 : theme.colors.baseBlue.light30)};
+  color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+  cursor: pointer;
+
+  svg {
+    color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+  }
+
+  button {
+    background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+    border: 2px solid ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+    color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+
+    svg {
+      color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+    }
+  }
+
+  &:hover {
+    box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
+    transform: translateY(-2px);
+    transition: ${transitions.default};
+  }
 `
 
 export const CardHeader = styled.div`
@@ -46,7 +76,14 @@ export const CardBody = styled.div`
   gap: 8px;
 `
 
-export const CardTitle = styled.div``
+export const CardTitle = styled.div`
+  h2 {
+    margin-top: 4px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`
 
 export const CardDescription = styled.div`
   display: flex;
@@ -80,7 +117,10 @@ export const CardStars = styled.div`
   }
 `
 
-export const CardPrice = styled.div``
+export const CardPrice = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+`
 
 export const CardFooter = styled.div`
   width: 100%;
