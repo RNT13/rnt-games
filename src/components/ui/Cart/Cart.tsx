@@ -1,19 +1,23 @@
-import { OverlayBlur } from "@/styles/globalStyles"
+import { CloseButton, OverlayBlur } from "@/styles/globalStyles"
 import { IoIosCloseCircle } from "react-icons/io"
 import { Button } from "../Button/Button"
 import { CartItem } from "../CartItem/CartItem"
 import { CartBody, CartContainer, CartContent, CartFooter, CartHeader } from "./CartStyles"
 
-export const Cart = () => {
+type CartProps = {
+  onClick: () => void
+}
+
+export const Cart = ({ onClick }: CartProps) => {
   return (
     <CartContainer>
-      <OverlayBlur />
+      <OverlayBlur onClick={onClick} />
       <CartContent>
         <CartHeader>
           <h2>Carrinho</h2>
-          <Button title="">
+          <CloseButton onClick={onClick} title="">
             <IoIosCloseCircle />
-          </Button>
+          </CloseButton>
         </CartHeader>
         <CartBody>
           <CartItem />

@@ -1,5 +1,6 @@
 import { theme } from '@/styles/theme'
 import { styled } from 'styled-components'
+import { StyledLink } from '../Button/ButtonStyles'
 
 export const LoginWindowContainer = styled.div`
   position: fixed;
@@ -17,7 +18,7 @@ export const LoginWindowContent = styled.div`
   position: absolute;
   padding: 18px;
   width: 400px;
-  height: 400px;
+  height: auto;
   background-color: ${theme.colors.baseBlue.light30};
   border: 1px solid ${theme.colors.baseBlue.dark};
   border-radius: 12px;
@@ -36,28 +37,7 @@ export const LoginWindowHeader = styled.div`
   align-items: start;
   justify-content: center;
   border-bottom: 1px solid ${theme.colors.baseBlue.dark};
-
-  button {
-    border-radius: 50%;
-    padding: 0;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    background-color: transparent;
-    border: transparent;
-
-    svg {
-      font-size: 24px;
-      color: ${theme.colors.baseBlue.dark};
-    }
-
-    &:hover {
-      background-color: transparent;
-      border: transparent;
-      box-shadow: none;
-      transform: none;
-    }
-  }
+  margin-bottom: 12px;
 
   h2 {
     margin-bottom: 12px;
@@ -72,7 +52,7 @@ export const LoginWindowForm = styled.form`
   width: 100%;
   gap: 12px;
 
-  button {
+  ${StyledLink} {
     width: 200px;
     display: flex;
     justify-content: center;
@@ -103,6 +83,7 @@ export const LoginWindowForm = styled.form`
 export const LoginWindowFooter = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 12px;
   gap: 12px;
   padding: 0 12px;
 

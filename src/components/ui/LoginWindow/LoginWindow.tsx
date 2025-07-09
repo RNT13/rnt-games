@@ -1,4 +1,4 @@
-import { OverlayBlur } from "@/styles/globalStyles";
+import { CloseButton, OverlayBlur } from "@/styles/globalStyles";
 import { IoIosCloseCircle } from "react-icons/io";
 import { Button } from "../Button/Button";
 import { LoginWindowContainer, LoginWindowContent, LoginWindowFooter, LoginWindowForm, LoginWindowHeader } from "./LoginWindowStyles";
@@ -14,9 +14,9 @@ export const LoginWindow = ({ onClick }: LoginWindowProps) => {
       <LoginWindowContent>
         <LoginWindowHeader>
           <h2>Entre na sua conta</h2>
-          <Button title="" onClick={onClick}>
+          <CloseButton title="" onClick={onClick}>
             <IoIosCloseCircle />
-          </Button>
+          </CloseButton>
         </LoginWindowHeader>
         <LoginWindowForm>
           <label htmlFor="email">
@@ -27,7 +27,7 @@ export const LoginWindow = ({ onClick }: LoginWindowProps) => {
             Senha
             <input name="password" id="password" type="password" placeholder="Sua senha" />
           </label>
-          <Button type="submit">Entar</Button>
+          <Button href="/dashboard" type="submit">Entar</Button>
         </LoginWindowForm>
         <LoginWindowFooter>
           <p>Esqueceu sua senha? <a href="#">Clique aqui</a></p>

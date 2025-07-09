@@ -24,43 +24,29 @@ export const CartContent = styled.div`
 `
 
 export const CartHeader = styled.div`
-  height: 10%;
+  position: relative;
   color: ${theme.colors.baseBlue.light50};
+  border-bottom: 1px solid ${theme.colors.baseBlue.light30};
+  margin-bottom: 12px;
 
-  button {
-    border-radius: 50%;
-    padding: 0;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background-color: transparent;
-    border: transparent;
-
-    svg {
-      font-size: 24px;
-      color: ${theme.colors.baseBlue.light30};
-    }
-
-    &:hover {
-      background-color: transparent;
-      border: transparent;
-      box-shadow: none;
-      transform: none;
-    }
+  svg {
+    color: ${theme.colors.baseBlue.light40};
   }
 `
 
 export const CartBody = styled.div`
-  height: 70%;
+  width: 100%;
   overflow: auto;
   scrollbar-width: none;
 `
 
 export const CartFooter = styled.div`
-  height: 20%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-top: 1px solid ${theme.colors.baseBlue.light30};
+  margin-top: 12px;
 
   div:first-child {
     display: flex;

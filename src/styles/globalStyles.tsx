@@ -46,3 +46,26 @@ export const OverlayDarck = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
 `
+
+export const CloseButton = styled.button`
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+
+  svg {
+    font-size: 24px;
+    color: ${theme.colors.baseBlue.dark20};
+  }
+
+  &:hover {
+    svg {
+      color: ${theme.colors.baseBlue.light};
+    }
+  }
+`

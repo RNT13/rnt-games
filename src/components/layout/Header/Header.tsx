@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/Button/Button";
 import { Cart } from "@/components/ui/Cart/Cart";
+import { CartWrapper } from "@/components/ui/CartWrapper/CartWrapper";
 import { LoginWindow } from "@/components/ui/LoginWindow/LoginWindow";
+import { ModalWrapper } from "@/components/ui/ModalWrapper/ModalWrapper";
 import { RegisterWindow } from "@/components/ui/RegisterWindow/RegisterWindow";
 import Image from "next/image";
 import { useState } from "react";
@@ -10,13 +12,20 @@ import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderNav, Header
 export default function Header() {
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [isRegisterOpen, setIsRegisterOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
 
   return (
     <HeaderContainer>
-      {isLoginOpen && <LoginWindow onClick={() => setIsLoginOpen(false)} />}
-      {isRegisterOpen && <RegisterWindow onClick={() => setIsRegisterOpen(false)} />}
-      <Cart />
+      <ModalWrapper isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)}>
+        <LoginWindow onClick={() => setIsLoginOpen(false)} />
+      </ModalWrapper>
+      <ModalWrapper isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)}>
+        <RegisterWindow onClick={() => setIsRegisterOpen(false)} />
+      </ModalWrapper>
+      <CartWrapper isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}>
+        <Cart onClick={() => setIsCartOpen(false)} />
+      </CartWrapper>
       <HeaderNav className="container">
         <HeaderLogo>
           <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} />
@@ -29,7 +38,7 @@ export default function Header() {
         </HeaderUl>
         <HeaderRight>
           <HeaderCart>
-            <Button title="">
+            <Button onClick={() => setIsCartOpen(true)} title="">
               <HiShoppingCart />
               <span>0</span>
             </Button>

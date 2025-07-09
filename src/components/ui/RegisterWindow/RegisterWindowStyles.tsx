@@ -17,7 +17,7 @@ export const RegisterWindowContent = styled.div`
   position: absolute;
   padding: 18px;
   width: 400px;
-  height: 400px;
+  height: auto;
   background-color: ${theme.colors.baseBlue.light30};
   border: 1px solid ${theme.colors.baseBlue.dark};
   border-radius: 12px;
@@ -36,28 +36,8 @@ export const RegisterWindowHeader = styled.div`
   align-items: start;
   justify-content: center;
   border-bottom: 1px solid ${theme.colors.baseBlue.dark};
+  margin-bottom: 12px;
 
-  button {
-    border-radius: 50%;
-    padding: 0;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    background-color: transparent;
-    border: transparent;
-
-    svg {
-      font-size: 24px;
-      color: ${theme.colors.baseBlue.dark};
-    }
-
-    &:hover {
-      background-color: transparent;
-      border: transparent;
-      box-shadow: none;
-      transform: none;
-    }
-  }
   h2 {
     margin-bottom: 12px;
   }
@@ -75,6 +55,11 @@ export const RegisterWindowForm = styled.form`
     width: 200px;
     display: flex;
     justify-content: center;
+
+
+    svg {
+      font-size: 24px;
+    }
   }
 
   label {
@@ -100,6 +85,7 @@ export const RegisterWindowForm = styled.form`
 `
 
 export const RegisterWindowFooter = styled.div`
+margin-top: 12px;
   display: flex;
   flex-direction: column;
   gap: 12px;
