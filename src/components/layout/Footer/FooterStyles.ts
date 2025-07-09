@@ -70,6 +70,9 @@ export const FooterText = styled.p`
 `
 
 export const FooterCopy = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
   font-weight: 600;
   color: ${theme.colors.baseBlue.light20};

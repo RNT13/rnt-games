@@ -49,8 +49,9 @@ export const InfoDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: ${theme.colors.baseBlue.light50};
 
-  h1 {
+  h2 {
     margin-top: 24px;
   }
 

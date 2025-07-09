@@ -11,7 +11,6 @@ interface CardProps {
 }
 
 export const Card = ({ game, $bgColor }: CardProps) => {
-  console.log(game)
   return (
     <CardContainer>
       <CardContent $bgColor={$bgColor}>

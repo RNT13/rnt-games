@@ -12,6 +12,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'RNT Next App',
   description: 'Aplicação Next.js criada com RNT CLI',
+  icons: {
+    icon: '/favicon.ico',
+  }
 }
 
 export default function RootLayout({
