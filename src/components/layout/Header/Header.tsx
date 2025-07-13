@@ -34,10 +34,11 @@ export default function Header() {
           <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} />
         </HeaderLogo>
         <HeaderUl>
-          <li><Button href="/home" title="Home" /></li>
-          <li><Button href="/home#games" title="Games" /></li>
-          <li><Button href="/home#coming-soon" title="Coming Soon" /></li>
-          <li><Button href="/home#category" title="Category" /></li>
+          <li><Button href="/" title="Home" /></li>
+          <li><Button href="/#games" title="Games" /></li>
+          <li><Button href="/#coming-soon" title="Coming Soon" /></li>
+          <li><Button href="/#category" title="Category" /></li>
+          <li><Button href="/pricing" title="Pricing" /></li>
         </HeaderUl>
         <HeaderRight>
           <HeaderCart>

@@ -1,7 +1,7 @@
 import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server'
 
 const publicRoutes = [
-  { path: '/home', whenAuthenticated: 'next' },
+  { path: '/', whenAuthenticated: 'next' },
   { path: '/sign-in', whenAuthenticated: 'redirect' },
   { path: '/register', whenAuthenticated: 'redirect' },
   { path: '/pricing', whenAuthenticated: 'next' }
@@ -29,7 +29,7 @@ export function middleware(request: NextRequest) {
   //3 - Se o usuário estiver autenticado e o caminho da rota não for público, redireciona para a página inicial
   if (authToken && matchedPublicRoute?.whenAuthenticated === 'redirect') {
     const redirectUrl = request.nextUrl.clone()
-    redirectUrl.pathname = '/home'
+    redirectUrl.pathname = '/'
     return NextResponse.redirect(redirectUrl)
   }
 

@@ -3,7 +3,7 @@
 import { theme, transitions } from '@/styles/theme'
 import Image from 'next/image'
 import { styled } from 'styled-components'
-import { StyledButton } from '../Button/ButtonStyles'
+import { StyledButton, StyledLink } from '../Button/ButtonStyles'
 
 export type CardProps = {
   $bgColor: 'light' | 'dark'
@@ -135,12 +135,30 @@ export const CardFooter = styled.div`
     align-items: center;
     gap: 4px;
   }
+`
 
+export const CardButtonDiv = styled.div`
   ${StyledButton} {
-    width: 100%;
+    background-color: ${theme.colors.baseBlue.dark};
+    border: 2px solid ${theme.colors.baseBlue.dark};
+    color: ${theme.colors.baseBlue.light50};
+    padding: 4px;
 
     svg {
-      font-size: 16px;
+      font-size: 20px;
+      color: ${theme.colors.baseBlue.light30};
+    }
+  }
+
+  ${StyledLink} {
+    background-color: ${theme.colors.baseBlue.dark};
+    border: 2px solid ${theme.colors.baseBlue.dark};
+    color: ${theme.colors.baseBlue.light50};
+    padding: 4px;
+
+    svg {
+      font-size: 20px;
+      color: ${theme.colors.baseBlue.light30};
     }
   }
 `

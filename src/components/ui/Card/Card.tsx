@@ -1,9 +1,10 @@
 import { GameType } from "@/types/GameType"
 import { FaStar } from "react-icons/fa"
 import { HiShoppingCart } from "react-icons/hi"
+import { TbListDetails } from "react-icons/tb"
 import { Button } from "../Button/Button"
 import { Tag } from "../Tag/Tag"
-import { CardBody, CardCategory, CardContainer, CardContent, CardDescription, CardFooter, CardHeader, CardImage, CardPrice, CardStars, CardTags, CardTitle } from "./CardStyles"
+import { CardBody, CardButtonDiv, CardCategory, CardContainer, CardContent, CardDescription, CardFooter, CardHeader, CardImage, CardPrice, CardStars, CardTags, CardTitle } from "./CardStyles"
 
 interface CardProps {
   game: GameType
@@ -63,12 +64,14 @@ export const Card = ({ game, $bgColor }: CardProps) => {
               <CardPrice>R${game.prices.current.toFixed(2).replace('.', ',')}</CardPrice>
             </div>
           )}
-          <div>
-            <Button href="/gameDetails/:id" title="Ver jogo" />
+          <CardButtonDiv>
+            <Button href="/gameDetails/:id" title="Ver jogo" >
+              <TbListDetails />
+            </Button>
             <Button title="">
               <HiShoppingCart />
             </Button>
-          </div>
+          </CardButtonDiv>
         </CardFooter>
       </CardContent>
     </CardContainer>

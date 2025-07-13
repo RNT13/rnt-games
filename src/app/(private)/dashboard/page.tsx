@@ -4,6 +4,7 @@ import { logout } from "@/redux/slices/authSlice";
 import { MinorTextH4, TitleH2, TitleH3 } from "@/styles/globalStyles";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaCalendar, FaDownload } from "react-icons/fa";
 import { IoLogoGameControllerA } from "react-icons/io";
 import { IoBag, IoPerson } from "react-icons/io5";
@@ -28,6 +29,8 @@ export default function Dashboard() {
     dispatch(logout())
 
     router.push('/sign-in')
+
+    toast.success('Deslogado com sucesso!')
   }
 
   return (

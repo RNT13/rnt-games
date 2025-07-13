@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { login } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { SignInContainer, SignInContent, SignInFooter, SignInForm, SignInHeader } from "./sign-inStyles";
 
@@ -31,6 +32,8 @@ export default function SignIn() {
 
     // Redireciona
     router.push('/dashboard');
+
+    toast.success('Logado com sucesso!')
   }
 
   return (

@@ -20,6 +20,7 @@ export const CartContent = styled.div`
   width: 400px;
   height: 100%;
   background-color: ${theme.colors.baseBlue.dark20};
+  border-left: 2px solid ${theme.colors.baseBlue.light20};
   z-index: 100;
 `
 
