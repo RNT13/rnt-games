@@ -1,4 +1,4 @@
-import Section from "@/components/layout/Section/Section"
+import Section from "@/components/ui/Section/Section"
 import { CategoryType } from "@/types/CategoryType"
 import Image from "next/image"
 import { CategoryCard, CategoryCardBody, CategoryCardFooter, CategoryCardHeader, CategoryContainer, CategoryContent } from "./CategoryStyles"

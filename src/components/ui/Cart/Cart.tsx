@@ -25,6 +25,9 @@ export const Cart = ({ onClick }: CartProps) => {
           <CartItem />
           <CartItem />
           <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
         </CartBody>
         <CartFooter>
           <div>

@@ -64,7 +64,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
             </div>
           )}
           <div>
-            <Button title="Ver jogo" />
+            <Button href="/gameDetails/:id" title="Ver jogo" />
             <Button title="">
               <HiShoppingCart />
             </Button>

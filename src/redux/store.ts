@@ -1,26 +1,11 @@
-import { combineReducers, configureStore as toolkitConfigureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
+import authReducer from './slices/authSlice'
 
-const rootReducer = combineReducers({
-  redux: () => ({})
+export const store = configureStore({
+  reducer: {
+    auth: authReducer
+  }
 })
 
-export type RootState = ReturnType<typeof rootReducer>
-
-export function configureStore(preloadedState?: Partial<RootState>) {
-  return toolkitConfigureStore({
-    reducer: rootReducer,
-    preloadedState,
-    middleware: getDefaultMiddleware =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: ['persist/PERSIST']
-        }
-      })
-  })
-}
-
-export const store = configureStore()
-
-export type AppStore = ReturnType<typeof configureStore>
-export type AppDispatch = AppStore['dispatch']
-export type RootReducer = typeof rootReducer
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

@@ -1,3 +1,5 @@
+import Footer from '@/components/layout/Footer/Footer'
+import Header from '@/components/layout/Header/Header'
 import { Providers } from '@/components/providers'
 import StyledComponentsRegistry from '@/lib/styled-components-registry'
 import { GlobalStyles } from '@/styles/globalStyles'
@@ -28,7 +30,11 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <GlobalStyles />
           <Providers>
-            {children}
+            <main>
+              <Header />
+              {children}
+              <Footer />
+            </main>
           </Providers>
         </StyledComponentsRegistry>
       </body>

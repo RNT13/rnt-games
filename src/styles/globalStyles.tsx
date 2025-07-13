@@ -69,3 +69,23 @@ export const CloseButton = styled.button`
     }
   }
 `
+
+export const TitleH2 = styled.h2`
+  font-size: 24px;
+  font-weight: 600;
+  color: ${theme.colors.baseBlue.light30};
+`
+
+export const TitleH3 = styled.h3`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: ${theme.colors.baseBlue.dark30};
+`
+
+export const MinorTextH4 = styled.h3`
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  color: ${theme.colors.baseBlue.dark30};
+`

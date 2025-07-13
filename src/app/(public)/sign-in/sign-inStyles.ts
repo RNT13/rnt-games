@@ -1,20 +1,16 @@
+import { StyledLink } from '@/components/ui/Button/ButtonStyles'
 import { theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
-export const RegisterWindowContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+export const SignInContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 101;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 90px);
 `
 
-export const RegisterWindowContent = styled.div`
-  position: absolute;
+export const SignInContent = styled.div`
   padding: 18px;
   width: 400px;
   height: auto;
@@ -26,10 +22,9 @@ export const RegisterWindowContent = styled.div`
   align-items: space-between;
   justify-content: space-between;
   text-align: center;
-  z-index: 101;
 `
 
-export const RegisterWindowHeader = styled.div`
+export const SignInHeader = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -43,7 +38,7 @@ export const RegisterWindowHeader = styled.div`
   }
 `
 
-export const RegisterWindowForm = styled.form`
+export const SignInForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,15 +46,10 @@ export const RegisterWindowForm = styled.form`
   width: 100%;
   gap: 12px;
 
-  button {
+  ${StyledLink} {
     width: 200px;
     display: flex;
     justify-content: center;
-
-
-    svg {
-      font-size: 24px;
-    }
   }
 
   label {
@@ -84,19 +74,19 @@ export const RegisterWindowForm = styled.form`
   }
 `
 
-export const RegisterWindowFooter = styled.div`
-margin-top: 12px;
+export const SignInFooter = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 12px;
   gap: 12px;
   padding: 0 12px;
 
   a {
-      color: ${theme.colors.baseBlue.dark};
-      text-decoration: none;
+    color: ${theme.colors.baseBlue.dark};
+    text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
     }
+  }
 `

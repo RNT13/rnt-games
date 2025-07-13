@@ -1,28 +1,31 @@
+'use client'
+
 import { Button } from "@/components/ui/Button/Button";
 import { Cart } from "@/components/ui/Cart/Cart";
 import { CartWrapper } from "@/components/ui/CartWrapper/CartWrapper";
-import { LoginWindow } from "@/components/ui/LoginWindow/LoginWindow";
-import { ModalWrapper } from "@/components/ui/ModalWrapper/ModalWrapper";
-import { RegisterWindow } from "@/components/ui/RegisterWindow/RegisterWindow";
+import { login } from "@/redux/slices/authSlice";
+import { RootState } from "@/redux/store";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
-import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderNav, HeaderRegister, HeaderRight, HeaderUl } from "./HeaderStyles";
+import { useDispatch, useSelector } from "react-redux";
+import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderNav, HeaderRegister, HeaderRight, HeaderUl, HeaderUserAvatar, UserAvatar } from "./HeaderStyles";
 
 export default function Header() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false)
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      dispatch(login())
+    }
+  }, [dispatch])
+
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
   return (
     <HeaderContainer>
-      <ModalWrapper isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)}>
-        <LoginWindow onClick={() => setIsLoginOpen(false)} />
-      </ModalWrapper>
-      <ModalWrapper isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)}>
-        <RegisterWindow onClick={() => setIsRegisterOpen(false)} />
-      </ModalWrapper>
       <CartWrapper isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}>
         <Cart onClick={() => setIsCartOpen(false)} />
       </CartWrapper>
@@ -31,10 +34,10 @@ export default function Header() {
           <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} />
         </HeaderLogo>
         <HeaderUl>
-          <li><Button href="#home" title="Home" /></li>
-          <li><Button href="#games" title="Games" /></li>
-          <li><Button href="#coming-soon" title="Coming Soon" /></li>
-          <li><Button href="#category" title="Category" /></li>
+          <li><Button href="/home" title="Home" /></li>
+          <li><Button href="/home#games" title="Games" /></li>
+          <li><Button href="/home#coming-soon" title="Coming Soon" /></li>
+          <li><Button href="/home#category" title="Category" /></li>
         </HeaderUl>
         <HeaderRight>
           <HeaderCart>
@@ -43,12 +46,24 @@ export default function Header() {
               <span>0</span>
             </Button>
           </HeaderCart>
-          <HeaderLogin>
-            <Button title="Login" onClick={() => setIsLoginOpen(true)} />
-          </HeaderLogin>
-          <HeaderRegister>
-            <Button title="Register" onClick={() => setIsRegisterOpen(true)} />
-          </HeaderRegister>
+          {isAuthenticated ? (
+            <HeaderUserAvatar>
+              <UserAvatar>
+                <a href="/dashboard">
+                  <Image src="/armoredCoreGame.jpg" alt="avatar" width={40} height={40} />
+                </a>
+              </UserAvatar>
+            </HeaderUserAvatar>
+          ) : (
+            <>
+              <HeaderLogin>
+                <Button href="/sign-in" title="Login" />
+              </HeaderLogin>
+              <HeaderRegister>
+                <Button href="/register" title="Register" />
+              </HeaderRegister>
+            </>
+          )}
         </HeaderRight>
       </HeaderNav>
     </HeaderContainer>

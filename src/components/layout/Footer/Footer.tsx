@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -22,7 +24,7 @@ export default function Footer() {
             <Button href="https://github.com/RNT13" target="_blank" rel="noopener noreferrer">
               <FaGithub />
             </Button>
-            <Button href="https://www.linkedin.com/in/renato-luiz-0b072b247/" target="_blank" rel="noopener noreferrer">
+            <Button href="https://www.linkedin.com/in/renato-minoita/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin />
             </Button>
             <Button href="https://www.instagram.com/renatominoita/" target="_blank" rel="noopener noreferrer">

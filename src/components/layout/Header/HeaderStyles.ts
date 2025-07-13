@@ -88,7 +88,7 @@ export const HeaderLogin = styled.div`
   display: flex;
   gap: 12px;
 
-  ${StyledButton} {
+  ${StyledLink} {
     background-color: ${theme.colors.baseGreen.dark20};
     border: 2px solid ${theme.colors.baseGreen.dark20};
     color: ${theme.colors.baseGreen.light50};
@@ -117,5 +117,20 @@ export const HeaderRegister = styled.div`
       box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
       color: ${theme.colors.baseCyan.light};
     }
+  }
+`
+
+export const HeaderUserAvatar = styled.div``
+
+export const UserAvatar = styled.div`
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `
