@@ -38,7 +38,7 @@ export const PricingPlan = styled.div`
   }
 
   .free {
-    background-image: linear-gradient(180deg, ${theme.colors.baseRed.light02} 0%, ${theme.colors.baseRed.dark08} 100%);
+    background-image: linear-gradient(180deg, ${theme.colors.baseRed.dark08} 0%, ${theme.colors.baseRed.dark02} 100%);
     border: 5px solid ${theme.colors.baseRed.base};
     border-radius: 16px 0 0 16px;
     transition: ${transitions.default};
@@ -175,6 +175,10 @@ export const PricingCardBody = styled.ul`
 
     svg {
       color: ${theme.colors.baseGreen.base};
+    }
+
+    .svgRed {
+      color: ${theme.colors.baseRed.dark20};
     }
   }
 `

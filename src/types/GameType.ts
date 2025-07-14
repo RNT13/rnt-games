@@ -1,9 +1,9 @@
 export interface GameType {
-  id: number
+  id: string
   name: string
   description: string
   release_date: string
-
+  destaque: boolean
   media: {
     thumbnail: string
     cover: string

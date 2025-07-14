@@ -2,10 +2,11 @@ import { GameType } from '@/types/GameType'
 
 export const games: GameType[] = [
   {
-    id: 1,
+    id: '1',
     name: 'The Last of Us',
     description: 'The Last of Us is an action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment.',
     release_date: '2013-06-14',
+    destaque: true,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -24,10 +25,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 2,
+    id: '2',
     name: 'God of War',
     description: 'God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.',
     release_date: '2018-04-20',
+    destaque: true,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -46,10 +48,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 3,
+    id: '3',
     name: 'The Witcher 3: Wild Hunt',
     description: 'The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt.',
     release_date: '2015-05-19',
+    destaque: true,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -68,10 +71,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 4,
+    id: '4',
     name: 'Horizon Zero Dawn',
     description: 'Horizon Zero Dawn is an action role-playing game developed by Guerrilla Games and published by Sony Interactive Entertainment.',
     release_date: '2017-02-28',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -90,10 +94,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 5,
+    id: '5',
     name: 'Red Dead Redemption 2',
     description: 'Red Dead Redemption 2 is an open-world western game developed and published by Rockstar Games.',
     release_date: '2018-10-26',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -112,10 +117,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 6,
+    id: '6',
     name: 'Death Stranding',
     description: 'Death Stranding is an action game developed by Kojima Productions and published by Sony Interactive Entertainment.',
     release_date: '2019-11-08',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -134,10 +140,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 7,
+    id: '7',
     name: 'Cyberpunk 2077',
     description: 'Cyberpunk 2077 is an action role-playing game developed and published by CD Projekt.',
     release_date: '2020-12-10',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -156,11 +163,12 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 8,
+    id: '8',
     name: 'Spider-Man: Miles Morales',
     description:
       'Spider-Man: Miles Morales is an action-adventure game developed by Insomniac Games and published by Sony Interactive Entertainment.',
     release_date: '2020-11-12',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -179,10 +187,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 9,
+    id: '9',
     name: 'Resident Evil Village',
     description: 'Resident Evil Village is a survival horror game developed and published by Capcom.',
     release_date: '2021-05-07',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -201,10 +210,11 @@ export const games: GameType[] = [
     }
   },
   {
-    id: 10,
+    id: '10',
     name: 'Ratchet & Clank: Rift Apart',
     description: 'Ratchet & Clank: Rift Apart is a platformer game developed by Insomniac Games and published by Sony Interactive Entertainment.',
     release_date: '2021-06-11',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -226,13 +236,14 @@ export const games: GameType[] = [
 
 export const SoonGames: GameType[] = [
   {
-    id: 1,
+    id: '1',
     name: 'The Last of Us',
     description: `The Last of Us is an action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment.
     The game follows the story of Joel, a man tasked with escorting a young girl named Ellie across the United States in a post-apocalyptic world.
     The game features a strong narrative focus, deep characters, and a variety of gameplay mechanics, including combat, stealth, and exploration.
     The game has received widespread critical acclaim for its storytelling, characters, and gameplay, and is widely considered one of the best games of all time.`,
     release_date: 'COMING SOON',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -251,10 +262,11 @@ export const SoonGames: GameType[] = [
     }
   },
   {
-    id: 2,
+    id: '2',
     name: 'God of War',
     description: 'God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.',
     release_date: 'COMING SOON',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -273,10 +285,11 @@ export const SoonGames: GameType[] = [
     }
   },
   {
-    id: 3,
+    id: '3',
     name: 'Spider-Man',
     description: 'Spider-Man is an action-adventure game developed by Insomniac Games and published by Sony Interactive Entertainment.',
     release_date: 'COMING SOON',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'
@@ -295,10 +308,11 @@ export const SoonGames: GameType[] = [
     }
   },
   {
-    id: 4,
+    id: '4',
     name: 'The Last Guardian',
     description: 'The Last Guardian is an action-adventure game developed by genDESIGN and published by Sony Interactive Entertainment.',
     release_date: 'COMING SOON',
+    destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
       cover: '/armoredCoreGame.jpg'

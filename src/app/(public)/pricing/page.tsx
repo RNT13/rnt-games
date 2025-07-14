@@ -1,9 +1,10 @@
 'use client'
 
-import { Button } from "@/components/ui/Button/Button"
-import { TitleH2 } from "@/styles/globalStyles"
-import { FaCheck } from "react-icons/fa"
-import { ButtonDiv, PricingCardBody, PricingCardHeader, PricingContainer, PricingContent, PricingPlan, PricingPlanCard } from "./pricingStyles"
+import { Button } from "@/components/ui/Button/Button";
+import { TitleH2 } from "@/styles/globalStyles";
+import { FaCheck } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+import { ButtonDiv, PricingCardBody, PricingCardHeader, PricingContainer, PricingContent, PricingPlan, PricingPlanCard } from "./pricingStyles";
 
 export default function Pricing() {
   return (
@@ -14,8 +15,7 @@ export default function Pricing() {
           <PricingPlanCard className="free">
             <PricingCardHeader>
               <TitleH2>GRATUITO</TitleH2>
-              <p>R$ 0 // Mês</p>
-              <p>Não temos tarifas ou cobranças, apenas o que você precisa para começar.</p>
+              <p>R$ 0 / Mês</p>
             </PricingCardHeader>
             <ButtonDiv>
               <Button className="freeButton">Seu plano atual</Button>
@@ -23,15 +23,15 @@ export default function Pricing() {
             <PricingCardBody>
               <li>
                 <FaCheck />
-                <p>Acesso ao catalogo sem descontos</p>
+                <p>Acesso ao catalogo completo</p>
               </li>
               <li>
                 <FaCheck />
-                <p>Não recebe jogos gratis</p>
+                <p>Sem cobrança mensal</p>
               </li>
               <li>
-                <FaCheck />
-                <p>Sem acesso ao PlayNuvem</p>
+                <ImCross className="svgRed" />
+                <p>Acesso ao PlayNuvem</p>
               </li>
             </PricingCardBody>
           </PricingPlanCard>
@@ -41,8 +41,7 @@ export default function Pricing() {
                 <TitleH2>PREMIUM</TitleH2>
                 <span>Mais popular</span>
               </div>
-              <p>R$ 4.99 // Mês</p>
-              <p>Descontos exclusivos e sorteios de jogos todo mes</p>
+              <p>R$ 4.99 / Mês</p>
             </PricingCardHeader>
             <ButtonDiv>
               <Button className="premiumButton">Obter plano premium</Button>
@@ -69,7 +68,7 @@ export default function Pricing() {
           <PricingPlanCard className="pro">
             <PricingCardHeader>
               <TitleH2>PRO</TitleH2>
-              <p>R$ 14.99 // Mês</p>
+              <p>R$ 14.99 / Mês</p>
             </PricingCardHeader>
             <ButtonDiv>
               <Button className="proButton">Obter plano PRO</Button>
@@ -85,7 +84,7 @@ export default function Pricing() {
               </li>
               <li>
                 <FaCheck />
-                <p>Pode baixar jogos pagos e testalos por 3 horas</p>
+                <p>Pode baixar jogos pagos e testá-los por 1 horas</p>
               </li>
               <li>
                 <FaCheck />

@@ -79,7 +79,7 @@ export const CardBody = styled.div`
 export const CardTitle = styled.div`
   h2 {
     margin-top: 4px;
-    font-size: 16px;
+    font-size: 18px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -99,7 +99,8 @@ export const CardDescription = styled.div`
 
   p {
     display: flex;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
   }

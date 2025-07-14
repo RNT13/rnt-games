@@ -15,8 +15,8 @@ export const Gamelist = ({ $bgColor, games, title }: GameListProps) => {
     <GameListContainer>
       <Section $bgColor={$bgColor} href="/#" title={title}>
         <GameListContent>
-          {games.slice(0, 8).map((game) => (
-            <Card game={game} key={game.id} $bgColor={$bgColor} />
+          {games.slice(0, 4).map((game) => (
+            <Card key={game.id} game={game} $bgColor={$bgColor} />
           ))}
         </GameListContent>
       </Section>

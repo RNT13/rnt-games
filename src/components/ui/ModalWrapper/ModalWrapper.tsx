@@ -27,6 +27,7 @@ export const ModalWrapper = ({ isOpen, children, onClose }: ModalWrapperProps) =
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
             backdropFilter: "blur(5px)",
           }}
           onClick={onClose}
