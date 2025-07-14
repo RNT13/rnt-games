@@ -35,27 +35,27 @@ export default function RootLayout({
               <Header />
               {children}
               <Footer />
+              <Toaster
+                position="top-right"
+                containerStyle={{
+                  top: 90,
+                }}
+                toastOptions={{
+                  duration: 2000,
+                  style: {
+                    background: '#d1fae5',
+                    color: '#065f46',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    fontSize: '0.9rem',
+                  },
+                  iconTheme: {
+                    primary: '#065f46',
+                    secondary: '#a7f3d0',
+                  },
+                }}
+              />
             </main>
-            <Toaster
-              position="top-right"
-              containerStyle={{
-                top: 90,
-              }}
-              toastOptions={{
-                duration: 2000,
-                style: {
-                  background: '#d1fae5',
-                  color: '#065f46',
-                  borderRadius: '8px',
-                  padding: '12px 16px',
-                  fontSize: '0.9rem',
-                },
-                iconTheme: {
-                  primary: '#065f46',
-                  secondary: '#a7f3d0',
-                },
-              }}
-            />
           </Providers>
         </StyledComponentsRegistry>
       </body>

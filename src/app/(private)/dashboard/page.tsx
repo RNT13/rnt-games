@@ -1,18 +1,17 @@
 'use client'
 
+import { Button } from "@/components/ui/Button/Button";
 import { logout } from "@/redux/slices/authSlice";
 import { MinorTextH4, TitleH2, TitleH3 } from "@/styles/globalStyles";
-import { useRouter } from 'next/navigation';
-import { useState } from "react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCalendar, FaDownload } from "react-icons/fa";
 import { IoLogoGameControllerA } from "react-icons/io";
 import { IoBag, IoPerson } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { TbListDetails } from "react-icons/tb";
-
-import { Button } from "@/components/ui/Button/Button";
-import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { DashboardAvatar, DashboardAvatarImage, DashboardBody, DashboardButton, DashboardButtonDiv, DashboardCardItem, DashboardCardLine, DashboardColumn, DashboardContainer, DashboardContent, DashboardHeader, DashboardHeaderItem, DashboardRightBar, DashboardRow } from "./dashboardStyles";
 
@@ -20,18 +19,29 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<'visaoGeral' | 'biblioteca' | 'compras'>('visaoGeral');
+  const searchParams = useSearchParams();
+
+  const toastShown = useRef(false);
+
+  useEffect(() => {
+    const isLogin = searchParams.get('login') === '1';
+    if (isLogin && !toastShown.current) {
+      toast.success("Logado com sucesso!");
+      toastShown.current = true;
+    }
+  }, [searchParams]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
+    // Remove token local
+    localStorage.removeItem('token');
+    document.cookie = 'token=; Max-Age=0; path=/';
 
-    document.cookie = 'token=; Max-Age=0; path=/'
+    // Atualiza Redux
+    dispatch(logout());
 
-    dispatch(logout())
-
-    router.push('/sign-in')
-
-    toast.success('Deslogado com sucesso!')
-  }
+    // Redireciona para login com uma flag para exibir o toast lá
+    router.push('/sign-in?logout=1');
+  };
 
   return (
     <DashboardContainer>
