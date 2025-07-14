@@ -15,6 +15,7 @@ export const HeroContainer = styled.div`
 `
 
 export const HeroImage = styled(Image)`
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -23,8 +24,11 @@ export const HeroImage = styled(Image)`
 export const HeroImageContent = styled.div`
   position: absolute;
   width: 100%;
-  gap: 10px;
-  display: inline-block;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
   z-index: 11;
 `
 

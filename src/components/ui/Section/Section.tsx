@@ -15,10 +15,12 @@ export default function Section({ title, $bgColor, children, href }: SectionProp
       <SectionContent className="container">
         <Row>
           <SectionTitle>{title}</SectionTitle>
-          <Button href={href}>
-            <h3>Ver todos</h3>
-            <FaArrowRight />
-          </Button>
+          {href && (
+            <Button href={href}>
+              <h3>Ver todos</h3>
+              <FaArrowRight />
+            </Button>
+          )}
         </Row>
         {children}
       </SectionContent>
