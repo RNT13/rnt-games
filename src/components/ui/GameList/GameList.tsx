@@ -13,7 +13,7 @@ interface GameListProps {
 export const Gamelist = ({ $bgColor, games, title }: GameListProps) => {
   return (
     <GameListContainer>
-      <Section $bgColor={$bgColor} href="/#" title={title}>
+      <Section $bgColor={$bgColor} href="/allGames" title={title}>
         <GameListContent>
           {games.slice(0, 4).map((game) => (
             <Card key={game.id} game={game} $bgColor={$bgColor} />

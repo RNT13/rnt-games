@@ -4,22 +4,30 @@ const publicRoutes = [
   { path: '/', whenAuthenticated: 'next' },
   { path: '/sign-in', whenAuthenticated: 'redirect' },
   { path: '/register', whenAuthenticated: 'redirect' },
-  { path: '/pricing', whenAuthenticated: 'next' }
+  { path: '/pricing', whenAuthenticated: 'next' },
+  { path: '/allGames', whenAuthenticated: 'next' },
+  { path: '/gameDetails/', whenAuthenticated: 'next' }
 ] as const
 
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/sign-in'
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
-  const matchedPublicRoute = publicRoutes.find(route => route.path === path)
+  const matchedPublicRoute = publicRoutes.find(route => {
+    if (route.path.endsWith('/')) {
+      return path.startsWith(route.path)
+    }
+    return route.path === path
+  })
+
   const authToken = request.cookies.get('token')
 
-  //1 - Se o usuário não estiver autenticado e o caminho da rota não for público, redireciona para a página de login
+  //1 - se o usuario não estiver autenticado(deslogado) e o caminho da rota for público, deixa o usuario seguir
   if (!authToken && matchedPublicRoute) {
     return NextResponse.next()
   }
 
-  //2 - se o usuario não estiver autenticado e o caminho da rota não for público, redireciona para a página de login
+  //2 - se o usuario não estiver autenticado(deslogado) e o caminho da rota não for público, redireciona para a página de login
   if (!authToken && !matchedPublicRoute) {
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE

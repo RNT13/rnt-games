@@ -81,8 +81,8 @@ export default function Dashboard() {
                   <IoLogoGameControllerA className="svgBlue" />
                 </div>
                 <DashboardColumn>
-                  <TitleH3>3</TitleH3>
                   <TitleH3>Jogos na Biblioteca</TitleH3>
+                  <TitleH3>3</TitleH3>
                 </DashboardColumn>
               </DashboardHeaderItem>
               <DashboardHeaderItem>
@@ -90,8 +90,8 @@ export default function Dashboard() {
                   <IoBag className="svgCyan" />
                 </div>
                 <DashboardColumn>
-                  <TitleH3>3</TitleH3>
                   <TitleH3>Total Gasto</TitleH3>
+                  <TitleH3>3</TitleH3>
                 </DashboardColumn>
               </DashboardHeaderItem>
               <DashboardHeaderItem>
@@ -99,8 +99,8 @@ export default function Dashboard() {
                   <FaCalendar className="svgGreen" />
                 </div>
                 <DashboardColumn>
-                  <TitleH3>3</TitleH3>
                   <TitleH3>Membro desde</TitleH3>
+                  <TitleH3>3</TitleH3>
                 </DashboardColumn>
               </DashboardHeaderItem>
             </DashboardHeader>
