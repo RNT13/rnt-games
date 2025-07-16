@@ -19,8 +19,8 @@ export const AllGamesContent = styled.div`
     margin: 40px 0;
   }
 
-  .firstSection {
-    margin-top: 50px;
+  section {
+    width: 100%;
   }
 `
 
@@ -30,6 +30,7 @@ export const AllGamesNav = styled.nav`
   background-color: ${theme.colors.baseBlue.dark30};
   color: ${theme.colors.baseBlue.light30};
   border-radius: 12px;
+  margin-bottom: 50px;
 `
 
 export const NavUl = styled.ul`

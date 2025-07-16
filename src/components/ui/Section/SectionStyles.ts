@@ -5,7 +5,7 @@ export type SectionProps = {
   $bgColor: 'light' | 'dark'
 }
 
-export const SectionContainer = styled.section<Omit<SectionProps, 'light' | 'dark'>>`
+export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>`
   padding-top: 40px;
   display: flex;
   justify-content: center;
