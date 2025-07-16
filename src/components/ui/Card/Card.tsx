@@ -65,10 +65,10 @@ export const Card = ({ game, $bgColor }: CardProps) => {
             </div>
           )}
           <CardButtonDiv>
-            <Button href={`/gameDetails/${game.id}`} title="Ver jogo" >
+            <Button href={`/gameDetails/${game.id}`} title="Detalhes" >
               <TbListDetails />
             </Button>
-            <Button title="">
+            <Button title="Carrinho">
               <HiShoppingCart />
             </Button>
           </CardButtonDiv>

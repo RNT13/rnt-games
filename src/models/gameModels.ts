@@ -234,7 +234,7 @@ export const games: GameType[] = [
   }
 ]
 
-export const SoonGames: GameType[] = [
+export const soonGames: GameType[] = [
   {
     id: '1',
     name: 'The Last of Us',

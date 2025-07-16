@@ -30,7 +30,7 @@ export const HeaderUl = styled.ul`
   ${StyledLink}, ${StyledButton} {
     background-color: transparent;
     border: transparent;
-    color: ${theme.colors.baseBlue.light50};
+    color: ${theme.colors.baseBlue.light40};
     transition: ${transitions.default};
 
     &:hover {

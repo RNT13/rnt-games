@@ -7,16 +7,18 @@ interface SectionProps {
   $bgColor: 'light' | 'dark'
   children?: React.ReactNode
   href?: string
+  className?: string
+  id?: string
 }
 
-export default function Section({ title, $bgColor, children, href }: SectionProps) {
+export default function Section({ title, $bgColor, children, href, className, id }: SectionProps) {
   return (
-    <SectionContainer $bgColor={$bgColor} >
+    <SectionContainer id={id} $bgColor={$bgColor} className={className} >
       <SectionContent className="container">
         <Row>
           <SectionTitle>{title}</SectionTitle>
           {href && (
-            <Button href={href}>
+            <Button className="sectionButton" href={href}>
               <h3>Ver todos</h3>
               <FaArrowRight />
             </Button>

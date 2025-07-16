@@ -1,4 +1,3 @@
-import { StyledLink } from '@/components/ui/Button/ButtonStyles'
 import { theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
@@ -24,7 +23,7 @@ export const SectionContainer = styled.section<Omit<SectionProps, 'light' | 'dar
     color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
   }
 
-  ${StyledLink} {
+  .sectionButton {
     background-color: transparent;
     border: none;
     box-shadow: none;

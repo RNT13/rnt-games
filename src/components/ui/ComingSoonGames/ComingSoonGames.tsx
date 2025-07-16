@@ -13,10 +13,10 @@ interface ComingSoonGamesProps {
 export const ComingSoonGamesList = ({ $bgColor, soonGames, title }: ComingSoonGamesProps) => {
   return (
     <ComingSoonGamesListContainer>
-      <Section $bgColor={$bgColor} href="/#" title={title}>
+      <Section $bgColor={$bgColor} href="/allGames" title={title}>
         <ComingSoonGamesListContent>
-          {soonGames.slice(0, 3).map((SoonGames) => (
-            <Card game={SoonGames} key={SoonGames.id} $bgColor={$bgColor} />
+          {soonGames.slice(0, 3).map((soonGames) => (
+            <Card game={soonGames} key={soonGames.id} $bgColor={$bgColor} />
           ))}
         </ComingSoonGamesListContent>
       </Section>

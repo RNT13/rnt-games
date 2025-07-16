@@ -19,21 +19,37 @@ export const CardContent = styled.div<CardProps>`
   flex-direction: column;
   justify-content: space-between;
   transition: ${transitions.default};
-  background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark40 : theme.colors.baseBlue.light30)};
+  background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
   color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
   cursor: pointer;
 
-  svg {
-    color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+  span {
+    svg {
+      color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+    }
   }
 
-  button {
+  ${StyledLink}, ${StyledButton} {
+    font-weight: 600;
+    padding: 4px;
     background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
     border: 2px solid ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
     color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+    transition: ${transitions.default};
 
     svg {
       color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+    }
+
+    &:hover {
+      background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+      border: 2px solid ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+      color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+      transition: ${transitions.default};
+
+      svg {
+        color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
+      }
     }
   }
 
@@ -114,13 +130,21 @@ export const CardStars = styled.div`
   span {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
   }
 `
 
-export const CardPrice = styled.div`
-  font-size: 14px;
+export const CardPrice = styled.p`
+  width: 100%;
+  font-size: 18px;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  span {
+    text-decoration: line-through;
+  }
 `
 
 export const CardFooter = styled.div`
@@ -129,37 +153,12 @@ export const CardFooter = styled.div`
   gap: 8px;
   font-size: 12px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
 `
 
 export const CardButtonDiv = styled.div`
-  ${StyledButton} {
-    background-color: ${theme.colors.baseBlue.dark};
-    border: 2px solid ${theme.colors.baseBlue.dark};
-    color: ${theme.colors.baseBlue.light50};
-    padding: 4px;
-
-    svg {
-      font-size: 20px;
-      color: ${theme.colors.baseBlue.light30};
-    }
-  }
-
-  ${StyledLink} {
-    background-color: ${theme.colors.baseBlue.dark};
-    border: 2px solid ${theme.colors.baseBlue.dark};
-    color: ${theme.colors.baseBlue.light50};
-    padding: 4px;
-
-    svg {
-      font-size: 20px;
-      color: ${theme.colors.baseBlue.light30};
-    }
-  }
+  display: flex;
+  justify-content: end;
+  gap: 8px;
 `

@@ -1,7 +1,8 @@
+import AllGamesList from "@/components/ui/AllGamesList/AllGamesList";
+import { games, soonGames } from "@/models/gameModels";
+
 export default function AllGames() {
   return (
-    <div>
-      <h1>Todos os jogos</h1>
-    </div>
+    <AllGamesList games={games} soonGames={soonGames} />
   )
 }

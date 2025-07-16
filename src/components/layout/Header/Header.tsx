@@ -36,9 +36,9 @@ export default function Header() {
         <HeaderUl>
           <li><Button href="/" title="Home" /></li>
           <li><Button href="/#games" title="Games" /></li>
-          <li><Button href="/#coming-soon" title="Coming Soon" /></li>
-          <li><Button href="/#category" title="Category" /></li>
-          <li><Button href="/pricing" title="Pricing" /></li>
+          <li><Button href="/#coming-soon" title="Em Breve" /></li>
+          <li><Button href="/#category" title="Categorias" /></li>
+          <li><Button href="/pricing" title="Planos" /></li>
         </HeaderUl>
         <HeaderRight>
           <HeaderCart>

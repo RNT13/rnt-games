@@ -4,7 +4,7 @@ import { Category } from "@/components/ui/Category/Category"
 import { ComingSoonGamesList } from "@/components/ui/ComingSoonGames/ComingSoonGames"
 import { Gamelist } from "@/components/ui/GameList/GameList"
 import { Hero } from "@/components/ui/Hero/Hero"
-import { SoonGames, games, mockCategories } from "@/models/gameModels"
+import { games, mockCategories, soonGames } from "@/models/gameModels"
 import { GameType } from '@/types/GameType'
 import { useEffect, useState } from 'react'
 import Loading from "../loading"
@@ -31,10 +31,10 @@ export default function Home() {
         <Gamelist title="Games" $bgColor="light" games={games} />
       </section>
       <section id="coming-soon">
-        <ComingSoonGamesList title="Coming Soon" $bgColor="dark" soonGames={SoonGames} />
+        <ComingSoonGamesList title="Em Breve" $bgColor="dark" soonGames={soonGames} />
       </section>
       <section id="category">
-        <Category title="Category" $bgColor="light" categories={mockCategories} />
+        <Category title="Categorias" $bgColor="light" categories={mockCategories} />
       </section>
     </div>
   )
