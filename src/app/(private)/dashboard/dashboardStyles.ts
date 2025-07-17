@@ -204,7 +204,7 @@ export const DashboardCardItem = styled.div`
     justify-content: center;
     padding: 16px;
 
-    ${StyledButton} {
+    button {
       width: 100%;
       display: flex;
       justify-content: center;

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderNav, HeaderRegister, HeaderRight, HeaderUl, HeaderUserAvatar, UserAvatar } from "./HeaderStyles";
 
 export default function Header() {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
   const [isCartOpen, setIsCartOpen] = useState(false)
   const dispatch = useDispatch()
 
@@ -44,7 +45,7 @@ export default function Header() {
           <HeaderCart>
             <Button onClick={() => setIsCartOpen(true)} title="">
               <HiShoppingCart />
-              <span>0</span>
+              <span>{cartItems.reduce((acc, item) => acc + item.quantity, 0)}</span>
             </Button>
           </HeaderCart>
           {isAuthenticated ? (

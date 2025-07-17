@@ -1,4 +1,3 @@
-import { StyledButton, StyledLink } from '@/components/ui/Button/ButtonStyles'
 import { theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
@@ -27,7 +26,7 @@ export const HeaderUl = styled.ul`
   gap: 12px;
   list-style: none;
 
-  ${StyledLink}, ${StyledButton} {
+  a {
     background-color: transparent;
     border: transparent;
     color: ${theme.colors.baseBlue.light40};
@@ -50,7 +49,7 @@ export const HeaderRight = styled.div`
 `
 
 export const HeaderCart = styled.div`
-  ${StyledButton} {
+  button {
     position: relative;
     background-color: transparent;
     border: none;
@@ -70,10 +69,11 @@ export const HeaderCart = styled.div`
     span {
       position: absolute;
       font-size: 12px;
+      font-weight: 900;
       top: 0px;
       right: 4px;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -88,7 +88,7 @@ export const HeaderLogin = styled.div`
   display: flex;
   gap: 12px;
 
-  ${StyledLink} {
+  a {
     background-color: ${theme.colors.baseGreen.dark20};
     border: 2px solid ${theme.colors.baseGreen.dark20};
     color: ${theme.colors.baseGreen.light50};
@@ -106,7 +106,7 @@ export const HeaderRegister = styled.div`
   display: flex;
   gap: 12px;
 
-  ${StyledLink} {
+  a {
     background-color: ${theme.colors.baseBlue.dark30};
     border: 2px solid ${theme.colors.baseBlue.dark30};
     color: ${theme.colors.baseBlue.light50};

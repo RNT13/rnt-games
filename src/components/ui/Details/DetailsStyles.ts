@@ -44,7 +44,8 @@ export const DetailsHeroInfo = styled.div`
   background-color: ${theme.colors.baseBlue.dark30};
   width: 100%;
   max-width: 300px;
-  padding-bottom: 8px;
+  padding: 8px;
+  border-radius: 12px 12px 0 0;
 
   span {
     text-decoration: line-through;

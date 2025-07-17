@@ -246,7 +246,7 @@ export const games: GameType[] = [
 
 export const soonGames: GameType[] = [
   {
-    id: '1',
+    id: '11',
     name: 'The Last of Us',
     description: `The Last of Us is an action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment.
     The game follows the story of Joel, a man tasked with escorting a young girl named Ellie across the United States in a post-apocalyptic world.
@@ -273,7 +273,7 @@ export const soonGames: GameType[] = [
     }
   },
   {
-    id: '2',
+    id: '12',
     name: 'God of War',
     description: 'God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.',
     release_date: 'COMING SOON',
@@ -297,7 +297,7 @@ export const soonGames: GameType[] = [
     }
   },
   {
-    id: '3',
+    id: '13',
     name: 'Spider-Man',
     description: 'Spider-Man is an action-adventure game developed by Insomniac Games and published by Sony Interactive Entertainment.',
     release_date: 'COMING SOON',
@@ -321,7 +321,7 @@ export const soonGames: GameType[] = [
     }
   },
   {
-    id: '4',
+    id: '14',
     name: 'The Last Guardian',
     description: 'The Last Guardian is an action-adventure game developed by genDESIGN and published by Sony Interactive Entertainment.',
     release_date: 'COMING SOON',

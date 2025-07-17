@@ -5,7 +5,7 @@ import { ComingSoonGamesList } from "@/components/ui/ComingSoonGames/ComingSoonG
 import { Gamelist } from "@/components/ui/GameList/GameList";
 import { Hero } from "@/components/ui/Hero/Hero";
 import { getCategoriesFromGames } from "@/hooks/getCategoriesFromGames";
-import { games, soonGames } from "@/models/gameModels";
+import { allGames, games, soonGames } from "@/models/gameModels";
 import { GameType } from '@/types/GameType';
 import { useEffect, useState } from 'react';
 import Loading from "../loading";
@@ -14,7 +14,7 @@ export default function Home() {
   const [featuredGame, setFeaturedGame] = useState<GameType | null>(null)
 
   useEffect(() => {
-    const destaqueGames = games.filter(game => game.destaque)
+    const destaqueGames = allGames.filter(allGames => allGames.destaque)
     const randomIndex = Math.floor(Math.random() * destaqueGames.length)
     setFeaturedGame(destaqueGames[randomIndex])
   }, [])
@@ -29,7 +29,7 @@ export default function Home() {
         {featuredGame && <Hero game={featuredGame} />}
       </section>
       <section id="games">
-        <Gamelist title="Games" $bgColor="light" games={games} />
+        <Gamelist title="Games" $bgColor="light" allGames={allGames} />
       </section>
       <section id="coming-soon">
         <ComingSoonGamesList title="Em Breve" $bgColor="dark" soonGames={soonGames} />

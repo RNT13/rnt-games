@@ -3,7 +3,6 @@
 import { theme, transitions } from '@/styles/theme'
 import Image from 'next/image'
 import { styled } from 'styled-components'
-import { StyledButton, StyledLink } from '../Button/ButtonStyles'
 
 export type CardProps = {
   $bgColor: 'light' | 'dark'
@@ -29,7 +28,8 @@ export const CardContent = styled.div<CardProps>`
     }
   }
 
-  ${StyledLink}, ${StyledButton} {
+  button,
+  a {
     font-weight: 600;
     padding: 4px;
     background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};

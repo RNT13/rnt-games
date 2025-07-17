@@ -1,4 +1,3 @@
-import { StyledLink } from '@/components/ui/Button/ButtonStyles'
 import { theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
@@ -41,7 +40,7 @@ export const SocialLinks = styled.div`
   display: flex;
   gap: 12px;
 
-  ${StyledLink} {
+  a {
     padding: 8px;
     border-radius: 50%;
     background-color: ${theme.colors.baseBlue.dark};

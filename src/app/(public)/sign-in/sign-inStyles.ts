@@ -1,4 +1,3 @@
-import { StyledLink } from '@/components/ui/Button/ButtonStyles'
 import { theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
@@ -46,7 +45,7 @@ export const SignInForm = styled.form`
   width: 100%;
   gap: 12px;
 
-  ${StyledLink} {
+  a {
     width: 200px;
     display: flex;
     justify-content: center;

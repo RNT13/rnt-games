@@ -1,7 +1,6 @@
-import { theme } from '@/styles/theme'
+import { theme, transitions } from '@/styles/theme'
 import Image from 'next/image'
 import { styled } from 'styled-components'
-import { StyledButton } from '../Button/ButtonStyles'
 
 export const HeroContainer = styled.div`
   position: relative;
@@ -65,13 +64,21 @@ export const InfoDiv = styled.div`
 `
 
 export const ButtonDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-top: 24px;
   display: flex;
   gap: 10px;
 
-  ${StyledButton} {
+  button,
+  a {
     background-color: ${theme.colors.baseBlue.dark};
     border: 2px solid ${theme.colors.baseBlue.dark};
+    font-size: 18px;
+    padding: 8px 16px;
+    color: ${theme.colors.baseBlue.light50};
+    transition: ${transitions.default};
 
     &:hover {
       background-color: ${theme.colors.baseBlue.dark40};

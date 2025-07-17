@@ -1,6 +1,5 @@
 import { theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
-import { StyledButton, StyledLink } from '../Button/ButtonStyles'
 
 export const AllGamesContainer = styled.div`
   width: 100%;
@@ -39,7 +38,7 @@ export const NavUl = styled.ul`
   list-style: none;
   cursor: pointer;
 
-  ${StyledLink}, ${StyledButton} {
+  a {
     background-color: transparent;
     border: transparent;
     color: ${theme.colors.baseBlue.light40};

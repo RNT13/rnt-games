@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ButtonContainer, StyledButton, StyledLink } from './ButtonStyles'
+import { StyledButton, StyledLink } from './ButtonStyles'
 
 interface ButtonProps {
   title?: string
@@ -16,20 +16,20 @@ interface ButtonProps {
   className?: string
 }
 
-export const Button = ({ title, href, children, onClick, type = 'button', disabled = false, target, rel, className }: ButtonProps) => {
-  return (
-    <ButtonContainer>
-      {href ? (
-        <StyledLink className={className} href={href} target={target} rel={rel}>
-          {children}
-          {title}
-        </StyledLink>
-      ) : (
-        <StyledButton className={className} type={type} disabled={disabled} onClick={onClick}>
-          {children}
-          {title}
-        </StyledButton>
-      )}
-    </ButtonContainer>
-  )
+export const Button = ({ href, ...ButtonProps }: ButtonProps) => {
+  if (href) {
+    return (
+      <StyledLink href={href} {...ButtonProps}>
+        {ButtonProps.children}
+        {ButtonProps.title}
+      </StyledLink>
+    )
+  } else {
+    return (
+      <StyledButton {...ButtonProps}>
+        {ButtonProps.children}
+        {ButtonProps.title}
+      </StyledButton>
+    )
+  }
 }

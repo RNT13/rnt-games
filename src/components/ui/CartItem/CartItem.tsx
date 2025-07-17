@@ -1,34 +1,44 @@
+import { decrementQuantity, incrementQuantity, removeFromCart } from "@/redux/slices/cartSlice";
 import { CloseButton } from "@/styles/globalStyles";
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useDispatch } from "react-redux";
 import { CardInfo, CartItemBody, CartItemContainer, CartItemContent, CartItemImage, CartItemNav, CartItemPrice } from "./CartItemStyles";
 
-export const CartItem = () => {
+interface CartItemProps {
+  id: number;
+  name: string;
+  quantity: number;
+  price: number;
+  media: string;
+}
+
+export const CartItem = ({ id, name, quantity, price, media }: CartItemProps) => {
+  const dispatch = useDispatch()
+
   return (
     <CartItemContainer>
       <CartItemContent>
-        <CartItemImage src="/armoredCoreGame.jpg" alt="imagem do jogo" width={120} height={120} />
+        <CartItemImage src={media} alt={name} width={120} height={120} />
         <CartItemBody>
           <CardInfo>
-            <h3>
-              Nome do jogo
-            </h3>
+            <h3>{name}</h3>
             <CartItemPrice>
-              R$ 0,00
+              <span>R$ {price}</span>
             </CartItemPrice>
           </CardInfo>
           <CartItemNav>
             <div>
-              <FaRegSquarePlus />
-              <span>1</span>
-              <FaRegSquareMinus />
+              <FaRegSquareMinus onClick={() => dispatch(decrementQuantity(id))} />
+              <span>{quantity}</span>
+              <FaRegSquarePlus onClick={() => dispatch(incrementQuantity(id))} />
             </div>
           </CartItemNav>
-          <CloseButton title="">
+          <CloseButton onClick={() => dispatch(removeFromCart(id))}>
             <IoIosCloseCircle />
           </CloseButton>
         </CartItemBody>
       </CartItemContent>
-    </CartItemContainer>
+    </CartItemContainer >
   )
 }

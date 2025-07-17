@@ -1,14 +1,30 @@
-import { CloseButton, OverlayBlur } from "@/styles/globalStyles"
-import { IoIosCloseCircle } from "react-icons/io"
-import { Button } from "../Button/Button"
-import { CartItem } from "../CartItem/CartItem"
-import { CartBody, CartContainer, CartContent, CartFooter, CartHeader } from "./CartStyles"
+import { RootState } from "@/redux/store";
+import { CloseButton, OverlayBlur } from "@/styles/globalStyles";
+import { IoIosCloseCircle } from "react-icons/io";
+import { useSelector } from "react-redux";
+import { Button } from "../Button/Button";
+import { CartItem } from "../CartItem/CartItem";
+import {
+  CartBody,
+  CartContainer,
+  CartContent,
+  CartFooter,
+  CartHeader,
+} from "./CartStyles";
 
 type CartProps = {
-  onClick: () => void
-}
+  onClick: () => void;
+};
 
 export const Cart = ({ onClick }: CartProps) => {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+
+  // Calcular o total de preços
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.prices.current * item.quantity,
+    0
+  );
+
   return (
     <CartContainer>
       <OverlayBlur onClick={onClick} />
@@ -19,20 +35,24 @@ export const Cart = ({ onClick }: CartProps) => {
             <IoIosCloseCircle />
           </CloseButton>
         </CartHeader>
+
         <CartBody>
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {cartItems.map((item) => (
+            <CartItem
+              key={`${item.id}-${item.name}`}
+              id={item.id}
+              name={item.name}
+              quantity={item.quantity}
+              price={item.prices.current * item.quantity}
+              media={item.media.thumbnail}
+            />
+          ))}
         </CartBody>
+
         <CartFooter>
           <div>
-            <h3>Total: R$ 0,00</h3>
-            <p>Total de itens: 0</p>
+            <h3>Total: R$ {total.toFixed(2).replace(".", ",")}</h3>
+            <p>Total de itens: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
           </div>
           <div>
             <Button title="Finalizar compra" />
@@ -40,5 +60,5 @@ export const Cart = ({ onClick }: CartProps) => {
         </CartFooter>
       </CartContent>
     </CartContainer>
-  )
-}
+  );
+};

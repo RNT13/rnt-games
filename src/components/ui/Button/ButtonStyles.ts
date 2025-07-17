@@ -4,10 +4,6 @@ import { theme, transitions } from '@/styles/theme'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
-export const ButtonContainer = styled.div`
-  display: inline-block;
-`
-
 const BaseButton = css`
   display: inline-flex;
   align-items: center;

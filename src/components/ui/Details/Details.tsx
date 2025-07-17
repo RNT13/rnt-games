@@ -1,12 +1,16 @@
 'use client'
 
+import { addToCart } from "@/redux/slices/cartSlice";
+import { RootState } from "@/redux/store";
 import { CloseButton, OverlayDarck, TitleH2, TitleH3 } from "@/styles/globalStyles";
 import { GameType } from "@/types/GameType";
+import { mapGameToCartItem } from "@/utils/cartHelper";
 import Image from "next/image";
 import { useState } from "react";
-import { FaSearchPlus } from "react-icons/fa";
+import { FaHourglassHalf, FaSearchPlus, FaThumbsUp } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { ModalWrapper } from "../ModalWrapper/ModalWrapper";
 import Section from "../Section/Section";
@@ -18,7 +22,11 @@ type detailsProps = {
 }
 
 export default function Details({ game }: detailsProps) {
+  const dispatch = useDispatch()
   const [isOpen, setIsOpen] = useState(false);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const isInCart = cartItems.some(item => item.id === +game.id);
+
 
   return (
     <DetailsContainer>
@@ -33,14 +41,29 @@ export default function Details({ game }: detailsProps) {
           </TagDiv>
           <DetailsHeroInfo >
             <TitleH2>{game.name}</TitleH2>
-            {game.prices.discount > 0 ? (
+
+            {game.release_date === 'COMING SOON' ? (
+              <TitleH3>Em breve</TitleH3>
+            ) : game.prices.discount > 0 ? (
               <TitleH3><span>de R$ {game.prices.original}</span> <br /> por R$ {game.prices.current}</TitleH3>
             ) : (
               <TitleH3>Por apenas R$ {game.prices.current}</TitleH3>
             )}
-            <Button title="Adicionar ao carrinho">
-              <HiShoppingCart />
-            </Button>
+
+            {game.release_date === 'COMING SOON' ? (
+              <Button title="Em Breve" disabled>
+                <FaHourglassHalf />
+              </Button>
+            ) : isInCart ? (
+              <Button title="No carrinho" disabled>
+                <FaThumbsUp />
+              </Button>
+            ) : (
+              <Button onClick={() => dispatch(addToCart(mapGameToCartItem(game)))} title="Comprar">
+                <HiShoppingCart />
+              </Button>
+            )}
+
           </DetailsHeroInfo>
         </DetailsHeroContainer>
       </DetailsHero>
