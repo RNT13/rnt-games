@@ -9,7 +9,8 @@ export const games: GameType[] = [
     destaque: true,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS3',
@@ -32,7 +33,8 @@ export const games: GameType[] = [
     destaque: true,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -55,7 +57,8 @@ export const games: GameType[] = [
     destaque: true,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PC',
@@ -78,7 +81,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -101,7 +105,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -124,7 +129,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -147,7 +153,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -171,7 +178,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -194,7 +202,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -217,7 +226,8 @@ export const games: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS5',
@@ -246,7 +256,8 @@ export const soonGames: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS3',
@@ -269,7 +280,8 @@ export const soonGames: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -292,7 +304,8 @@ export const soonGames: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -315,7 +328,8 @@ export const soonGames: GameType[] = [
     destaque: false,
     media: {
       thumbnail: '/armoredCoreGame.jpg',
-      cover: '/armoredCoreGame.jpg'
+      cover: '/armoredCoreGame.jpg',
+      imageUrl: '/armoredCoreGame.jpg'
     },
     details: {
       system: 'PS4',
@@ -332,77 +346,4 @@ export const soonGames: GameType[] = [
   }
 ]
 
-export const mockCategories = [
-  {
-    id: 'aventura',
-    name: 'Aventura',
-    gamesCount: 2,
-    description:
-      'Um jogo de aventura é um jogo onde você explora mundos misteriosos, resolver puzzles e lutar contra monstros para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'acao',
-    name: 'Açao',
-    gamesCount: 3,
-    description:
-      'Um jogo de ação é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'rpg',
-    name: 'RPG',
-    gamesCount: 4,
-    description:
-      'Um jogo de RPG é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'plataforma',
-    name: 'Plataforma',
-    gamesCount: 5,
-    description:
-      'Um jogo de plataforma é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'corrida',
-    name: 'Corrida',
-    gamesCount: 6,
-    description:
-      'Um jogo de corrida é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'esporte',
-    name: 'Esporte',
-    gamesCount: 7,
-    description:
-      'Um jogo de esporte é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'estratege',
-    name: 'Estratégia',
-    gamesCount: 8,
-    description:
-      'Um jogo de estratégia é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'simulacao',
-    name: 'Simulaço',
-    gamesCount: 9,
-    description:
-      'Um jogo de simulação é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  },
-  {
-    id: 'outro',
-    name: 'Outro',
-    gamesCount: 10,
-    description:
-      'Um jogo de outro é um jogo onde vocé controla um personagem em uma aventura, lutando contra inimigos, coletando itens e resolvendo problemas para salvar o mundo da destruição.',
-    imageUrl: '/armoredCoreGame.jpg'
-  }
-]
+export const allGames: GameType[] = [...games, ...soonGames]

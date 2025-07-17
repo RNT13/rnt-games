@@ -1,29 +1,25 @@
-'use client'
+import { CategoryType } from "@/types/CategoryType";
+import Image from "next/image";
+import { CategoryCardBody, CategoryCardContainer, CategoryCardContent, CategoryCardFooter, CategoryCardHeader } from "./CategoryCardStyles";
 
-import { CategoryType } from "@/types/CategoryType"
-import Image from "next/image"
-import { CategoryCardBody, CategoryCardContainer, CategoryCardContent, CategoryCardFooter, CategoryCardHeader } from "./CategoryCardStyles"
-
-interface CategoryCardProps {
-  category: CategoryType
-  $bgColor: 'light' | 'dark'
+interface CategoryCardProps extends CategoryType {
+  $bgColor: 'light' | 'dark';
 }
 
-export const CategoryCard = ({ category, $bgColor }: CategoryCardProps) => {
+export const CategoryCard = ({ $bgColor, imageUrl, gamesCount, name, id }: CategoryCardProps) => {
   return (
     <CategoryCardContainer>
-      <CategoryCardContent $bgColor={$bgColor} key={category.id}>
+      <CategoryCardContent $bgColor={$bgColor} key={id}>
         <CategoryCardHeader>
-          <Image src={category.imageUrl} alt={category.name} width={100} height={100} />
+          <Image src={imageUrl} alt={name} width={100} height={100} />
         </CategoryCardHeader>
         <CategoryCardBody>
-          <h4>{category.name}</h4>
-          <p>{category.description.length > 70 ? `${category.description.substring(0, 70)}...` : category.description}</p>
+          <h4>{name}</h4>
         </CategoryCardBody>
         <CategoryCardFooter>
-          <p>{category.gamesCount} jogos</p>
+          <p>{gamesCount} jogo{gamesCount > 1 && "s"}</p>
         </CategoryCardFooter>
       </CategoryCardContent>
     </CategoryCardContainer>
-  )
-}
+  );
+};

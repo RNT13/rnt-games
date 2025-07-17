@@ -1,7 +1,6 @@
-export type CategoryType = {
+export interface CategoryType {
   id: string
   name: string
-  gamesCount: number
   imageUrl: string
-  description: string
+  gamesCount: number
 }

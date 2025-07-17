@@ -1,26 +1,34 @@
-import Section from "@/components/ui/Section/Section"
-import { CategoryType } from "@/types/CategoryType"
-import { CategoryCard } from "../CategoryCard/CategoryCard"
-import { CategoryContainer, CategoryContent } from "./CategoryStyles"
+import { CategoryCard } from "../CategoryCard/CategoryCard";
+import Section from "../Section/Section";
+import { CategoryContainer, CategoryContent } from "./CategoryStyles";
 
 interface CategoryProps {
   $bgColor: 'light' | 'dark'
-  categories: CategoryType[]
-  id?: string
+  categoryList: {
+    id: string;
+    name: string;
+    imageUrl: string;
+    gamesCount: number;
+  }[]
   title: string
 }
 
-export const Category = ({ $bgColor, categories, title }: CategoryProps) => {
+export const Category = ({ $bgColor, title, categoryList }: CategoryProps) => {
   return (
     <CategoryContainer>
       <Section $bgColor={$bgColor} href="/allGames" title={title}>
-        <CategoryContent >
-          {categories.slice(0, 6).map((category) => (
-            <CategoryCard key={category.id} category={category} $bgColor={$bgColor} />
+        <CategoryContent>
+          {categoryList.map((category) => (
+            <CategoryCard
+              key={category.id}
+              id={category.id}
+              name={category.name}
+              imageUrl={category.imageUrl}
+              gamesCount={category.gamesCount}
+              $bgColor={$bgColor} />
           ))}
         </CategoryContent>
       </Section>
     </CategoryContainer>
   );
 };
-

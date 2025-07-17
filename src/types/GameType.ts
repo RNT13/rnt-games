@@ -7,6 +7,7 @@ export interface GameType {
   media: {
     thumbnail: string
     cover: string
+    imageUrl: string
   }
   details: {
     system: string
