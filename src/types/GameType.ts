@@ -1,3 +1,8 @@
+export interface GalleryItem {
+  type: 'image' | 'video'
+  url: string
+}
+
 export interface GameType {
   id: string
   name: string
@@ -7,7 +12,7 @@ export interface GameType {
   media: {
     thumbnail: string
     cover: string
-    imageUrl: string
+    gallery: GalleryItem[]
   }
   details: {
     system: string
@@ -18,7 +23,7 @@ export interface GameType {
   }
   prices: {
     discount: number
-    original: number
+    old: number
     current: number
   }
 }

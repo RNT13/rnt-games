@@ -1,13 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 import authReducer from './slices/authSlice'
 import cartReducer from './slices/cartSlice'
+import gameReducer from './slices/gameSlice'
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    games: gameReducer
   }
 })
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>

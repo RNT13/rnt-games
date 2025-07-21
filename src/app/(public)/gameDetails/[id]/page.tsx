@@ -1,22 +1,23 @@
 import NotFound from "@/app/not-found";
 import Details from "@/components/ui/Details/Details";
-import { allGames } from "@/models/gameModels";
+import { getGameById } from "@/services/api";
 
-export type detailsProps = {
-  params: Promise<{
-    id: string;
-  }>;
+type DetailsProps = {
+  params: {
+    id: string
+  }
 };
 
-export default async function GameDetails({ params }: detailsProps) {
-  const { id } = await params;
-  const game = allGames.find((g) => g.id === id);
+export default async function GameDetails({ params }: DetailsProps) {
+  try {
+    const game = await getGameById(params.id);
 
-  if (!game) {
+    if (!game) {
+      return <NotFound />;
+    }
+
+    return <Details game={game} />;
+  } catch {
     return <NotFound />;
   }
-
-  return (
-    <Details game={game} />
-  )
 }

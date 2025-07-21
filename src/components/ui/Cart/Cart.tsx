@@ -1,5 +1,6 @@
 import { RootState } from "@/redux/store";
 import { CloseButton, OverlayBlur } from "@/styles/globalStyles";
+import { formatToBRL } from "@/utils/converterUtils";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Button } from "../Button/Button";
@@ -51,7 +52,7 @@ export const Cart = ({ onClick }: CartProps) => {
 
         <CartFooter>
           <div>
-            <h3>Total: R$ {total.toFixed(2).replace(".", ",")}</h3>
+            <h3>Total:{formatToBRL(total)}</h3>
             <p>Total de itens: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
           </div>
           <div>

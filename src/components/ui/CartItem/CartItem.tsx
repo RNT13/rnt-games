@@ -1,5 +1,7 @@
 import { decrementQuantity, incrementQuantity, removeFromCart } from "@/redux/slices/cartSlice";
 import { CloseButton } from "@/styles/globalStyles";
+import { formatToBRL } from "@/utils/converterUtils";
+import toast from "react-hot-toast";
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
@@ -24,7 +26,7 @@ export const CartItem = ({ id, name, quantity, price, media }: CartItemProps) =>
           <CardInfo>
             <h3>{name}</h3>
             <CartItemPrice>
-              <span>R$ {price}</span>
+              <span>{formatToBRL(price)}</span>
             </CartItemPrice>
           </CardInfo>
           <CartItemNav>
@@ -34,7 +36,7 @@ export const CartItem = ({ id, name, quantity, price, media }: CartItemProps) =>
               <FaRegSquarePlus onClick={() => dispatch(incrementQuantity(id))} />
             </div>
           </CartItemNav>
-          <CloseButton onClick={() => dispatch(removeFromCart(id))}>
+          <CloseButton onClick={() => { dispatch(removeFromCart(id)); toast.success("Jogo removido do carrinho") }}>
             <IoIosCloseCircle />
           </CloseButton>
         </CartItemBody>

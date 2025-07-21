@@ -62,6 +62,8 @@ export const CardContent = styled.div<CardProps>`
 
 export const CardHeader = styled.div`
   position: relative;
+  width: 100%;
+  height: 250px;
 `
 
 export const CardImage = styled(Image)`

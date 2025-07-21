@@ -1,7 +1,9 @@
 import { addToCart } from "@/redux/slices/cartSlice"
 import { RootState } from "@/redux/store"
 import { GameType } from "@/types/GameType"
-import { mapGameToCartItem } from "@/utils/cartHelper"
+import { mapGameToCartItem } from "@/utils/cartUtils"
+import { formatToBRL } from "@/utils/converterUtils"
+import toast from "react-hot-toast"
 import { FaHourglassHalf, FaStar, FaThumbsUp } from "react-icons/fa"
 import { HiShoppingCart } from "react-icons/hi"
 import { TbListDetails } from "react-icons/tb"
@@ -27,8 +29,13 @@ export const Card = ({ game, $bgColor }: CardProps) => {
           <CardImage src={game.media.thumbnail} alt={game.name} width={300} height={300} />
           <CardTags>
             <Tag color="blue" size="sm" >
-              {game.details.category}
+              {game.details.system}
             </Tag>
+            {game.prices.discount && (
+              <Tag color="red" size="sm" >
+                {game.prices.discount > 0 && `-${game.prices.discount}%`}
+              </Tag>
+            )}
           </CardTags>
         </CardHeader>
         <CardBody>
@@ -68,7 +75,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
             </div>
           ) : (
             <div>
-              <CardPrice>R${game.prices.current.toFixed(2).replace('.', ',')}</CardPrice>
+              <CardPrice>{formatToBRL(game.prices.current)}</CardPrice>
             </div>
           )}
           <CardButtonDiv>
@@ -85,7 +92,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
                 <FaThumbsUp />
               </Button>
             ) : (
-              <Button onClick={() => dispatch(addToCart(mapGameToCartItem(game)))} title="Comprar">
+              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title="Comprar">
                 <HiShoppingCart />
               </Button>
             )}

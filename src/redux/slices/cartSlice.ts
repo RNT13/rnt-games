@@ -9,7 +9,7 @@ export interface CartItem {
   }
   prices: {
     discount: number
-    original: number
+    old: number
     current: number
   }
 }

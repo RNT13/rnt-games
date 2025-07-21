@@ -5,10 +5,14 @@ export type CardProps = {
   $bgColor: 'light' | 'dark'
 }
 
-export const CategoryCardContainer = styled.div``
+export const CategoryCardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 export const CategoryCardContent = styled.div<CardProps>`
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -29,7 +33,7 @@ export const CategoryCardContent = styled.div<CardProps>`
 export const CategoryCardHeader = styled.div`
   img {
     width: 100%;
-    height: 100%;
+    height: 150px;
     object-fit: cover;
   }
 `

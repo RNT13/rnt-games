@@ -1,12 +1,14 @@
+import { useAppDispatch } from "@/hooks/useAppDispatch"
 import { addToCart } from "@/redux/slices/cartSlice"
 import { RootState } from "@/redux/store"
 import { OverlayDarck } from "@/styles/globalStyles"
 import { GameType } from "@/types/GameType"
-import { mapGameToCartItem } from "@/utils/cartHelper"
+import { mapGameToCartItem } from "@/utils/cartUtils"
+import toast from "react-hot-toast"
 import { FaThumbsUp } from "react-icons/fa"
 import { HiShoppingCart } from "react-icons/hi"
 import { TbListDetails } from "react-icons/tb"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { Button } from "../Button/Button"
 import { Tag } from "../Tag/Tag"
 import { ButtonDiv, HeroContainer, HeroImage, HeroImageContent, InfoDiv, TagDiv } from "./HeroStyles"
@@ -17,13 +19,15 @@ type HeroProps = {
 }
 
 export const Hero = ({ game }: HeroProps) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+
+
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some(item => item.id === +game.id);
 
   return (
     <>
-      {game.destaque && (
+      {game.prices.discount > 0 && (
         <HeroContainer aria-label="Seção principal de destaque" >
           <OverlayDarck />
           <HeroImage src={game.media.cover} alt={game.name} width={1920} height={1080} />
@@ -46,7 +50,7 @@ export const Hero = ({ game }: HeroProps) => {
                   <FaThumbsUp />
                 </Button>
               ) : (
-                <Button onClick={() => dispatch(addToCart(mapGameToCartItem(game)))} title="Adicionar ao carrinho">
+                <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title="Adicionar ao carrinho">
                   <HiShoppingCart />
                 </Button>
               )}

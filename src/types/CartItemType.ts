@@ -6,7 +6,7 @@ export type CartItemType = {
   }
   prices: {
     discount: number
-    original: number
+    old: number
     current: number
   }
   quantity: number

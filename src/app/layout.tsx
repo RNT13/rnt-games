@@ -36,9 +36,9 @@ export default function RootLayout({
               {children}
               <Footer />
               <Toaster
-                position="top-right"
+                position="top-center"
                 containerStyle={{
-                  top: 90,
+                  top: 85,
                 }}
                 toastOptions={{
                   duration: 2000,
@@ -52,6 +52,19 @@ export default function RootLayout({
                   iconTheme: {
                     primary: '#065f46',
                     secondary: '#a7f3d0',
+                  },
+                  error: {
+                    style: {
+                      background: '#fcd5d5',
+                      color: '#b91c1c',
+                      borderRadius: '8px',
+                      padding: '12px 16px',
+                      fontSize: '0.9rem',
+                    },
+                    iconTheme: {
+                      primary: '#b91c1c',
+                      secondary: '#fcd5d5',
+                    },
                   },
                 }}
               />

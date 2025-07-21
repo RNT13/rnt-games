@@ -1,16 +1,12 @@
+import { CategoryType } from "@/types/CategoryType";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import Section from "../Section/Section";
 import { CategoryContainer, CategoryContent } from "./CategoryStyles";
 
 interface CategoryProps {
   $bgColor: 'light' | 'dark'
-  categoryList: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    gamesCount: number;
-  }[]
   title: string
+  categoryList: CategoryType[]
 }
 
 export const Category = ({ $bgColor, title, categoryList }: CategoryProps) => {
@@ -23,7 +19,7 @@ export const Category = ({ $bgColor, title, categoryList }: CategoryProps) => {
               key={category.id}
               id={category.id}
               name={category.name}
-              imageUrl={category.imageUrl}
+              image={category.image}
               gamesCount={category.gamesCount}
               $bgColor={$bgColor} />
           ))}

@@ -4,7 +4,8 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    formats: ['image/avif', 'image/webp']
+    formats: ['image/avif', 'image/webp'],
+    domains: ['media.rawg.io', 'fake-api-tau.vercel.app', 'images.unsplash.com']
   }
 }
 

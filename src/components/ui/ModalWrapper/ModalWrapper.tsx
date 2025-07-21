@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 type ModalWrapperProps = {
   isOpen: boolean;
   children: ReactNode;
-  onClose?: () => void;
+  onClose: () => void;
 };
 
 export const ModalWrapper = ({ isOpen, children, onClose }: ModalWrapperProps) => {

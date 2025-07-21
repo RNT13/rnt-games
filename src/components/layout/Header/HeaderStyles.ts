@@ -53,17 +53,21 @@ export const HeaderCart = styled.div`
     position: relative;
     background-color: transparent;
     border: none;
-    box-shadow: none;
+    cursor: pointer;
+    transition: ${transitions.default};
+    color: ${theme.colors.baseBlue.light40};
+
+    &:hover {
+      color: ${theme.colors.baseCyan.light};
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      transition: ${transitions.default};
+    }
 
     svg {
-      font-size: 32px;
-      color: ${theme.colors.baseBlue.light20};
-      transition: ${transitions.default};
-
-      &:hover {
-        color: ${theme.colors.baseBlue.dark40};
-        transition: ${transitions.default};
-      }
+      width: 35px;
+      height: 35px;
     }
 
     span {

@@ -1,6 +1,6 @@
 export interface CategoryType {
   id: string
   name: string
-  imageUrl: string
+  image: string
   gamesCount: number
 }
