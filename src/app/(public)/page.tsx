@@ -5,17 +5,17 @@ import { ComingSoonGamesList } from "@/components/ui/ComingSoonGames/ComingSoonG
 import { Gamelist } from "@/components/ui/GameList/GameList";
 import { Hero } from "@/components/ui/Hero/Hero";
 import { getCategoriesFromGames } from "@/hooks/getCategoriesFromGames";
-import Loading from "../loading";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 import { fetchGames, fetchSoonGames } from "@/redux/slices/gameSlice";
 import { GameType } from "@/types/GameType";
+import { getRandomDiscountedGame } from "@/utils/randomUtils";
 import { useEffect, useState } from 'react';
 
 export default function Home() {
   const dispatch = useAppDispatch()
 
-  const { gamesList, soonGamesList, loading } = useAppSelector(state => state.games)
+  const { gamesList, soonGamesList } = useAppSelector(state => state.games)
   const [highlightedGame, setHighlightedGame] = useState<GameType | null>(null)
 
   useEffect(() => {
@@ -26,16 +26,10 @@ export default function Home() {
 
   useEffect(() => {
     if (gamesList.length > 0) {
-      const discountedGames = gamesList.filter(game => game.prices.discount > 0)
-      const randomIndex = Math.floor(Math.random() * discountedGames.length)
-      setHighlightedGame(discountedGames[randomIndex])
+      const discountedGames = getRandomDiscountedGame(gamesList)
+      setHighlightedGame(discountedGames)
     }
   }, [gamesList])
-
-
-  if (loading) {
-    return <Loading />
-  }
 
   return (
     <div>

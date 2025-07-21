@@ -56,7 +56,7 @@ export const Cart = ({ onClick }: CartProps) => {
             <p>Total de itens: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
           </div>
           <div>
-            <Button title="Finalizar compra" />
+            <Button href={'/checkout'} onClick={onClick} title="Finalizar compra" />
           </div>
         </CartFooter>
       </CartContent>

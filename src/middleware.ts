@@ -6,7 +6,8 @@ const publicRoutes = [
   { path: '/register', whenAuthenticated: 'redirect' },
   { path: '/pricing', whenAuthenticated: 'next' },
   { path: '/allGames', whenAuthenticated: 'next' },
-  { path: '/gameDetails/', whenAuthenticated: 'next' }
+  { path: '/gameDetails/', whenAuthenticated: 'next' },
+  { path: '/checkout', whenAuthenticated: 'next' }
 ] as const
 
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/sign-in'

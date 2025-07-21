@@ -43,7 +43,6 @@ export default function AllGamesList({ games, soonGames }: AllGamesProps) {
               .slice(0, 8)
               .map((category) => {
                 const id = category.toLowerCase().replace(/\s/g, "-");
-
                 return (
                   <li key={id}>
                     <Button
@@ -53,8 +52,6 @@ export default function AllGamesList({ games, soonGames }: AllGamesProps) {
                   </li>
                 );
               })}
-
-
           </NavUl>
 
           <NavSearchBar>
@@ -73,6 +70,7 @@ export default function AllGamesList({ games, soonGames }: AllGamesProps) {
           </NavSearchBar>
         </AllGamesNav>
 
+        {/* mostra jogos filtrados */}
         {filteredGames.length > 0 && (
           <Section $bgColor="dark" title={`Resultados para "${searchTerm}"`}>
             <SectionCardWrapper>
@@ -99,6 +97,7 @@ export default function AllGamesList({ games, soonGames }: AllGamesProps) {
           </Section>
         </section>
 
+        {/* mostra jogos por categoria */}
         {generateCategorySections(games)}
 
       </AllGamesContent >

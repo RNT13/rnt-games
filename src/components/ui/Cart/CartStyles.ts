@@ -60,7 +60,7 @@ export const CartFooter = styled.div`
     display: flex;
     justify-content: end;
 
-    button {
+    a {
       background-color: ${theme.colors.baseBlue.light};
       border: 2px solid ${theme.colors.baseBlue.light};
       color: ${theme.colors.baseBlue.light40};

@@ -22,7 +22,7 @@ const BaseButton = css`
     border: 2px solid ${theme.colors.baseBlue.light};
     color: ${theme.colors.baseBlue.light50};
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     transition: ${transitions.default};
   }
 

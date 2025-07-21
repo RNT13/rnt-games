@@ -3,6 +3,7 @@
 import { LoadingContainer, LoadingContent, LoadingImage } from "./loading.styles";
 
 export default function Loading() {
+
   return (
     <LoadingContainer className="container">
       <LoadingContent >
