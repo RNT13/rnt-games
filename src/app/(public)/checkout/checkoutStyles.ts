@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/Button/Button'
 import { theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
@@ -5,6 +6,7 @@ type StylesProps = {
   $maxWidth?: string
   $marginTop?: string
   $marginBottom?: string
+  $isActive?: boolean
 }
 
 export const CheckoutContainer = styled.div<StylesProps>`
@@ -34,15 +36,19 @@ export const Row = styled.div<StylesProps>`
   column-gap: 24px;
   margin-top: ${props => props.$marginTop || 'auto'};
   margin-bottom: ${props => props.$marginBottom || 'auto'};
+`
 
-  button,
-  a {
-    display: flex;
-    justify-content: center;
+export const TabStyledButton = styled(Button)<{ $isActive?: boolean }>`
+  background-color: ${props => (props.$isActive ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light08)};
+  border: 1px solid ${props => (props.$isActive ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light08)};
 
-    svg {
-      font-size: 24px;
-    }
+  &:hover {
+    background-color: ${props => (props.$isActive ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light08)};
+    border: 1px solid ${props => (props.$isActive ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light08)};
+  }
+
+  svg {
+    font-size: 24px;
   }
 `
 
@@ -50,6 +56,17 @@ export const InputGroup = styled.div<StylesProps>`
   width: 100%;
   flex: auto;
   max-width: ${props => props.$maxWidth || 'auto'};
+
+  span {
+    color: ${theme.colors.baseRed.base};
+    background-color: ${theme.colors.baseRed.light02};
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    display: block;
+    width: 100%;
+  }
 
   label {
     width: 100%;
