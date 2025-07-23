@@ -1,11 +1,13 @@
-import { getGameById, getGamesList, getSoonGamesList } from '@/services/api'
+import { getGameById, getGamesList, getSoonGamesList, postePurchase } from '@/services/api'
 import { GameType } from '@/types/GameType'
+import { PurchasePayLoad } from '@/types/PurchaseType'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 interface GamesState {
   gameById: GameType | null
   gamesList: GameType[]
   soonGamesList: GameType[]
+  Purchase: PurchasePayLoad[]
   loading: boolean
   error: string | null
 }
@@ -14,6 +16,7 @@ const initialState: GamesState = {
   gameById: null,
   gamesList: [],
   soonGamesList: [],
+  Purchase: [],
   loading: false,
   error: null
 }
@@ -30,6 +33,11 @@ export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
 
 export const fetchSoonGames = createAsyncThunk('games/fetchSoonGames', async () => {
   const data = await getSoonGamesList()
+  return data
+})
+
+export const fetchPurchase = createAsyncThunk('games/fetchPurchase', async (body: PurchasePayLoad) => {
+  const data = await postePurchase(body)
   return data
 })
 
@@ -60,6 +68,10 @@ const gamesSlice = createSlice({
 
       .addCase(fetchGameById.fulfilled, (state, action) => {
         state.gameById = action.payload
+      })
+
+      .addCase(fetchPurchase.fulfilled, (state, action) => {
+        state.Purchase = action.payload
       })
   }
 })

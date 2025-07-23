@@ -57,7 +57,7 @@ export const InputGroup = styled.div<StylesProps>`
   flex: auto;
   max-width: ${props => props.$maxWidth || 'auto'};
 
-  span {
+  small {
     color: ${theme.colors.baseRed.base};
     background-color: ${theme.colors.baseRed.light02};
     border-radius: 8px;

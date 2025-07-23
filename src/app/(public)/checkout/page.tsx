@@ -3,155 +3,119 @@
 import { Button } from "@/components/ui/Button/Button";
 import { FormCard } from "@/components/ui/FormCard/FormCard";
 import { formatToBRL } from "@/utils/converterUtils";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { FieldErrors, useForm } from 'react-hook-form';
+import { useFormik } from 'formik';
+import { useState } from "react";
 import { CiBarcode } from "react-icons/ci";
 import { FaRegCreditCard } from "react-icons/fa";
-import { z } from "zod";
+import * as yup from 'yup';
 import { CheckoutContainer, CheckoutContent, InputGroup, Row, TabStyledButton } from "./checkoutStyles";
 
-const checkoutSchema = z.object({
-  fullName: z.string().min(1, "Nome completo é obrigatório"),
-  email: z.string().email("Email inválido"),
-  cpf: z.string().min(11, "CPF inválido"),
-  deliveryEmail: z.string().email("Email de entrega inválido"),
-  confirmDeliveryEmail: z.string().email("Confirmação de email inválido"),
-  payWithCard: z.boolean(),
-
-  // Campos de cartão opcionais aqui
-  cardOwner: z.string().optional(),
-  cpfCardOwner: z.string().optional(),
-  cardName: z.string().optional(),
-  cardNumber: z.string().optional(),
-  expiresMonth: z.string().optional(),
-  expiresYear: z.string().optional(),
-  cardCode: z.string().optional(),
-  instalments: z.string().optional(),
-}).superRefine((data, ctx) => {
-  if (data.payWithCard) {
-    if (!data.cardName) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Número do cartão é obrigatório",
-        path: ["cardName"],
-      });
-    }
-    if (!data.cardOwner) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Nome do titular é obrigatório",
-        path: ["cardOwner"],
-      });
-    }
-    if (!data.cpfCardOwner) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "CPF do titular é obrigatório",
-        path: ["cpfCardOwner"],
-      });
-    }
-    if (!data.expiresMonth) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Mês de validade é obrigatório",
-        path: ["expiresMonth"],
-      });
-    }
-    if (!data.expiresYear) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Ano de validade é obrigatório",
-        path: ["expiresYear"],
-      });
-    }
-    if (!data.cardCode) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Código de segurança é obrigatório",
-        path: ["cardCode"],
-      });
-    }
-    if (!data.instalments) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Selecione o número de parcelas",
-        path: ["instalments"],
-      });
-    }
-    if (!data.cardNumber) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Número do cartão é obrigatório",
-        path: ["cardNumber"],
-      });
-    }
-  }
-});
-
-type formSchemaType = z.infer<typeof checkoutSchema>
 
 export default function Checkout() {
-  const { register, handleSubmit, setValue, formState: { errors }, watch } = useForm<formSchemaType>({
-    resolver: zodResolver(checkoutSchema),
-    defaultValues: {
+  const form = useFormik({
+    initialValues: {
+      fullName: '',
+      email: '',
+      cpf: '',
+      deliveryEmail: '',
+      confirmDeliveryEmail: '',
+
       payWithCard: false,
+      cardOwner: '',
+      cpfCardOwner: '',
+      cardName: '',
+      cardNumber: '',
+      expiresMonth: '',
+      expiresYear: '',
+      cardCode: '',
+      instalments: '1',
     },
-  });
+    validationSchema: yup.object({
+      fullName: yup.string().min(5, 'Minimo de 5 caracteres').required('Campo obrigatório'),
+      email: yup.string().email('E-mail inválido').required('Campo obrigatório'),
+      cpf: yup.string().min(14, 'Minimo de 14 caracteres').max(14, 'Maximo de 14 caracteres').required('Campo obrigatório'),
+      deliveryEmail: yup.string().email('E-mail inválido').required('Campo obrigatório'),
+      confirmDeliveryEmail: yup.string().email('E-mail inválido').required('Campo obrigatório').oneOf([yup.ref('deliveryEmail')], 'E-mail não confere'),
 
-  const payWithCard = watch('payWithCard');
+      cardOwner: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      cpfCardOwner: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      cardName: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      cardNumber: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      expiresMonth: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      expiresYear: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      cardCode: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      instalments: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+    }),
+    onSubmit: (values) => {
+      console.log(values)
+    }
+  })
 
-  const onSubmit = (data: formSchemaType) => {
-    console.log("submit");
-    console.log("Dados do form:", data);
+  const [payWithCard, setPayWithCard] = useState(false)
+
+  const getErrorMessage = (fieldName: string, message?: string) => {
+    const isTouched = fieldName in form.touched
+    const hasError = fieldName in form.errors
+
+    if (isTouched && hasError) {
+      return (
+        <small>{message}</small>
+      )
+    } else {
+      return null
+    }
   }
-
-  const onError = (errors: FieldErrors<formSchemaType>) => {
-    console.log('Erro no formulário:', errors);
-  };
 
   return (
     <CheckoutContainer $marginTop="24px" >
       <CheckoutContent>
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
+        <form onSubmit={form.handleSubmit}>
           <FormCard title="Dados de Cobranças">
             <Row>
+
               <InputGroup>
                 <label htmlFor="fullName">Nome completo</label>
-                <input id="fullName" {...register("fullName")} type="text" placeholder="Seu nome completo" />
-                {errors.fullName && <span>{errors.fullName.message}</span>}
+                <input id="fullName" name="fullName" type="text" placeholder="Seu nome completo" value={form.values.fullName} onChange={form.handleChange} onBlur={form.handleBlur} />
+                {getErrorMessage('fullName', form.errors.fullName)}
               </InputGroup>
+
               <InputGroup>
                 <label htmlFor="email" >Seu e-mail</label>
-                <input id="email" {...register('email')} type="email" placeholder="Seu e-mail" />
-                {errors.email && <span>{errors.email.message}</span>}
+                <input id="email" name="email" type="email" placeholder="seu@email.com" value={form.values.email} onChange={form.handleChange} onBlur={form.handleBlur} />
+                {getErrorMessage('email', form.errors.email)}
               </InputGroup>
+
               <InputGroup>
                 <label htmlFor="cpf" >CPF</label>
-                <input id="cpf" {...register('cpf')} type="text" placeholder="Seu CPF" />
-                {errors.cpf && <span>{errors.cpf.message}</span>}
+                <input id="cpf" name="cpf" type="text" placeholder="000.000.000-00" value={form.values.cpf} onChange={form.handleChange} onBlur={form.handleBlur} />
+                {getErrorMessage('cpf', form.errors.cpf)}
               </InputGroup>
+
             </Row>
             <h3 className="marginTop">Dados de entrega - Conteúdo digital</h3>
             <Row>
+
               <InputGroup>
                 <label htmlFor="deliveryEmail" >E-mail</label>
-                <input id="deliveryEmail" {...register('deliveryEmail')} type="text" placeholder="Seu e-mail" />
-                {errors.deliveryEmail && <span>{errors.deliveryEmail.message}</span>}
+                <input id="deliveryEmail" name="deliveryEmail" type="email" placeholder="seu@email.com" value={form.values.deliveryEmail} onChange={form.handleChange} onBlur={form.handleBlur} />
+                {getErrorMessage('deliveryEmail', form.errors.deliveryEmail)}
               </InputGroup>
+
               <InputGroup>
                 <label htmlFor="confirmDeliveryEmail" >Confirme seu E-mail</label>
-                <input id="confirmDeliveryEmail" {...register('confirmDeliveryEmail')} type="text" placeholder="Confirme seu E-mail" />
-                {errors.confirmDeliveryEmail && <span>{errors.confirmDeliveryEmail.message}</span>}
+                <input id="confirmDeliveryEmail" name="confirmDeliveryEmail" type="email" placeholder="Confirme seu@email.com" value={form.values.confirmDeliveryEmail} onChange={form.handleChange} onBlur={form.handleBlur} />
+                {getErrorMessage('confirmDeliveryEmail', form.errors.confirmDeliveryEmail)}
               </InputGroup>
+
             </Row>
           </FormCard>
           <FormCard title="Dados de Pagamento">
             <Row $marginBottom="24px">
-              <TabStyledButton type="button" $isActive={!payWithCard} onClick={() => setValue("payWithCard", false)}>
+              <TabStyledButton type="button" $isActive={!payWithCard} onClick={() => setPayWithCard(false)}>
                 <CiBarcode />
                 Boleto bancario
               </TabStyledButton>
-              <TabStyledButton type="button" $isActive={payWithCard} onClick={() => setValue("payWithCard", true, { shouldValidate: true })}>
+              <TabStyledButton type="button" $isActive={payWithCard} onClick={() => setPayWithCard(true)}>
                 <FaRegCreditCard />
                 Cartão de crédito
               </TabStyledButton>
@@ -160,48 +124,65 @@ export default function Checkout() {
             {payWithCard ? (
               <>
                 <Row>
+
                   <InputGroup>
                     <label htmlFor="cardOwner" >Nome do titular do Cartão</label>
-                    <input id="cardOwner" {...register('cardOwner')} type="text" placeholder="Nome do titular do Cartão" />
-                    {errors.cardOwner && <span>{errors.cardOwner.message}</span>}
+                    <input id="cardOwner" name="cardOwner" type="text" placeholder="Nome do titular do Cartão" value={form.values.cardOwner} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('cardOwner', form.errors.cardOwner)}
                   </InputGroup>
+
+
                   <InputGroup>
                     <label htmlFor="cpfCardOwner" >CPF do titular do Cartão</label>
-                    <input id="cpfCardOwner" {...register('cpfCardOwner')} type="text" placeholder="CPF do titular do Cartão" />
-                    {errors.cpfCardOwner && <span>{errors.cpfCardOwner.message}</span>}
+                    <input id="cpfCardOwner" name="cpfCardOwner" type="text" placeholder="000.000.000-00" value={form.values.cpfCardOwner} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('cpfCardOwner', form.errors.cpfCardOwner)}
                   </InputGroup>
+
+
                 </Row>
+
                 <Row $marginTop="24px">
+
                   <InputGroup>
                     <label htmlFor="cardName" >Nome no Cartão</label>
-                    <input id="cardName" {...register('cardName')} type="text" placeholder="Nome no Cartão" />
-                    {errors.cardName && <span>{errors.cardName.message}</span>}
+                    <input id="cardName" name="cardName" type="text" placeholder="Nome no Cartão" value={form.values.cardName} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('cardName', form.errors.cardName)}
                   </InputGroup>
+
+
                   <InputGroup>
                     <label htmlFor="cardNumber" >Numero do Cartão</label>
-                    <input id="cardNumber" {...register('cardNumber')} type="text" placeholder="Numero do Cartão" />
-                    {errors.cardNumber && <span>{errors.cardNumber.message}</span>}
+                    <input id="cardNumber" name="cardNumber" type="text" placeholder="Numero do Cartão" value={form.values.cardNumber} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('cardNumber', form.errors.cardNumber)}
                   </InputGroup>
+
+
                   <InputGroup $maxWidth="150px">
                     <label htmlFor="expiresMonth" >Mes de vencimento</label>
-                    <input id="expiresMonth" {...register('expiresMonth')} type="text" placeholder="MM/AA" />
-                    {errors.expiresMonth && <span>{errors.expiresMonth.message}</span>}
+                    <input id="expiresMonth" name="expiresMonth" type="text" placeholder="MM" value={form.values.expiresMonth} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
                   </InputGroup>
+
+
                   <InputGroup $maxWidth="150px">
                     <label htmlFor="expiresYear" >Ano de vencimento</label>
-                    <input id="expiresYear" {...register('expiresYear')} type="text" placeholder="MM/AA" />
-                    {errors.expiresYear && <span>{errors.expiresYear.message}</span>}
+                    <input id="expiresYear" name="expiresYear" type="text" placeholder="AA" value={form.values.expiresYear} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('expiresYear', form.errors.expiresYear)}
                   </InputGroup>
+
+
                   <InputGroup $maxWidth="50px">
                     <label htmlFor="cardCode" >CVV</label>
-                    <input id="cardCode" {...register('cardCode')} type="text" placeholder="CVV" />
-                    {errors.cardCode && <span>{errors.cardCode.message}</span>}
+                    <input id="cardCode" name="cardCode" type="text" placeholder="CVV" value={form.values.cardCode} onChange={form.handleChange} onBlur={form.handleBlur} />
+                    {getErrorMessage('cardCode', form.errors.cardCode)}
                   </InputGroup>
                 </Row>
+
                 <Row $marginTop="24px">
+
                   <InputGroup $maxWidth="150px">
-                    <label htmlFor="instalments" >Parcelas</label>
-                    <select id="instalments" {...register('instalments')}>
+                    <label htmlFor="instalments">Parcelas</label>
+                    <select id="instalments" name="instalments" value={form.values.instalments} onChange={form.handleChange} onBlur={form.handleBlur}>
                       <option value="">Selecione</option>
                       {Array.from({ length: 12 }, (_, i) => (
                         <option key={i + 1} value={i + 1}>
@@ -209,7 +190,9 @@ export default function Checkout() {
                         </option>
                       ))}
                     </select>
+                    {getErrorMessage('instalments', form.errors.instalments)}
                   </InputGroup>
+
                 </Row>
               </>
             ) : (
@@ -229,5 +212,4 @@ export default function Checkout() {
     </CheckoutContainer >
   )
 }
-
 

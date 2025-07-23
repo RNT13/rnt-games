@@ -1,4 +1,5 @@
 import { GameType } from '@/types/GameType'
+import { PurchasePayLoad } from '@/types/PurchaseType'
 import { fakeApi } from './axios'
 
 export const getGameById = async (id: string): Promise<GameType> => {
@@ -13,5 +14,10 @@ export const getGamesList = async (): Promise<GameType[]> => {
 
 export const getSoonGamesList = async (): Promise<GameType[]> => {
   const response = await fakeApi.get('/em-breve')
+  return response.data
+}
+
+export const postePurchase = async (body: PurchasePayLoad): Promise<PurchasePayLoad[]> => {
+  const response = await fakeApi.post('/checkout', body)
   return response.data
 }
