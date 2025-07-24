@@ -1,28 +1,79 @@
-import { theme, transitions } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
+interface MenuWindowProps {
+  $isOpen: boolean
+}
+
 export const HeaderContainer = styled.header`
-  height: 80px;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(100deg, ${theme.colors.baseBlue.dark40}, ${theme.colors.baseBlue.dark20});
-  border-bottom: 5px solid ${theme.colors.baseBlue.dark};
   position: sticky;
   top: 0;
   z-index: 15;
+
+  ${media.tablet}, ${media.mobile} {
+    flex-direction: column;
+  }
 `
 
 export const HeaderNav = styled.nav`
+  height: 100%;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(100deg, ${theme.colors.baseBlue.dark40}, ${theme.colors.baseBlue.dark20});
+  border-bottom: 5px solid ${theme.colors.baseBlue.dark};
+  ${transitions.default};
+`
+
+export const Row = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+`
+
+export const HeaderMenu = styled.div`
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+    cursor: pointer;
+    font-size: 24px;
+    color: ${theme.colors.baseBlue.light30};
+  }
+
+  ${media.tablet}, ${media.mobile} {
+    display: flex;
+  }
+`
+
+export const HeaderMenuWindow = styled.div<MenuWindowProps>`
+  width: 100%;
+  overflow: hidden;
+  max-height: ${({ $isOpen }) => ($isOpen ? '200px' : '0')};
+  opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+  transition:
+    max-height 0.5s ease,
+    opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 export const HeaderLogo = styled.div``
 
+export const HeaderUlDiv = styled.div`
+  ${media.tablet}, ${media.mobile} {
+    display: none;
+  }
+`
+
 export const HeaderUl = styled.ul`
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 12px;
   list-style: none;
 
@@ -39,6 +90,16 @@ export const HeaderUl = styled.ul`
       color: ${theme.colors.baseCyan.light};
       transition: ${transitions.default};
     }
+  }
+
+  ${media.tablet} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  ${media.mobile} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 `
 

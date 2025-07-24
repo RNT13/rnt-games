@@ -1,9 +1,9 @@
 import { colorHSLVariants } from '@/utils/colorUtils'
 
 export const media = {
-  sm: '@media (max-width: 480px)',
-  md: '@media (max-width: 768px)',
-  lg: '@media (max-width: 1024px)'
+  mobile: '@media (max-width: 480px)',
+  tablet: '@media (max-width: 768px)',
+  pc: '@media (max-width: 1024px)'
 }
 
 export const transitions = {
