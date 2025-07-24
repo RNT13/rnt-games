@@ -35,7 +35,10 @@ export default function Footer() {
         <FooterUl>
           <ColumnDiv>
             <FooterText>
-              RNT Games Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto molestias facilis, eos suscipit repellat ea quia. A, dolore vero, deleniti asperiores atque cum accusamus adipisci in repellat pariatur delectus possimus?
+              Compre jogos digitais com segurança e rapidez na RNT Games. Encontre os melhores preços em jogos para PC, PlayStation, Xbox, Nintendo Switch e muito mais. Atualizamos nosso catálogo com lançamentos, pré-vendas e promoções exclusivas. Tudo 100% digital e confiável.
+            </FooterText>
+            <FooterText>
+              Loja de jogos online com entrega imediata, suporte ágil e preços acessíveis.
             </FooterText>
             <FooterCopy>
               &copy; {year ?? ""} RNT Projects. All rights reserved.
