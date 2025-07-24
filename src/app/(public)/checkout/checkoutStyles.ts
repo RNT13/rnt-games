@@ -16,6 +16,7 @@ export const CheckoutContainer = styled.div<StylesProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: ${theme.colors.baseBlue.dark30};
 
   .marginTop {
     margin-top: ${props => props.$marginTop || 'auto'};
@@ -89,4 +90,10 @@ export const InputGroup = styled.div<StylesProps>`
       border: 2px solid ${theme.colors.baseBlue.dark20};
     }
   }
+`
+
+export const Disclaimer = styled.div`
+  margin-top: 24px;
+  font-size: 12px;
+  text-align: start;
 `

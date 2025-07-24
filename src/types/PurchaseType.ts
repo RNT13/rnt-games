@@ -1,6 +1,13 @@
+export type PurchaseResponse = {
+  orderId: string
+  total: number
+  totalPrice: number
+}
+
 type Product = {
-  id: string
+  id: number
   name: string
+  price: number
 }
 
 export type PurchasePayLoad = {

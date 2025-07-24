@@ -1,19 +1,12 @@
 'use client'
 
 import AllGamesList from "@/components/ui/AllGamesList/AllGamesList";
-import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
-import { fetchGames, fetchSoonGames } from "@/redux/slices/gameSlice";
-import { useEffect } from "react";
+import { useGetGamesListQuery, useGetSoonGamesListQuery } from "@/redux/slices/apiSlice";
 
 export default function AllGames() {
-  const dispatch = useAppDispatch()
+  const { data: gamesList = [] } = useGetGamesListQuery()
+  const { data: soonGamesList = [] } = useGetSoonGamesListQuery()
 
-  const { gamesList, soonGamesList } = useAppSelector(state => state.games)
-
-  useEffect(() => {
-    dispatch(fetchGames())
-    dispatch(fetchSoonGames())
-  }, [dispatch])
 
   return (
     <AllGamesList games={gamesList} soonGames={soonGamesList} />
