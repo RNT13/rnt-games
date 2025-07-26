@@ -26,7 +26,6 @@ export const HeaderNav = styled.nav`
 `
 
 export const Row = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,7 +49,6 @@ export const HeaderMenu = styled.div`
 `
 
 export const HeaderMenuWindow = styled.div<MenuWindowProps>`
-  width: 100%;
   overflow: hidden;
   max-height: ${({ $isOpen }) => ($isOpen ? '200px' : '0')};
   opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};

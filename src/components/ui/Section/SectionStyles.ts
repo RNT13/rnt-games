@@ -31,8 +31,7 @@ export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>
 `
 
 export const SectionContent = styled.div`
-  width: 100%;
-  padding: 32px 0;
+  margin-bottom: 40px;
 `
 
 export const SectionTitle = styled.h2`

@@ -6,12 +6,11 @@ import styled from 'styled-components'
 
 export const NotFoundContainer = styled.main`
   height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 24px;
 
-  ${(media.sm, media.md)} {
+  ${(media.tablet, media.mobile)} {
     padding: 0px;
   }
 `
@@ -42,7 +41,7 @@ export const NotFoundImage = styled(Image)`
   height: 600px;
   object-fit: cover;
 
-  ${(media.sm, media.md)} {
+  ${(media.tablet, media.mobile)} {
     width: 100%;
     height: auto;
   }

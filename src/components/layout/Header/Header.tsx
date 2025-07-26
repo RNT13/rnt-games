@@ -36,7 +36,7 @@ export default function Header() {
           </HeaderLogo>
 
           <HeaderUlDiv>
-            <HeaderUl>
+            <HeaderUl >
               <li><Button href="/" title="Home" /></li>
               <li><Button href="/#games" title="Games" /></li>
               <li><Button href="/#coming-soon" title="Em Breve" /></li>
@@ -81,13 +81,13 @@ export default function Header() {
 
         <HeaderMenu>
           <IoMenu onClick={() => setIsMenuOpen(!isMenuOpen)} />
-          <HeaderMenuWindow $isOpen={isMenuOpen}>
+          <HeaderMenuWindow className="container" $isOpen={isMenuOpen} >
             <HeaderUl>
-              <li><Button href="/" title="Home" /></li>
-              <li><Button href="/#games" title="Games" /></li>
-              <li><Button href="/#coming-soon" title="Em Breve" /></li>
-              <li><Button href="/#category" title="Categorias" /></li>
-              <li><Button href="/pricing" title="Planos" /></li>
+              <li><Button href="/" title="Home" onClick={() => setIsMenuOpen(false)} /></li>
+              <li><Button href="/#games" title="Games" onClick={() => setIsMenuOpen(false)} /></li>
+              <li><Button href="/#coming-soon" title="Em Breve" onClick={() => setIsMenuOpen(false)} /></li>
+              <li><Button href="/#category" title="Categorias" onClick={() => setIsMenuOpen(false)} /></li>
+              <li><Button href="/pricing" title="Planos" onClick={() => setIsMenuOpen(false)} /></li>
             </HeaderUl>
           </HeaderMenuWindow>
         </HeaderMenu>

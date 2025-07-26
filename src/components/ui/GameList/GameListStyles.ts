@@ -7,7 +7,7 @@ export const GameListContainer = styled.div`
 export const GameListContent = styled.ul`
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 `
 
 export const GameListTitle = styled.div``

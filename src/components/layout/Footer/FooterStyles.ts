@@ -10,9 +10,7 @@ export const FooterContainer = styled.footer`
 export const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
+  gap: 32px;
 `
 
 export const RowDiv = styled.div`

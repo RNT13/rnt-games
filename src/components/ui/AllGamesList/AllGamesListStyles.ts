@@ -1,4 +1,4 @@
-import { theme, transitions } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const AllGamesContainer = styled.div`
@@ -24,7 +24,6 @@ export const AllGamesContent = styled.div`
 `
 
 export const AllGamesNav = styled.nav`
-  width: 100%;
   padding: 24px;
   background-color: ${theme.colors.baseBlue.dark30};
   color: ${theme.colors.baseBlue.light30};
@@ -51,6 +50,16 @@ export const NavUl = styled.ul`
       color: ${theme.colors.baseCyan.light};
       transition: ${transitions.default};
     }
+  }
+
+  ${media.tablet} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  ${media.mobile} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 `
 
@@ -130,5 +139,5 @@ export const SectionCardWrapper = styled.div`
   height: 100%;
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 `

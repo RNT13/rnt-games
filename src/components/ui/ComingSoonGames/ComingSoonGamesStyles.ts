@@ -7,5 +7,5 @@ export const ComingSoonGamesListContainer = styled.div`
 export const ComingSoonGamesListContent = styled.ul`
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 `

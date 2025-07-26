@@ -9,16 +9,17 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCalendar, FaDownload } from "react-icons/fa";
 import { IoLogoGameControllerA } from "react-icons/io";
-import { IoBag, IoPerson } from "react-icons/io5";
+import { IoBag, IoMenu, IoPerson } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { TbListDetails } from "react-icons/tb";
 import { useDispatch } from "react-redux";
-import { DashboardAvatar, DashboardAvatarImage, DashboardBody, DashboardButton, DashboardButtonDiv, DashboardCardItem, DashboardCardLine, DashboardColumn, DashboardContainer, DashboardContent, DashboardHeader, DashboardHeaderItem, DashboardRightBar, DashboardRow } from "./dashboardStyles";
+import { AvatarInfo, AvatarMenu, DashboardAvatar, DashboardAvatarDiv, DashboardAvatarImage, DashboardBody, DashboardButton, DashboardButtonDiv, DashboardCardItem, DashboardCardLine, DashboardColumn, DashboardContainer, DashboardContent, DashboardHeader, DashboardHeaderItem, DashboardRightBar, DashboardRow } from "./dashboardStyles";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<'visaoGeral' | 'biblioteca' | 'compras'>('visaoGeral');
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const searchParams = useSearchParams();
 
   const toastShown = useRef(false);
@@ -47,12 +48,22 @@ export default function Dashboard() {
     <DashboardContainer>
       <DashboardContent>
         <DashboardRightBar>
-          <DashboardAvatar>
-            <DashboardAvatarImage src="/armoredCoreGame.jpg" alt="avatar" width={80} height={80} />
-            <p>Nome</p>
-            <p>email</p>
-          </DashboardAvatar>
-          <DashboardButtonDiv>
+
+          <DashboardAvatarDiv>
+            <DashboardAvatar>
+              <DashboardAvatarImage src="/armoredCoreGame.jpg" alt="avatar" width={80} height={80} />
+              <AvatarInfo>
+                <p>Nome</p>
+                <p>email</p>
+              </AvatarInfo>
+            </DashboardAvatar>
+
+            <AvatarMenu>
+              <IoMenu onClick={() => setIsMenuOpen(!isMenuOpen)} />
+            </AvatarMenu>
+          </DashboardAvatarDiv>
+
+          <DashboardButtonDiv $isOpen={isMenuOpen}>
             <DashboardButton onClick={() => setActiveSection('visaoGeral')} $isActive={activeSection === 'visaoGeral'} title="Visão Geral">
               <IoPerson />
               <p>Visão Geral</p>
@@ -70,6 +81,7 @@ export default function Dashboard() {
               <p>Sair</p>
             </DashboardButton>
           </DashboardButtonDiv>
+
         </DashboardRightBar>
 
         {activeSection === 'visaoGeral' && (

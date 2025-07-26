@@ -1,7 +1,7 @@
 'use client'
 
 import styled, { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
+import { media, theme } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -21,8 +21,20 @@ export const GlobalStyles = createGlobalStyle`
 
 
   .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 24px;
+
+    ${media.tablet} {
+      width: 90%;
+      padding: 0 ;
+    }
+
+    ${media.mobile} {
+      width: 95%;
+      padding: 0 ;
+    }
   }
 `;
 

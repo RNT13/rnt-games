@@ -1,7 +1,12 @@
 import { StyledButton } from '@/components/ui/Button/ButtonStyles'
-import { theme } from '@/styles/theme'
+import { media, theme } from '@/styles/theme'
 import Image from 'next/image'
 import { styled } from 'styled-components'
+
+type DashBoardProps = {
+  $isOpen?: boolean
+  $isActive?: boolean
+}
 
 export const DashboardContainer = styled.div`
   margin: 12px;
@@ -13,6 +18,11 @@ export const DashboardContent = styled.div`
   height: calc(100vh - 110px);
   display: flex;
   gap: 24px;
+
+  ${media.tablet}, ${media.mobile} {
+    flex-direction: column;
+    height: 100%;
+  }
 `
 
 export const DashboardRightBar = styled.div`
@@ -26,33 +36,97 @@ export const DashboardRightBar = styled.div`
   max-width: 200px;
   background-color: ${theme.colors.baseBlue.light30};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
+
+  ${media.tablet}, ${media.mobile} {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+  }
 `
 
-export const DashboardAvatar = styled.div`
+export const DashboardAvatarDiv = styled.div`
   width: 100%;
+  gap: 12px;
+  padding-bottom: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;
   border-bottom: 1px solid ${theme.colors.baseBlue.dark40};
 
-  p:last-child {
-    margin-bottom: 12px;
+  ${media.tablet}, ${media.mobile} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+
+    div {
+      flex-direction: row;
+    }
   }
 `
 
-export const DashboardButtonDiv = styled.div`
+export const DashboardAvatar = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const AvatarMenu = styled.div`
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+
+  ${media.tablet}, ${media.mobile} {
+    display: block;
+  }
+`
+
+export const DashboardAvatarImage = styled(Image)`
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+`
+
+export const AvatarInfo = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+
+  ${media.tablet}, ${media.mobile} {
+    display: block;
+    padding-left: 12px;
+  }
+`
+
+export const DashboardButtonDiv = styled.div<DashBoardProps>`
+  width: 100%;
+  display: flex;
+  overflow: hidden;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   gap: 12px;
   margin-top: 12px;
+  max-height: ${({ $isOpen }) => ($isOpen ? '200px' : '200px')};
+  opacity: ${({ $isOpen }) => ($isOpen ? '1' : '1')};
+  transition:
+    max-height 0.5s ease,
+    opacity 0.5s ease;
+
+  ${media.tablet}, ${media.mobile} {
+    max-height: ${({ $isOpen }) => ($isOpen ? '200px' : '0')};
+    opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+  }
 `
 
-export const DashboardButton = styled(StyledButton)<{ $isActive?: boolean }>`
+export const DashboardButton = styled(StyledButton)<DashBoardProps>`
   width: 100%;
   background-color: ${({ $isActive }) => ($isActive ? theme.colors.baseBlue.dark20 : theme.colors.baseBlue.light30)};
   border: ${({ $isActive }) => ($isActive ? `2px solid ${theme.colors.baseCyan.light}` : `2px solid ${theme.colors.baseBlue.light30}`)};
@@ -70,12 +144,6 @@ export const DashboardButton = styled(StyledButton)<{ $isActive?: boolean }>`
   }
 `
 
-export const DashboardAvatarImage = styled(Image)`
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-`
-
 export const DashboardColumn = styled.div`
   width: 100%;
   height: 100%;
@@ -86,11 +154,14 @@ export const DashboardColumn = styled.div`
   h2 {
     margin: 4px 14px;
   }
+
+  ${media.tablet}, ${media.mobile} {
+  }
 `
 
 export const DashboardRow = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
 
   .buttonGrey {
