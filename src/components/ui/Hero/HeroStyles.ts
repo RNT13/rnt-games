@@ -1,4 +1,4 @@
-import { theme, transitions } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import Image from 'next/image'
 import { styled } from 'styled-components'
 
@@ -56,6 +56,12 @@ export const InfoDiv = styled.div`
     font-weight: 900;
     color: ${theme.colors.baseGreen.light08};
   }
+
+  ${media.mobile} {
+    p {
+      width: 100%;
+    }
+  }
 `
 
 export const ButtonDiv = styled.div`
@@ -80,6 +86,17 @@ export const ButtonDiv = styled.div`
       border: 2px solid ${theme.colors.baseBlue.dark40};
       box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
       color: ${theme.colors.baseCyan.light};
+    }
+  }
+
+  ${media.mobile} {
+    flex-direction: column;
+
+    button,
+    a {
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
     }
   }
 `
