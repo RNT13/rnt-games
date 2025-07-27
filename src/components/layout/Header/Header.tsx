@@ -32,7 +32,7 @@ export default function Header() {
       <HeaderNav >
         <Row className="container">
           <HeaderLogo>
-            <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} />
+            <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} priority />
           </HeaderLogo>
 
           <HeaderUlDiv>

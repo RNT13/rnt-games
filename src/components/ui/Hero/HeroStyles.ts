@@ -5,7 +5,7 @@ import { styled } from 'styled-components'
 export const HeroContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 550px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -33,18 +33,7 @@ export const HeroImageContent = styled.div`
 export const TagDiv = styled.div`
   display: flex;
   gap: 10px;
-
-  span:first-child {
-    padding: 5px 10px;
-    border-radius: 50px;
-    background-color: ${theme.colors.baseGreen.dark};
-  }
-
-  span:last-child {
-    padding: 5px 10px;
-    border-radius: 50px;
-    background-color: ${theme.colors.baseRed.light};
-  }
+  margin-bottom: 24px;
 `
 
 export const InfoDiv = styled.div`
@@ -52,10 +41,6 @@ export const InfoDiv = styled.div`
   flex-direction: column;
   gap: 10px;
   color: ${theme.colors.baseBlue.light50};
-
-  h2 {
-    margin-top: 24px;
-  }
 
   p {
     width: 400px;

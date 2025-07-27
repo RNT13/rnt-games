@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { styled } from 'styled-components'
 
 export type CardProps = {
-  $bgColor: 'light' | 'dark'
+  $bgColor?: 'light' | 'dark'
 }
 
 export const CardContainer = styled.div``

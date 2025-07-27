@@ -18,7 +18,7 @@ export default function Footer() {
       <FooterContent className="container">
         <RowDiv>
           <FooterLogo>
-            <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} />
+            <Image src="/rnt-games-logo.png" alt="logo" width={120} height={40} priority />
           </FooterLogo>
           <SocialLinks>
             <Button href="https://github.com/RNT13" target="_blank" rel="noopener noreferrer">

@@ -23,10 +23,11 @@ export const Hero = ({ game }: HeroProps) => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some(item => item.id === +game.id);
 
+
   return (
     <HeroContainer aria-label="Seção principal de destaque" >
       <OverlayDarck />
-      <HeroImage src={game.media.cover} alt={game.name} width={1920} height={1080} />
+      <HeroImage src={game.media.cover} alt={game.name} fill priority />
       <HeroImageContent className="container">
         <TagDiv>
           <Tag size="md" color="blue">{game.details.category}</Tag>

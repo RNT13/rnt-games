@@ -1,35 +1,38 @@
+'use client'
+
 import Section from "@/components/ui/Section/Section"
 import { GameType } from "@/types/GameType"
 import { Card } from "../Card/Card"
 import { CardSkeleton } from "../Card/CardSkeleton"
-import { GameListContainer, GameListContent } from "./GameListStyles"
+import { SoonGamesListContainer, SoonGamesListContent } from "./SoonGamesStyles"
 
-interface GameListProps {
+interface SoonGamesProps {
   $bgColor: 'light' | 'dark'
-  allGames: GameType[]
+  soonGames: GameType[]
   id?: string
   title: string
   isLoading?: boolean
 }
 
-export const Gamelist = ({ $bgColor, allGames, title, isLoading }: GameListProps) => {
+export const SoonGamesList = ({ $bgColor, soonGames, title, isLoading }: SoonGamesProps) => {
   return (
-    <GameListContainer>
+    <SoonGamesListContainer>
       <Section $bgColor={$bgColor} href="/allGames" title={title}>
-        <GameListContent>
+        <SoonGamesListContent>
           {isLoading ? (
             <>
               <CardSkeleton />
               <CardSkeleton />
               <CardSkeleton />
-              <CardSkeleton />
             </>
           ) : (
-            allGames.slice(0, 4).map((game) => (<Card key={game.id} game={game} $bgColor={$bgColor} />))
+            soonGames.slice(0, 3).map((soonGames) => (
+              <Card game={soonGames} key={soonGames.id} $bgColor={$bgColor} />
+            ))
           )}
-        </GameListContent>
+        </SoonGamesListContent>
       </Section>
-    </GameListContainer>
+    </SoonGamesListContainer>
   );
 };
 

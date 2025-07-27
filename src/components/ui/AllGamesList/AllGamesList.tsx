@@ -7,15 +7,17 @@ import { GameType } from "@/types/GameType";
 import { ChangeEvent, useMemo, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Button } from "../Button/Button";
+import { CardSkeleton } from "../Card/CardSkeleton";
 import { AllGamesContainer, AllGamesContent, AllGamesNav, NavSearchBar, NavUl, NavWrapper, SeachButton, SectionCardWrapper } from "./AllGamesListStyles";
 
 type AllGamesProps = {
   games: GameType[]
   soonGames: GameType[]
+  isLoading?: boolean
 }
 
 
-export default function AllGamesList({ games, soonGames }: AllGamesProps) {
+export default function AllGamesList({ games, soonGames, isLoading }: AllGamesProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredGames = useMemo(() => {
@@ -84,7 +86,17 @@ export default function AllGamesList({ games, soonGames }: AllGamesProps) {
         <section id="games">
           <Section className="firstSection" $bgColor="light" title="Games">
             <SectionCardWrapper>
-              {games.map((game) => (<Card key={game.id} game={game} $bgColor="light" />))}
+              {isLoading ? (
+                <>
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                </>
+              ) : (
+                games.map((game) => (<Card key={game.id} game={game} $bgColor="light" />))
+              )}
+
             </SectionCardWrapper>
           </Section>
         </section>
@@ -92,20 +104,29 @@ export default function AllGamesList({ games, soonGames }: AllGamesProps) {
         <section id="coming-soon">
           <Section $bgColor="dark" title="Em Breve" >
             <SectionCardWrapper>
-              {soonGames.map((game) => (<Card key={game.id} game={game} $bgColor="dark" />))}
+              {isLoading ? (
+                <>
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                  <CardSkeleton />
+                </>
+              ) : (
+                soonGames.map((game) => (<Card key={game.id} game={game} $bgColor="dark" />))
+              )}
             </SectionCardWrapper>
           </Section>
         </section>
 
         {/* mostra jogos por categoria */}
-        {generateCategorySections(games)}
+        {generateCategorySections({ games, soonGames, isLoading })}
 
       </AllGamesContent >
     </AllGamesContainer >
   )
 }
 
-function generateCategorySections(games: GameType[]) {
+function generateCategorySections({ games, isLoading }: AllGamesProps) {
   const gamesByCategory: Record<string, GameType[]> = {}
 
   games.forEach((game) => {
@@ -122,9 +143,18 @@ function generateCategorySections(games: GameType[]) {
       <section key={id} id={id} >
         <Section $bgColor={isDark ? "dark" : "light"} title={capitalize(category)}>
           <SectionCardWrapper>
-            {games.map((game) => (
-              <Card key={game.id} game={game} $bgColor={isDark ? "dark" : "light"} />
-            ))}
+            {isLoading ? (
+              <>
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+              </>
+            ) : (
+              games.map((game) => (
+                <Card key={game.id} game={game} $bgColor={isDark ? "dark" : "light"} />
+              ))
+            )}
           </SectionCardWrapper>
         </Section>
       </section>
