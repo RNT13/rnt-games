@@ -51,7 +51,7 @@ export const Hero = ({ game }: HeroProps) => {
               Jogo já está no carrinho
             </Button>
           ) : (
-            <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title="Adicionar ao carrinho">
+            <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success(`${game.name} Adicionado ao carrinho com sucesso!`) }} title={`Adicionar ${game.name} ao carrinho`}>
               <HiShoppingCart />
               Adicionar ao carrinho
             </Button>

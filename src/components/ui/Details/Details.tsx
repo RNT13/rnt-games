@@ -55,11 +55,12 @@ export default function Details({ game }: detailsProps) {
             ) : isInCart ? (
               <Button title="No carrinho" disabled>
                 <FaThumbsUp />
+                Jogo no carrinho
               </Button>
             ) : (
               <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title={`Comprar ${game.name}`}>
                 <HiShoppingCart />
-                Comprar
+                Comprar Jogo
               </Button>
             )}
 

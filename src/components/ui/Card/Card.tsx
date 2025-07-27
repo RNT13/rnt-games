@@ -79,7 +79,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
             </div>
           )}
           <CardButtonDiv>
-            <Button href={`/gameDetails/${game.id}`} title={`Ver ${game.name}`}>
+            <Button href={`/gameDetails/${game.id}`} title={`Ver detalhes de ${game.name}`}>
               <TbListDetails />
               Detalhes
             </Button>

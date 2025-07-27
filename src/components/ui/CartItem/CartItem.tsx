@@ -36,7 +36,7 @@ export const CartItem = ({ id, name, quantity, price, media }: CartItemProps) =>
               <FaRegSquarePlus onClick={() => dispatch(incrementQuantity(id))} />
             </div>
           </CartItemNav>
-          <CloseButton onClick={() => { dispatch(removeFromCart(id)); toast.success("Jogo removido do carrinho") }}>
+          <CloseButton onClick={() => { dispatch(removeFromCart(id)); toast.success(`${name} removido do carrinho`) }}>
             <IoIosCloseCircle />
           </CloseButton>
         </CartItemBody>

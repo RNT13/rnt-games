@@ -48,7 +48,7 @@ export default function Header() {
           <HeaderRight>
 
             <HeaderCart>
-              <Button onClick={() => setIsCartOpen(true)} title="">
+              <Button onClick={() => setIsCartOpen(true)} title="Abrir o carrinho">
                 <HiShoppingCart />
                 <span>{cartItems.reduce((acc, item) => acc + item.quantity, 0)}</span>
               </Button>
@@ -61,7 +61,7 @@ export default function Header() {
             {isAuthenticated ? (
               <HeaderUserAvatar>
                 <UserAvatar>
-                  <a href="/dashboard">
+                  <a href="/dashboard" title="Ir para o dashboard">
                     <Image src="/armoredCoreGame.jpg" alt="avatar" width={40} height={40} />
                   </a>
                 </UserAvatar>

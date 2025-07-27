@@ -17,7 +17,7 @@ export default function Section({ title, $bgColor, children, href, className }: 
         <Row>
           <SectionTitle>{title}</SectionTitle>
           {href && (
-            <Button className="sectionButton" href={href}>
+            <Button className="sectionButton" href={href} title="Ver todos">
               <h3>Ver todos</h3>
               <FaArrowRight />
             </Button>
