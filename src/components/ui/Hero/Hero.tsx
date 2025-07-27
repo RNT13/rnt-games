@@ -4,6 +4,7 @@ import { RootState } from "@/redux/store"
 import { OverlayDarck } from "@/styles/globalStyles"
 import { GameType } from "@/types/GameType"
 import { mapGameToCartItem } from "@/utils/cartUtils"
+import { formatToBRL } from "@/utils/converterUtils"
 import toast from "react-hot-toast"
 import { FaThumbsUp } from "react-icons/fa"
 import { HiShoppingCart } from "react-icons/hi"
@@ -37,6 +38,7 @@ export const Hero = ({ game }: HeroProps) => {
         <InfoDiv>
           <h2>{game.name}</h2>
           <p>{game.description}</p>
+          <h3>De <span>{formatToBRL(game.prices.old)}</span> <br /> Por apenas <span>{formatToBRL(game.prices.current)}</span></h3>
         </InfoDiv>
         <ButtonDiv>
           <Button href={`/gameDetails/${game.id}`} title={"Ver Jogo"}>

@@ -1,5 +1,6 @@
 'use client';
 
+import Loading from "@/app/loading";
 import NotFound from "@/app/not-found";
 import Details from "@/components/ui/Details/Details";
 import { useGetGameByIdQuery } from "@/redux/slices/apiSlice";
@@ -14,7 +15,7 @@ export default function GameDetails({ params }: DetailsProps) {
   const { data: game, isLoading } = useGetGameByIdQuery(id);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (!game) {

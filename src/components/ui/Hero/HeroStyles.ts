@@ -45,6 +45,17 @@ export const InfoDiv = styled.div`
   p {
     width: 400px;
   }
+
+  span:first-child {
+    text-decoration: line-through;
+    color: ${theme.colors.baseRed.light08};
+  }
+
+  span:last-child {
+    font-size: 24px;
+    font-weight: 900;
+    color: ${theme.colors.baseGreen.light08};
+  }
 `
 
 export const ButtonDiv = styled.div`
