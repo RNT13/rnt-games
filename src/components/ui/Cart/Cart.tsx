@@ -1,10 +1,12 @@
 import { RootState } from "@/redux/store";
 import { CloseButton, OverlayBlur } from "@/styles/globalStyles";
 import { formatToBRL } from "@/utils/converterUtils";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { CartItem } from "../CartItem/CartItem";
+
 import {
   CartBody,
   CartContainer,
@@ -56,7 +58,10 @@ export const Cart = ({ onClick }: CartProps) => {
             <p>Total de itens: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
           </div>
           <div>
-            <Button href={'/checkout'} onClick={onClick} title="Finalizar compra" />
+            <Button href={'/checkout'} onClick={onClick} title="Ir para página de Pagamento" >
+              <BsFillCartCheckFill />
+              Finalizar compra
+            </Button>
           </div>
         </CartFooter>
       </CartContent>

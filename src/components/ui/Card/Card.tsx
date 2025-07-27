@@ -79,21 +79,25 @@ export const Card = ({ game, $bgColor }: CardProps) => {
             </div>
           )}
           <CardButtonDiv>
-            <Button href={`/gameDetails/${game.id}`} title="Detalhes" >
+            <Button href={`/gameDetails/${game.id}`} title={`Ver ${game.name}`}>
               <TbListDetails />
+              Detalhes
             </Button>
 
             {game.release_date === 'COMING SOON' ? (
               <Button title="Em Breve" disabled>
                 <FaHourglassHalf />
+                Em Breve
               </Button>
             ) : isInCart ? (
-              <Button title="No carrinho" disabled>
+              <Button title={`${game.name} já está no carrinho`} disabled>
                 <FaThumbsUp />
+                No carrinho
               </Button>
             ) : (
-              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title="Comprar">
+              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success(`${game.name} Adicionado ao carrinho com sucesso!`) }} title={`Adicionar ${game.name} ao carrinho`}>
                 <HiShoppingCart />
+                Comprar
               </Button>
             )}
 

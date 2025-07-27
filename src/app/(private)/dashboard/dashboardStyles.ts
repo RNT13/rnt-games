@@ -15,7 +15,7 @@ export const DashboardContainer = styled.div`
 
 export const DashboardContent = styled.div`
   width: 100%;
-  height: calc(100vh - 110px);
+  height: 600px;
   display: flex;
   gap: 24px;
 
@@ -144,22 +144,27 @@ export const DashboardButton = styled(StyledButton)<DashBoardProps>`
   }
 `
 
+export const DashboardDetails = styled.div``
+
 export const DashboardColumn = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  color: ${theme.colors.baseBlue.light20};
+
+  span {
+    color: ${theme.colors.baseGreen.light20};
+  }
 
   h3,
   h2 {
     margin: 4px 14px;
   }
-
-  ${media.tablet}, ${media.mobile} {
-  }
 `
 
 export const DashboardRow = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
@@ -167,6 +172,18 @@ export const DashboardRow = styled.div`
   .buttonGrey {
     background-color: ${theme.colors.baseBlue.dark40};
     border: 2px solid ${theme.colors.baseBlue.dark40};
+  }
+
+  ${media.tablet}, ${media.mobile} {
+    gap: 12px;
+    margin-top: 12px;
+
+    svg {
+    }
+
+    button {
+      width: 50%;
+    }
   }
 `
 
@@ -178,6 +195,11 @@ export const DashboardHeader = styled.div`
 
   h3 {
     margin: 12px;
+  }
+
+  ${media.tablet}, ${media.mobile} {
+    flex-direction: column;
+    height: 100%;
   }
 `
 
@@ -211,9 +233,8 @@ export const DashboardHeaderItem = styled.div`
 `
 
 export const DashboardBody = styled.div`
-  padding: 16px;
   width: 100%;
-  height: 100%;
+  padding: 16px;
   border-radius: 8px;
   background-color: ${theme.colors.baseBlue.light30};
   overflow-y: auto;
@@ -241,14 +262,23 @@ export const DashboardCardLine = styled.div`
     border-radius: 8px;
   }
 
-  span {
-    color: ${theme.colors.baseGreen.light30};
-  }
-
   .right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  }
+
+  ${media.mobile} {
+    flex-direction: column;
+
+    h3 {
+      margin-top: 12px;
+    }
+
+    img {
+      width: 100%;
+      height: 180px;
+    }
   }
 `
 

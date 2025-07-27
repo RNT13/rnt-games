@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/Button/Button'
-import { theme } from '@/styles/theme'
+import { media, theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 type StylesProps = {
@@ -10,7 +10,6 @@ type StylesProps = {
 }
 
 export const CheckoutContainer = styled.div<StylesProps>`
-  width: 100%;
   height: 100%;
   min-height: 100vh;
   display: flex;
@@ -31,12 +30,23 @@ export const CheckoutContent = styled.div`
 `
 
 export const Row = styled.div<StylesProps>`
-  width: 100%;
   display: flex;
   align-items: flex-end;
   column-gap: 24px;
   margin-top: ${props => props.$marginTop || 'auto'};
   margin-bottom: ${props => props.$marginBottom || 'auto'};
+
+  ${media.mobile} {
+    flex-direction: column;
+  }
+`
+
+export const TabDiv = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
 `
 
 export const TabStyledButton = styled(Button)<{ $isActive?: boolean }>`
@@ -50,6 +60,10 @@ export const TabStyledButton = styled(Button)<{ $isActive?: boolean }>`
 
   svg {
     font-size: 24px;
+  }
+
+  ${media.mobile} {
+    width: 100%;
   }
 `
 
@@ -89,6 +103,11 @@ export const InputGroup = styled.div<StylesProps>`
       outline: none;
       border: 2px solid ${theme.colors.baseBlue.dark20};
     }
+  }
+
+  ${media.mobile} {
+    max-width: 100%;
+    margin-bottom: 12px;
   }
 `
 

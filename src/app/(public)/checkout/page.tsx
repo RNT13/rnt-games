@@ -9,7 +9,7 @@ import { useState } from "react";
 import { CiBarcode } from "react-icons/ci";
 import { FaRegCreditCard } from "react-icons/fa";
 import * as yup from 'yup';
-import { CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabStyledButton } from "./checkoutStyles";
+import { CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabDiv, TabStyledButton } from "./checkoutStyles";
 
 
 export default function Checkout() {
@@ -173,16 +173,16 @@ export default function Checkout() {
               </Row>
             </FormCard>
             <FormCard title="Dados de Pagamento">
-              <Row $marginBottom="24px">
-                <TabStyledButton type="button" $isActive={!payWithCard} onClick={() => setPayWithCard(false)}>
+              <TabDiv>
+                <TabStyledButton type="button" $isActive={!payWithCard} onClick={() => setPayWithCard(false)} title="Trocar forma de pagamento para boleto bancario">
                   <CiBarcode />
                   Boleto bancario
                 </TabStyledButton>
-                <TabStyledButton type="button" $isActive={payWithCard} onClick={() => setPayWithCard(true)}>
+                <TabStyledButton type="button" $isActive={payWithCard} onClick={() => setPayWithCard(true)} title="Trocar forma de pagamento para cartão de crédito">
                   <FaRegCreditCard />
                   Cartão de crédito
                 </TabStyledButton>
-              </Row>
+              </TabDiv>
 
               {payWithCard ? (
                 <>
@@ -258,9 +258,8 @@ export default function Checkout() {
                 </p>
               )}
             </FormCard>
-
-            <Row $marginBottom="24px">
-              <Button type="submit" disabled={isLoading}>
+            <Row $marginBottom="24px" className="container">
+              <Button type="submit" disabled={isLoading} title="Finalizar compra">
                 {isLoading ? 'Finalizando...' : 'Finalizar compra'}
               </Button>
             </Row>

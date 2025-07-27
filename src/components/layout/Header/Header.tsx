@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderMenu, HeaderMenuWindow, HeaderNav, HeaderRegister, HeaderRight, HeaderUl, HeaderUlDiv, HeaderUserAvatar, Row, UserAvatar } from "./HeaderStyles";
+import { HeaderButtons, HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderMenu, HeaderMenuWindow, HeaderNav, HeaderRegister, HeaderRight, HeaderUl, HeaderUlDiv, HeaderUserAvatar, Row, UserAvatar } from "./HeaderStyles";
 
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -37,11 +37,11 @@ export default function Header() {
 
           <HeaderUlDiv>
             <HeaderUl >
-              <li><Button href="/" title="Home" /></li>
-              <li><Button href="/#games" title="Games" /></li>
-              <li><Button href="/#coming-soon" title="Em Breve" /></li>
-              <li><Button href="/#category" title="Categorias" /></li>
-              <li><Button href="/pricing" title="Planos" /></li>
+              <li><Button href="/" title="Home">Home</Button></li>
+              <li><Button href="/#games" title="Games" >Games</Button></li>
+              <li><Button href="/#SoonGames" title="Em Breve">Em Breve</Button></li>
+              <li><Button href="/#category" title="Categorias" >Categorias</Button></li>
+              <li><Button href="/pricing" title="Planos" >Planos</Button></li>
             </HeaderUl>
           </HeaderUlDiv>
 
@@ -67,15 +67,16 @@ export default function Header() {
                 </UserAvatar>
               </HeaderUserAvatar>
             ) : (
-              <>
+              <HeaderButtons>
                 <HeaderLogin>
-                  <Button href="/sign-in" title="Login" />
+                  <Button href="/sign-in" title="Fazer Login" >Login</Button>
                 </HeaderLogin>
                 <HeaderRegister>
-                  <Button href="/register" title="Register" />
+                  <Button href="/register" title="Fazer Cadastro" >Cadastro</Button>
                 </HeaderRegister>
-              </>
+              </HeaderButtons>
             )}
+
           </HeaderRight>
         </Row>
 
@@ -83,11 +84,11 @@ export default function Header() {
           <IoMenu onClick={() => setIsMenuOpen(!isMenuOpen)} />
           <HeaderMenuWindow className="container" $isOpen={isMenuOpen} >
             <HeaderUl>
-              <li><Button href="/" title="Home" onClick={() => setIsMenuOpen(false)} /></li>
-              <li><Button href="/#games" title="Games" onClick={() => setIsMenuOpen(false)} /></li>
-              <li><Button href="/#coming-soon" title="Em Breve" onClick={() => setIsMenuOpen(false)} /></li>
-              <li><Button href="/#category" title="Categorias" onClick={() => setIsMenuOpen(false)} /></li>
-              <li><Button href="/pricing" title="Planos" onClick={() => setIsMenuOpen(false)} /></li>
+              <li><Button href="/" title="Home" onClick={() => setIsMenuOpen(false)} >Home</Button></li>
+              <li><Button href="/#games" title="Games" onClick={() => setIsMenuOpen(false)} >Games</Button></li>
+              <li><Button href="/#coming-soon" title="Em Breve" onClick={() => setIsMenuOpen(false)} >Em Breve</Button></li>
+              <li><Button href="/#category" title="Categorias" onClick={() => setIsMenuOpen(false)} >Categorias</Button></li>
+              <li><Button href="/pricing" title="Planos" onClick={() => setIsMenuOpen(false)} >Planos</Button></li>
             </HeaderUl>
           </HeaderMenuWindow>
         </HeaderMenu>

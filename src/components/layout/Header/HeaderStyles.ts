@@ -29,6 +29,10 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${media.tablet}, ${media.mobile} {
+    margin-top: 8px;
+  }
 `
 
 export const HeaderMenu = styled.div`
@@ -63,6 +67,8 @@ export const HeaderMenuWindow = styled.div<MenuWindowProps>`
 export const HeaderLogo = styled.div``
 
 export const HeaderUlDiv = styled.div`
+  width: 100%;
+
   ${media.tablet}, ${media.mobile} {
     display: none;
   }
@@ -71,8 +77,7 @@ export const HeaderUlDiv = styled.div`
 export const HeaderUl = styled.ul`
   width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-evenly;
   list-style: none;
 
   a {
@@ -103,8 +108,19 @@ export const HeaderUl = styled.ul`
 
 export const HeaderRight = styled.div`
   display: flex;
+  justify-content: end;
   align-items: center;
-  gap: 12px;
+`
+
+export const HeaderButtons = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  ${media.mobile} {
+    flex-direction: column;
+  }
 `
 
 export const HeaderCart = styled.div`
@@ -148,10 +164,10 @@ export const HeaderCart = styled.div`
 `
 
 export const HeaderLogin = styled.div`
-  display: flex;
-  gap: 12px;
+  width: 100%;
 
   a {
+    width: 100%;
     background-color: ${theme.colors.baseGreen.dark20};
     border: 2px solid ${theme.colors.baseGreen.dark20};
     color: ${theme.colors.baseGreen.light50};
@@ -166,10 +182,10 @@ export const HeaderLogin = styled.div`
 `
 
 export const HeaderRegister = styled.div`
-  display: flex;
-  gap: 12px;
+  width: 100%;
 
   a {
+    width: 100%;
     background-color: ${theme.colors.baseBlue.dark30};
     border: 2px solid ${theme.colors.baseBlue.dark30};
     color: ${theme.colors.baseBlue.light50};
@@ -186,6 +202,7 @@ export const HeaderRegister = styled.div`
 export const HeaderUserAvatar = styled.div``
 
 export const UserAvatar = styled.div`
+  width: 100%;
   border-radius: 100px;
   width: 50px;
   height: 50px;

@@ -1,4 +1,4 @@
-import { theme } from '@/styles/theme'
+import { media, theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export type SectionProps = {
@@ -6,7 +6,7 @@ export type SectionProps = {
 }
 
 export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>`
-  padding-top: 40px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,12 +41,17 @@ export const SectionTitle = styled.h2`
 
 export const Row = styled.div`
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   h2 {
     font-size: 48px;
+  }
+
+  ${media.mobile} {
+    flex-direction: column;
+    align-items: start;
   }
 `

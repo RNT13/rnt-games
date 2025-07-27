@@ -116,6 +116,7 @@ export default function Dashboard() {
                 </DashboardColumn>
               </DashboardHeaderItem>
             </DashboardHeader>
+
             <DashboardBody>
               <TitleH3>Jogos recentes</TitleH3>
               <DashboardRow>
@@ -127,6 +128,7 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
@@ -138,6 +140,7 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
@@ -149,6 +152,7 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
@@ -160,6 +164,7 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
@@ -171,6 +176,7 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
@@ -182,6 +188,7 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
@@ -193,11 +200,13 @@ export default function Dashboard() {
                     <TitleH3>Games</TitleH3>
                     <Button title="Baixar" >
                       <FaDownload />
+                      Baixar
                     </Button>
                   </div>
                 </DashboardCardItem>
               </DashboardRow>
             </DashboardBody>
+
           </DashboardColumn>
         )}
 
@@ -217,9 +226,11 @@ export default function Dashboard() {
                 <DashboardRow>
                   <Button title="Baixar" >
                     <FaDownload />
+                    Baixar
                   </Button>
                   <Button className="buttonGrey" title="Detalhes" >
                     <TbListDetails />
+                    Detalhes
                   </Button>
                 </DashboardRow>
               </DashboardCardLine>
@@ -235,9 +246,11 @@ export default function Dashboard() {
                 <DashboardRow>
                   <Button title="Baixar" >
                     <FaDownload />
+                    Baixar
                   </Button>
                   <Button className="buttonGrey" title="Detalhes" >
                     <TbListDetails />
+                    Detalhes
                   </Button>
                 </DashboardRow>
               </DashboardCardLine>
@@ -253,9 +266,11 @@ export default function Dashboard() {
                 <DashboardRow>
                   <Button title="Baixar" >
                     <FaDownload />
+                    Baixar
                   </Button>
                   <Button className="buttonGrey" title="Detalhes" >
                     <TbListDetails />
+                    Detalhes
                   </Button>
                 </DashboardRow>
               </DashboardCardLine>
@@ -271,9 +286,11 @@ export default function Dashboard() {
                 <DashboardRow>
                   <Button title="Baixar" >
                     <FaDownload />
+                    Baixar
                   </Button>
                   <Button className="buttonGrey" title="Detalhes" >
                     <TbListDetails />
+                    Detalhes
                   </Button>
                 </DashboardRow>
               </DashboardCardLine>
@@ -289,9 +306,11 @@ export default function Dashboard() {
                 <DashboardRow>
                   <Button title="Baixar" >
                     <FaDownload />
+                    Baixar
                   </Button>
                   <Button className="buttonGrey" title="Detalhes" >
                     <TbListDetails />
+                    Detalhes
                   </Button>
                 </DashboardRow>
               </DashboardCardLine>

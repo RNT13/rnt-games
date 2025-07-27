@@ -25,7 +25,7 @@ export default function Home() {
       <section id="games">
         {gamesList && (<Gamelist title="Games" $bgColor="light" allGames={gamesList} isLoading={isLoading} />)}
       </section>
-      <section id="-soon">
+      <section id="SoonGames">
         {soonGamesList && (<SoonGamesList title="Em Breve" $bgColor="dark" soonGames={soonGamesList} isLoading={isLoading} />)}
       </section>
       <section id="category">

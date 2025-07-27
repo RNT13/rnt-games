@@ -21,14 +21,12 @@ export const Button = ({ href, ...ButtonProps }: ButtonProps) => {
     return (
       <StyledLink href={href} {...ButtonProps}>
         {ButtonProps.children}
-        {ButtonProps.title}
       </StyledLink>
     )
   } else {
     return (
       <StyledButton {...ButtonProps}>
         {ButtonProps.children}
-        {ButtonProps.title}
       </StyledButton>
     )
   }

@@ -1,4 +1,4 @@
-import { theme, transitions } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const GalleryContainer = styled.div`
@@ -47,9 +47,21 @@ export const GalleryIcon = styled.div`
 `
 export const GalleryModal = styled.div`
   position: fixed;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 500px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  button {
+    right: 30px;
+  }
+
+  ${media.tablet}, ${media.mobile} {
+    width: 90%;
+    height: auto;
+  }
 `
 
 export const GalleryModalContent = styled.div`

@@ -57,8 +57,9 @@ export default function Details({ game }: detailsProps) {
                 <FaThumbsUp />
               </Button>
             ) : (
-              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title="Comprar">
+              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title={`Comprar ${game.name}`}>
                 <HiShoppingCart />
+                Comprar
               </Button>
             )}
 

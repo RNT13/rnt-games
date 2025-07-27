@@ -41,16 +41,19 @@ export const Hero = ({ game }: HeroProps) => {
           <h3>De <span>{formatToBRL(game.prices.old)}</span> <br /> Por apenas <span>{formatToBRL(game.prices.current)}</span></h3>
         </InfoDiv>
         <ButtonDiv>
-          <Button href={`/gameDetails/${game.id}`} title={"Ver Jogo"}>
+          <Button href={`/gameDetails/${game.id}`} title={`Ver detalhes de ${game.name}`}>
             <TbListDetails />
+            Ver Detalhes
           </Button>
           {isInCart ? (
             <Button title="Jogo já está no carrinho" disabled>
               <FaThumbsUp />
+              Jogo já está no carrinho
             </Button>
           ) : (
             <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title="Adicionar ao carrinho">
               <HiShoppingCart />
+              Adicionar ao carrinho
             </Button>
           )}
         </ButtonDiv>

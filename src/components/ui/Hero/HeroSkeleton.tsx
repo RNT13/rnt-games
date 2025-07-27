@@ -13,7 +13,7 @@ export const HeroSkeleton = () => {
         </TagDiv>
         <InfoDiv>
           <Skeleton width={150} height={30} />
-          <Skeleton count={5} width={350} height={20} />
+          <Skeleton count={5} width={300} height={20} />
           <Skeleton width={120} height={20} />
           <Skeleton width={220} height={30} />
         </InfoDiv>

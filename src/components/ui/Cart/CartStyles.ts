@@ -1,4 +1,4 @@
-import { theme } from '@/styles/theme'
+import { media, theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const CartContainer = styled.aside`
@@ -10,6 +10,10 @@ export const CartContainer = styled.aside`
   width: 100%;
   height: 100vh;
   color: ${theme.colors.baseBlue.light50};
+
+  ${media.mobile} {
+    width: 90%;
+  }
 `
 
 export const CartContent = styled.div`
