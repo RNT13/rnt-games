@@ -47,7 +47,7 @@ export const GalleryIcon = styled.div`
 `
 export const GalleryModal = styled.div`
   position: fixed;
-  width: 100%;
+  width: 90%;
   max-width: 1000px;
   max-height: 500px;
   top: 50%;

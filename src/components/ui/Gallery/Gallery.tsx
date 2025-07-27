@@ -14,7 +14,6 @@ import { GalleryContainer, GalleryContent, GalleryIcon, GalleryModal, GalleryMod
 type GalleryProps = {
   itemImage: GalleryItem[]
   game: GameType
-  defaultCover?: string
 }
 
 interface ModalState extends GalleryItem {
@@ -22,18 +21,21 @@ interface ModalState extends GalleryItem {
 }
 
 
-export default function Gallery({ itemImage, defaultCover, game, }: GalleryProps) {
+export default function Gallery({ itemImage, game, }: GalleryProps) {
   const [modal, setModal] = useState<ModalState>({
     isOpen: false,
     type: 'image',
     url: ''
   })
 
-  const getItemImage = (itemImage: GalleryItem) => {
-    if (!itemImage?.url) return defaultCover || "/placeholder.png";
-    if (itemImage.type === "image") return itemImage.url;
-    return defaultCover || "/placeholder.png";
+  const getItemImage = (item: GalleryItem) => {
+    if (item.type === "image" && item.url) {
+      return item.url;
+    }
+
+    return game.media.cover || "/default-cover.png";
   };
+
 
   const getItemImageIcon = (itemImage: GalleryItem) => {
     return itemImage.type === "image" ? <FaSearchPlus /> : <FaPlay />;
@@ -49,6 +51,7 @@ export default function Gallery({ itemImage, defaultCover, game, }: GalleryProps
               alt={`Mídia ${index + 1} de ${game.name ?? "jogo"}`}
               width={100}
               height={100}
+              style={{ objectFit: "cover" }}
             />
           )}
           <GalleryIcon>
