@@ -1,6 +1,3 @@
-import { CategoryType } from '@/types/CategoryType'
-import { GameType } from '@/types/GameType'
-
 export function getCategoriesFromGames(games: GameType[]): CategoryType[] {
   const categoryMap = new Map<string, CategoryType>()
 

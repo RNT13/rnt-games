@@ -1,4 +1,3 @@
-import { CategoryType } from "@/types/CategoryType";
 import Image from "next/image";
 import { CategoryCardBody, CategoryCardContainer, CategoryCardContent, CategoryCardFooter, CategoryCardHeader } from "./CategoryCardStyles";
 

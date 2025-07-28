@@ -1,5 +1,3 @@
-import { GameType } from '@/types/GameType'
-import { PurchasePayLoad, PurchaseResponse } from '@/types/PurchaseType'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const apiSlice = createApi({

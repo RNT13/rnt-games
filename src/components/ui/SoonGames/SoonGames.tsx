@@ -1,7 +1,6 @@
 'use client'
 
 import Section from "@/components/ui/Section/Section"
-import { GameType } from "@/types/GameType"
 import { Card } from "../Card/Card"
 import { CardSkeleton } from "../Card/CardSkeleton"
 import { SoonGamesListContainer, SoonGamesListContent } from "./SoonGamesStyles"

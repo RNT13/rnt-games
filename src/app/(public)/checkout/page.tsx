@@ -5,7 +5,6 @@ import { FormCard } from "@/components/ui/FormCard/FormCard";
 import { usePostPurchaseMutation } from "@/redux/slices/apiSlice";
 import { RootState } from "@/redux/store";
 import { TitleH2 } from "@/styles/globalStyles";
-import { InstallmentType } from "@/types/InstallmentType";
 import { formatToBRL } from "@/utils/converterUtils";
 import { getTotalPrice } from "@/utils/priceUtils";
 import { useFormik } from 'formik';

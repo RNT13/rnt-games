@@ -3,7 +3,6 @@
 import { addToCart } from "@/redux/slices/cartSlice";
 import { RootState } from "@/redux/store";
 import { OverlayDarck, TitleH2, TitleH3 } from "@/styles/globalStyles";
-import { GameType } from "@/types/GameType";
 import { mapGameToCartItem } from "@/utils/cartUtils";
 import { formatToBRL } from "@/utils/converterUtils";
 import toast from "react-hot-toast";

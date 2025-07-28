@@ -1,7 +1,6 @@
 'use client'
 
 import { CloseButton, OverlayDarck } from "@/styles/globalStyles";
-import { GalleryItem, GameType } from "@/types/GameType";
 import Image from "next/image";
 import { useState } from "react";
 import { FaSearchPlus } from "react-icons/fa";

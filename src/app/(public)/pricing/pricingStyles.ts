@@ -1,21 +1,15 @@
-import { theme, transitions } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
-export const PricingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+export const PricingContainer = styled.div``
 
 export const PricingContent = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 50px 0;
-  height: 100%;
-  width: 100%;
 
   > h2 {
     font-size: 32px;
@@ -24,12 +18,14 @@ export const PricingContent = styled.div`
 `
 
 export const PricingPlan = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1300px;
-  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 0 16px;
+
+  ${media.tablet},${media.mobile} {
+    grid-template-columns: 1fr;
+  }
 
   p {
     font-size: 18px;
@@ -40,7 +36,6 @@ export const PricingPlan = styled.div`
   .free {
     background-image: linear-gradient(180deg, ${theme.colors.baseRed.dark08} 0%, ${theme.colors.baseRed.dark02} 100%);
     border: 5px solid ${theme.colors.baseRed.base};
-    border-radius: 16px 0 0 16px;
     transition: ${transitions.default};
 
     &:hover {
@@ -62,8 +57,7 @@ export const PricingPlan = styled.div`
   .premium {
     background-image: linear-gradient(180deg, ${theme.colors.baseGreen.light02} 0%, ${theme.colors.baseGreen.dark04} 50%);
     border: 5px solid ${theme.colors.baseGreen.base};
-    border-radius: 16px;
-    height: 600px;
+    transition: ${transitions.default};
 
     &:hover {
       transition: ${transitions.default};
@@ -75,7 +69,7 @@ export const PricingPlan = styled.div`
   .premiumButton {
     background-image: linear-gradient(90deg, ${theme.colors.baseGreen.light02} 0%, ${theme.colors.baseGreen.dark04} 50%);
     border: 1px solid ${theme.colors.baseGreen.base};
-    border-radius: 16px;
+    transition: ${transitions.default};
 
     &:hover {
       background-image: linear-gradient(180deg, ${theme.colors.baseGreen.light02} 0%, ${theme.colors.baseGreen.dark08} 100%);
@@ -85,7 +79,7 @@ export const PricingPlan = styled.div`
   .pro {
     background-image: linear-gradient(180deg, ${theme.colors.baseBlue.light} 0%, ${theme.colors.baseBlue.dark08} 100%);
     border: 5px solid ${theme.colors.baseBlue.base};
-    border-radius: 0 16px 16px 0;
+    transition: ${transitions.default};
 
     &:hover {
       transition: ${transitions.default};
@@ -105,13 +99,20 @@ export const PricingPlan = styled.div`
 `
 
 export const PricingPlanCard = styled.div`
-  width: 100%;
-  height: 500px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   padding: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  ${media.tablet} {
+    width: 100%;
+    max-width: 100%;
+  }
 `
 
 export const PricingCardHeader = styled.div`
@@ -123,38 +124,46 @@ export const PricingCardHeader = styled.div`
   > div {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
 
     span {
+      display: flex;
       padding: 4px 8px;
       border-radius: 8px;
       border: 1px solid ${theme.colors.baseGreen.light30};
       color: ${theme.colors.baseGreen.light30};
+      margin-bottom: 12px;
     }
   }
 
   h2 {
     font-size: 32px;
-    margin: 12px 0;
   }
 `
 
 export const ButtonDiv = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 12px 0;
+  width: 100%;
 
   button {
+    width: 100%;
+    max-width: 350px;
+    height: 50px;
+    border-radius: 16px;
     font-weight: 700;
     font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
-    height: 50px;
-    border-radius: 16px;
+
+    ${media.mobile} {
+      font-size: 16px;
+      height: 44px;
+    }
   }
 `
 

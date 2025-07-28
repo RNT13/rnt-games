@@ -8,10 +8,11 @@ import { ButtonDiv, PricingCardBody, PricingCardHeader, PricingContainer, Pricin
 
 export default function Pricing() {
   return (
-    <PricingContainer>
+    <PricingContainer className="container">
       <PricingContent >
         <TitleH2>Escolha seu plano</TitleH2>
         <PricingPlan>
+
           <PricingPlanCard className="free">
             <PricingCardHeader>
               <TitleH2>GRATUITO</TitleH2>
@@ -35,6 +36,7 @@ export default function Pricing() {
               </li>
             </PricingCardBody>
           </PricingPlanCard>
+
           <PricingPlanCard className="premium">
             <PricingCardHeader>
               <div>
@@ -65,6 +67,7 @@ export default function Pricing() {
               </li>
             </PricingCardBody>
           </PricingPlanCard>
+
           <PricingPlanCard className="pro">
             <PricingCardHeader>
               <TitleH2>PRO</TitleH2>
@@ -92,6 +95,7 @@ export default function Pricing() {
               </li>
             </PricingCardBody>
           </PricingPlanCard>
+
         </PricingPlan>
       </PricingContent >
     </PricingContainer >

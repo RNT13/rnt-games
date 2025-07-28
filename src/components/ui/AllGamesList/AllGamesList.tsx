@@ -3,7 +3,6 @@
 import { Card } from "@/components/ui/Card/Card";
 import Section from "@/components/ui/Section/Section";
 import { TitleH2 } from "@/styles/globalStyles";
-import { GameType } from "@/types/GameType";
 import { ChangeEvent, useMemo, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Button } from "../Button/Button";
