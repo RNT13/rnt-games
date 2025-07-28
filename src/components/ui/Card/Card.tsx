@@ -26,7 +26,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
     <CardContainer>
       <CardContent $bgColor={$bgColor}>
         <CardHeader>
-          <CardImage src={game.media.thumbnail} alt={game.name} width={300} height={300} />
+          <CardImage src={game.media.thumbnail} alt={game.name} width={300} height={300} priority />
           <CardTags>
             <Tag color="blue" size="sm" >
               {game.details.system}

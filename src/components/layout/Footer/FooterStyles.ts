@@ -1,4 +1,4 @@
-import { theme, transitions } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const FooterContainer = styled.footer`
@@ -18,9 +18,18 @@ export const RowDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  ${media.mobile} {
+    flex-direction: column;
+  }
 `
 
-export const FooterLogo = styled.div``
+export const FooterLogo = styled.div`
+  ${media.tablet} {
+    margin-bottom: 24px;
+    height: 100%;
+  }
+`
 
 export const FooterUl = styled.ul`
   display: flex;

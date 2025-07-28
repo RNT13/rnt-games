@@ -80,7 +80,8 @@ export const HeaderUl = styled.ul`
   justify-content: space-evenly;
   list-style: none;
 
-  a {
+  a,
+  button {
     background-color: transparent;
     border: transparent;
     color: ${theme.colors.baseBlue.light40};
