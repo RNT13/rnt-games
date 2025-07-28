@@ -25,10 +25,10 @@ export const AllGamesContent = styled.div`
 
 export const AllGamesNav = styled.nav`
   padding: 24px;
+  margin-bottom: 50px;
+  border-radius: 12px;
   background-color: ${theme.colors.baseBlue.dark30};
   color: ${theme.colors.baseBlue.light30};
-  border-radius: 12px;
-  margin-bottom: 50px;
 `
 
 export const NavUl = styled.ul`

@@ -35,42 +35,44 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
     <AllGamesContainer >
       <AllGamesContent >
         <TitleH2>Veja todos os jogos</TitleH2>
-        <AllGamesNav className="container">
+        <div className="container">
+          <AllGamesNav >
 
-          <NavUl>
-            <li><Button href="/allGames#games" title="Games">Games</Button></li>
-            <li><Button href="/allGames#soonGames" title="Em Breve">Em Breve</Button></li>
+            <NavUl>
+              <li><Button href="/allGames#games" title="Games">Games</Button></li>
+              <li><Button href="/allGames#soonGames" title="Em Breve">Em Breve</Button></li>
 
-            {Array.from(new Set(games.map(game => game.details.category)))
-              .slice(0, 8)
-              .map((category) => {
-                const id = category.toLowerCase().replace(/\s/g, "-");
-                return (
-                  <li key={id}>
-                    <Button
-                      href={`/allGames#${id}`}
-                      title={category}
-                    >{category}</Button>
-                  </li>
-                );
-              })}
-          </NavUl>
+              {Array.from(new Set(games.map(game => game.details.category)))
+                .slice(0, 8)
+                .map((category) => {
+                  const id = category.toLowerCase().replace(/\s/g, "-");
+                  return (
+                    <li key={id}>
+                      <Button
+                        href={`/allGames#${id}`}
+                        title={category}
+                      >{category}</Button>
+                    </li>
+                  );
+                })}
+            </NavUl>
 
-          <NavSearchBar>
-            <NavWrapper>
-              <input
-                name="search"
-                type="text"
-                placeholder="Pesquisar"
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-              <SeachButton name="search" type="submit">
-                <FaSearch />
-              </SeachButton>
-            </NavWrapper>
-          </NavSearchBar>
-        </AllGamesNav>
+            <NavSearchBar>
+              <NavWrapper>
+                <input
+                  name="search"
+                  type="text"
+                  placeholder="Pesquisar"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+                <SeachButton name="search" type="submit">
+                  <FaSearch />
+                </SeachButton>
+              </NavWrapper>
+            </NavSearchBar>
+          </AllGamesNav>
+        </div>
 
         {/* mostra jogos filtrados */}
         {filteredGames.length > 0 && (
