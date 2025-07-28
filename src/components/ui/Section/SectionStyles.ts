@@ -10,6 +10,7 @@ export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 48px 0;
   background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
   color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
 
@@ -29,9 +30,7 @@ export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>
   }
 `
 
-export const SectionContent = styled.div`
-  margin: 48px 0;
-`
+export const SectionContent = styled.div``
 
 export const SectionTitle = styled.h2`
   font-size: 32px;
