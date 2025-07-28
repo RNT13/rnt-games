@@ -21,7 +21,7 @@ export const CartItem = ({ id, name, quantity, price, media }: CartItemProps) =>
   return (
     <CartItemContainer>
       <CartItemContent>
-        <CartItemImage src={media} alt={name} width={120} height={120} />
+        <CartItemImage src={media} alt={name} width={120} height={120} priority />
         <CartItemBody>
           <CardInfo>
             <h3>{name}</h3>

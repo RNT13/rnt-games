@@ -92,6 +92,10 @@ export const CardBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  div {
+    display: flex;
+  }
 `
 
 export const CardTitle = styled.div`

@@ -30,33 +30,6 @@ export const CheckoutContent = styled.div`
   }
 `
 
-export const CartEmpty = styled.div`
-  padding: 24px;
-  margin: 0 24px;
-  border-radius: 12px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: ${theme.colors.baseBlue.light30};
-  font-weight: 600;
-
-  h2,
-  p {
-    color: ${theme.colors.baseBlue.dark30};
-    margin-bottom: 24px;
-  }
-`
-
-export const CartEmptyImage = styled.div`
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-`
-
 export const Row = styled.div<StylesProps>`
   display: flex;
   align-items: flex-end;

@@ -1,20 +1,20 @@
 'use client'
 
 import { Button } from "@/components/ui/Button/Button";
+import EmptyCart from "@/components/ui/EmptyCart/EmptyCart";
 import { FormCard } from "@/components/ui/FormCard/FormCard";
+import { MaskedInput } from "@/components/ui/MaskedInput/MaskedInput";
 import { usePostPurchaseMutation } from "@/redux/slices/apiSlice";
 import { RootState } from "@/redux/store";
-import { TitleH2 } from "@/styles/globalStyles";
 import { formatToBRL } from "@/utils/converterUtils";
 import { getTotalPrice } from "@/utils/priceUtils";
 import { useFormik } from 'formik';
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CiBarcode } from "react-icons/ci";
 import { FaRegCreditCard } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import * as yup from 'yup';
-import { CartEmpty, CartEmptyImage, CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabDiv, TabStyledButton } from "./checkoutStyles";
+import { CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabDiv, TabStyledButton } from "./checkoutStyles";
 
 
 export default function Checkout() {
@@ -41,7 +41,7 @@ export default function Checkout() {
       expiresMonth: '',
       expiresYear: '',
       cardCode: '',
-      instalments: '1',
+      instalments: 1,
     },
     validationSchema: yup.object({
       fullName: yup.string().min(5, 'Minimo de 5 caracteres').required('Campo obrigatório'),
@@ -57,7 +57,7 @@ export default function Checkout() {
       expiresMonth: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
       expiresYear: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
       cardCode: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
-      instalments: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
+      instalments: yup.number().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
     }),
     onSubmit: (values) => {
       purchase({
@@ -80,11 +80,11 @@ export default function Checkout() {
               document: values.cpfCardOwner
             },
             expires: {
-              month: parseInt(values.expiresMonth),
-              year: parseInt(values.expiresYear)
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear)
             }
           },
-          installments: parseInt(values.instalments),
+          installments: values.instalments,
         },
         products: [
           {
@@ -126,15 +126,7 @@ export default function Checkout() {
   if (items.length === 0) {
     return (
       <CheckoutContainer $marginTop="24px" >
-        <CartEmpty >
-          <TitleH2>O carrinho está vazio!</TitleH2>
-          <p>
-            Para finalizar a compra, adicione pelo menos um jogo ao carrinho.
-          </p>
-          <CartEmptyImage>
-            <Image src="/empty-cart.png" alt="Carrinho vazio" width={300} height={300} priority />
-          </CartEmptyImage>
-        </CartEmpty>
+        <EmptyCart />
       </CheckoutContainer>
     )
   }
@@ -142,12 +134,12 @@ export default function Checkout() {
   return (
     <CheckoutContainer $marginTop="24px" >
       <CheckoutContent>
-        {isSuccess ? (
+        {isSuccess && data ? (
           <FormCard title="Resumo da compra">
             <Disclaimer >
               <h3>Muito obrigado por comprar conosco</h3>
               <p>
-                É com satisfação que informamos que recebemos seu pedido com sucesso! <br /> Abaixo estão os detalhes da sua compra:<br /> Número do pedido: {data.orderId}<br /> Valor total: R$ {data.totalPrice} <br /> Forma de pagamento: {payWithCard ? 'Cartão de crédito' : 'Boleto'}
+                É com satisfação que informamos que recebemos seu pedido com sucesso! <br /> Abaixo estão os detalhes da sua compra:<br /> Número do pedido: {data.orderId}<br /> Valor total: R$ {totalPrice} <br /> Forma de pagamento: {payWithCard ? 'Cartão de crédito' : 'Boleto'}
               </p>
               <p className="marginTop">
                 Caso tenha optado pelo pagamento via boleto bancário, lembre-se de que a confirmação pode levar até 3 dias úteis. Após a aprovação do pagamento, enviaremos um e-mail contendo o código de ativação do jogo.
@@ -184,7 +176,7 @@ export default function Checkout() {
 
                 <InputGroup>
                   <label htmlFor="cpf" >CPF</label>
-                  <input id="cpf" name="cpf" type="text" placeholder="000.000.000-00" value={form.values.cpf} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cpf') ? 'error' : ''} />
+                  <MaskedInput name="cpf" placeholder="000.000.000-00" value={form.values.cpf} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cpf') ? 'error' : ''} mask={'000.000.000-00'} />
 
                 </InputGroup>
 
@@ -227,7 +219,7 @@ export default function Checkout() {
 
                     <InputGroup>
                       <label htmlFor="cpfCardOwner" >CPF do titular do Cartão</label>
-                      <input id="cpfCardOwner" name="cpfCardOwner" type="text" placeholder="000.000.000-00" value={form.values.cpfCardOwner} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cpfCardOwner') ? 'error' : ''} />
+                      <MaskedInput name="cpfCardOwner" placeholder="000.000.000-00" value={form.values.cpfCardOwner} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cpfCardOwner') ? 'error' : ''} mask={'000.000.000-00'} />
                     </InputGroup>
 
                   </Row>
@@ -241,22 +233,22 @@ export default function Checkout() {
 
                     <InputGroup>
                       <label htmlFor="cardNumber" >Numero do Cartão</label>
-                      <input id="cardNumber" name="cardNumber" type="text" placeholder="Numero do Cartão" value={form.values.cardNumber} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cardNumber') ? 'error' : ''} />
+                      <MaskedInput name="cardNumber" placeholder="Numero do Cartão" value={form.values.cardNumber} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cardNumber') ? 'error' : ''} mask={'0000 0000 0000 0000'} />
                     </InputGroup>
 
                     <InputGroup $maxWidth="150px">
                       <label htmlFor="expiresMonth" >Mes de vencimento</label>
-                      <input id="expiresMonth" name="expiresMonth" type="text" placeholder="MM" value={form.values.expiresMonth} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('expiresMonth') ? 'error' : ''} />
+                      <MaskedInput name="expiresMonth" placeholder="MM" value={form.values.expiresMonth} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('expiresMonth') ? 'error' : ''} mask={'00'} />
                     </InputGroup>
 
                     <InputGroup $maxWidth="150px">
                       <label htmlFor="expiresYear" >Ano de vencimento</label>
-                      <input id="expiresYear" name="expiresYear" type="text" placeholder="AA" value={form.values.expiresYear} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('expiresYear') ? 'error' : ''} />
+                      <MaskedInput name="expiresYear" placeholder="AA" value={form.values.expiresYear} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('expiresYear') ? 'error' : ''} mask={'00'} />
                     </InputGroup>
 
                     <InputGroup $maxWidth="50px">
                       <label htmlFor="cardCode" >CVV</label>
-                      <input id="cardCode" name="cardCode" type="text" placeholder="CVV" value={form.values.cardCode} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cardCode') ? 'error' : ''} />
+                      <MaskedInput name="cardCode" placeholder="CVV" value={form.values.cardCode} onChange={form.handleChange} onBlur={form.handleBlur} className={checkInputHasError('cardCode') ? 'error' : ''} mask={'000'} />
                     </InputGroup>
                   </Row>
 
@@ -271,11 +263,6 @@ export default function Checkout() {
                             {installment.formattedAmount}
                           </option>
                         ))}
-                        {/* {Array.from({ length: 6 }, (_, i) => (
-                          <option key={i + 1} value={i + 1}>
-                            {i + 1}x {formatToBRL(getTotalPrice(items) / (i + 1))}
-                          </option>
-                        ))} */}
                       </select>
 
                     </InputGroup>
@@ -290,7 +277,7 @@ export default function Checkout() {
             </FormCard>
             <Row $marginBottom="24px" className="container">
               <Button type="submit" disabled={isLoading} title="Finalizar compra">
-                {isLoading ? 'Finalizando...' : 'Finalizar compra'}
+                {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
               </Button>
             </Row>
           </form>
