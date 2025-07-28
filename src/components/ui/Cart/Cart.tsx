@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { CartItem } from "../CartItem/CartItem";
 
+import { getTotalPrice } from "@/utils/priceUtils";
 import {
   CartBody,
   CartContainer,
@@ -20,13 +21,7 @@ type CartProps = {
 };
 
 export const Cart = ({ onClick }: CartProps) => {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-
-  // Calcular o total de preços
-  const total = cartItems.reduce(
-    (acc, item) => acc + item.prices.current * item.quantity,
-    0
-  );
+  const { items } = useSelector((state: RootState) => state.cart);
 
   return (
     <CartContainer>
@@ -40,7 +35,7 @@ export const Cart = ({ onClick }: CartProps) => {
         </CartHeader>
 
         <CartBody>
-          {cartItems.map((item) => (
+          {items.map((item) => (
             <CartItem
               key={`${item.id}-${item.name}`}
               id={item.id}
@@ -54,8 +49,8 @@ export const Cart = ({ onClick }: CartProps) => {
 
         <CartFooter>
           <div>
-            <h3>Total:{formatToBRL(total)}</h3>
-            <p>Total de itens: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</p>
+            <h3>Total: {formatToBRL(getTotalPrice(items))}</h3>
+            <p>Total de itens: {items.reduce((acc, item) => acc + item.quantity, 0)}</p>
           </div>
           <div>
             <Button href={'/checkout'} onClick={onClick} title="Ir para página de Pagamento" >

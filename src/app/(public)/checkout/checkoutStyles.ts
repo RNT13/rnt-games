@@ -10,6 +10,7 @@ type StylesProps = {
 }
 
 export const CheckoutContainer = styled.div<StylesProps>`
+  width: 100%;
   height: 100%;
   min-height: 100vh;
   display: flex;
@@ -26,6 +27,33 @@ export const CheckoutContent = styled.div`
   h2,
   h3 {
     margin-bottom: 24px;
+  }
+`
+
+export const CartEmpty = styled.div`
+  padding: 24px;
+  margin: 0 24px;
+  border-radius: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: ${theme.colors.baseBlue.light30};
+  font-weight: 600;
+
+  h2,
+  p {
+    color: ${theme.colors.baseBlue.dark30};
+    margin-bottom: 24px;
+  }
+`
+
+export const CartEmptyImage = styled.div`
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `
 
@@ -102,6 +130,11 @@ export const InputGroup = styled.div<StylesProps>`
     &:focus {
       outline: none;
       border: 2px solid ${theme.colors.baseBlue.dark20};
+    }
+
+    &.error {
+      border: 2px solid ${theme.colors.baseRed.base};
+      background-color: ${theme.colors.baseRed.light02};
     }
   }
 

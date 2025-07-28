@@ -2,7 +2,7 @@ import { theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const FormCardContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   margin: 24px 0;
 `
 
