@@ -6,7 +6,6 @@ export type SectionProps = {
 }
 
 export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>`
-  padding-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +30,7 @@ export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>
 `
 
 export const SectionContent = styled.div`
-  margin-bottom: 40px;
+  margin: 48px 0;
 `
 
 export const SectionTitle = styled.h2`
