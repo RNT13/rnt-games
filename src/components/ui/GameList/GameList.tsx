@@ -7,15 +7,15 @@ import { GameListContainer, GameListContent } from "./GameListStyles"
 interface GameListProps {
   $bgColor: 'light' | 'dark'
   allGames: GameType[]
-  id?: string
+  id: string
   title: string
   isLoading?: boolean
 }
 
-export const Gamelist = ({ $bgColor, allGames, title, isLoading }: GameListProps) => {
+export const Gamelist = ({ $bgColor, allGames, title, isLoading, id }: GameListProps) => {
   return (
-    <GameListContainer>
-      <Section $bgColor={$bgColor} href="/allGames" title={title}>
+    <GameListContainer id={id}>
+      <Section $bgColor={$bgColor} href="/allGames" title={title} >
         <GameListContent>
           {isLoading ? (
             <>

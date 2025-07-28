@@ -19,18 +19,13 @@ export default function Home() {
 
   return (
     <div>
-      <section id="home">
-        {isFeaturedGameLoading ? (<HeroSkeleton />) : (getFeaturedGame && <Hero game={getFeaturedGame} />)}
-      </section>
-      <section id="games">
-        {gamesList && (<Gamelist title="Games" $bgColor="light" allGames={gamesList} isLoading={isLoading} />)}
-      </section>
-      <section id="SoonGames">
-        {soonGamesList && (<SoonGamesList title="Em Breve" $bgColor="dark" soonGames={soonGamesList} isLoading={isLoading} />)}
-      </section>
-      <section id="category">
-        {gamesList && (<Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isLoading} />)}
-      </section>
-    </div>
+      {isFeaturedGameLoading ? (<HeroSkeleton />) : (getFeaturedGame && <Hero game={getFeaturedGame} id="home" />)}
+
+      {gamesList && (<Gamelist title="Games" $bgColor="light" allGames={gamesList} isLoading={isLoading} id="games" />)}
+
+      {soonGamesList && (<SoonGamesList title="Em Breve" $bgColor="dark" soonGames={soonGamesList} isLoading={isLoading} id="soonGames" />)}
+
+      {gamesList && (<Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isLoading} id="category" />)}
+    </div >
   )
 }

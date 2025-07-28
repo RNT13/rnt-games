@@ -1,4 +1,4 @@
-import { media, theme } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export type SectionProps = {
@@ -6,10 +6,6 @@ export type SectionProps = {
 }
 
 export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   padding: 48px 0;
   background-color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.light30 : theme.colors.baseBlue.dark30)};
   color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
@@ -27,6 +23,13 @@ export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>
     background-color: transparent;
     border: none;
     box-shadow: none;
+    gap: 8px;
+    color: ${props => (props.$bgColor === 'light' ? theme.colors.baseBlue.dark30 : theme.colors.baseBlue.light30)};
+    transition: ${transitions.default};
+  }
+
+  ${media.tablet}, ${media.mobile} {
+    padding: 48px 0;
   }
 `
 
@@ -34,12 +37,11 @@ export const SectionContent = styled.div``
 
 export const SectionTitle = styled.h2`
   font-size: 32px;
-  margin-bottom: 16px;
 `
 
 export const Row = styled.div`
   width: 100%;
-  margin-bottom: 12px;
+  margin: 24px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,8 +50,9 @@ export const Row = styled.div`
     font-size: 48px;
   }
 
-  ${media.mobile} {
+  ${media.tablet}, ${media.mobile} {
     flex-direction: column;
     align-items: start;
+    margin: 48px 0;
   }
 `

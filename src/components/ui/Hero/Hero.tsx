@@ -17,16 +17,17 @@ import { ButtonDiv, HeroContainer, HeroImage, HeroImageContent, InfoDiv, TagDiv 
 
 type HeroProps = {
   game: GameType
+  id: string
 }
 
-export const Hero = ({ game }: HeroProps) => {
+export const Hero = ({ game, id }: HeroProps) => {
   const dispatch = useAppDispatch()
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some(item => item.id === +game.id);
 
 
   return (
-    <HeroContainer aria-label="Seção principal de destaque" >
+    <HeroContainer aria-label="Seção principal de destaque" id={id} >
       <OverlayDarck />
       <HeroImage src={game.media.cover} alt={game.name} fill priority />
       <HeroImageContent className="container">

@@ -101,7 +101,7 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
           </Section>
         </section>
 
-        <section id="coming-soon">
+        <section id="soonGames">
           <Section $bgColor="dark" title="Em Breve" >
             <SectionCardWrapper>
               {isLoading ? (

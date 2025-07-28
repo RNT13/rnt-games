@@ -9,14 +9,14 @@ import { SoonGamesListContainer, SoonGamesListContent } from "./SoonGamesStyles"
 interface SoonGamesProps {
   $bgColor: 'light' | 'dark'
   soonGames: GameType[]
-  id?: string
   title: string
   isLoading?: boolean
+  id: string
 }
 
-export const SoonGamesList = ({ $bgColor, soonGames, title, isLoading }: SoonGamesProps) => {
+export const SoonGamesList = ({ $bgColor, soonGames, title, isLoading, id }: SoonGamesProps) => {
   return (
-    <SoonGamesListContainer>
+    <SoonGamesListContainer id={id}>
       <Section $bgColor={$bgColor} href="/allGames" title={title}>
         <SoonGamesListContent>
           {isLoading ? (

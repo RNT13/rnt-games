@@ -37,11 +37,21 @@ export default function Header() {
 
           <HeaderUlDiv>
             <HeaderUl >
-              <li><Button href="/" title="Home">Home</Button></li>
-              <li><Button href="/#games" title="Games" >Games</Button></li>
-              <li><Button href="/#SoonGames" title="Em Breve">Em Breve</Button></li>
-              <li><Button href="/#category" title="Categorias" >Categorias</Button></li>
-              <li><Button href="/pricing" title="Planos" >Planos</Button></li>
+              <li>
+                <Button href="/" title="Home">Home</Button>
+              </li>
+              <li>
+                <Button href="/#games" title="Games" >Games</Button>
+              </li>
+              <li>
+                <Button href="/#soonGames" title="Em Breve">Em Breve</Button>
+              </li>
+              <li>
+                <Button href="/#category" title="Categorias" >Categorias</Button>
+              </li>
+              <li>
+                <Button href="/pricing" title="Planos" >Planos</Button>
+              </li>
             </HeaderUl>
           </HeaderUlDiv>
 
@@ -86,7 +96,7 @@ export default function Header() {
             <HeaderUl>
               <li><Button href="/" title="Home" onClick={() => { setIsMenuOpen(false) }} >Home</Button></li>
               <li><Button href="/#games" title="Games" onClick={() => { setIsMenuOpen(false) }} >Games</Button></li>
-              <li><Button href="/#SoonGames" title="Em Breve" onClick={() => { setIsMenuOpen(false) }} >Em Breve</Button></li>
+              <li><Button href="/#soonGames" title="Em Breve" onClick={() => { setIsMenuOpen(false) }} >Em Breve</Button></li>
               <li><Button href="/#category" title="Categorias" onClick={() => { setIsMenuOpen(false) }} >Categorias</Button></li>
               <li><Button href="/pricing" title="Planos" onClick={() => setIsMenuOpen(false)} >Planos</Button></li>
             </HeaderUl>

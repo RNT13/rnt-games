@@ -9,11 +9,12 @@ interface CategoryProps {
   title: string
   categoryList: CategoryType[]
   isLoading?: boolean
+  id: string
 }
 
-export const Category = ({ $bgColor, title, categoryList, isLoading }: CategoryProps) => {
+export const Category = ({ $bgColor, title, categoryList, isLoading, id }: CategoryProps) => {
   return (
-    <CategoryContainer>
+    <CategoryContainer id={id}>
       <Section $bgColor={$bgColor} href="/allGames" title={title}>
         <CategoryContent>
           {isLoading ? (
