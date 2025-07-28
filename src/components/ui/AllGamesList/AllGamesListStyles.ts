@@ -37,7 +37,8 @@ export const NavUl = styled.ul`
   list-style: none;
   cursor: pointer;
 
-  a {
+  a,
+  button {
     background-color: transparent;
     border: transparent;
     color: ${theme.colors.baseBlue.light40};

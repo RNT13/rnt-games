@@ -5,7 +5,6 @@ import { Cart } from "@/components/ui/Cart/Cart";
 import { CartWrapper } from "@/components/ui/CartWrapper/CartWrapper";
 import { login } from "@/redux/slices/authSlice";
 import { RootState } from "@/redux/store";
-import { scrollToWithOffset } from "@/utils/ScrollUtils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
@@ -85,10 +84,10 @@ export default function Header() {
           <IoMenu onClick={() => setIsMenuOpen(!isMenuOpen)} />
           <HeaderMenuWindow className="container" $isOpen={isMenuOpen} >
             <HeaderUl>
-              <li><Button title="Home" onClick={() => { setIsMenuOpen(false); scrollToWithOffset('home', 150) }} >Home</Button></li>
-              <li><Button title="Games" onClick={() => { setIsMenuOpen(false); scrollToWithOffset('games', 150) }} >Games</Button></li>
-              <li><Button title="Em Breve" onClick={() => { setIsMenuOpen(false); scrollToWithOffset('SoonGames', 150) }} >Em Breve</Button></li>
-              <li><Button title="Categorias" onClick={() => { setIsMenuOpen(false); scrollToWithOffset('category', 150) }} >Categorias</Button></li>
+              <li><Button href="/" title="Home" onClick={() => { setIsMenuOpen(false) }} >Home</Button></li>
+              <li><Button href="/#games" title="Games" onClick={() => { setIsMenuOpen(false) }} >Games</Button></li>
+              <li><Button href="/#SoonGames" title="Em Breve" onClick={() => { setIsMenuOpen(false) }} >Em Breve</Button></li>
+              <li><Button href="/#category" title="Categorias" onClick={() => { setIsMenuOpen(false) }} >Categorias</Button></li>
               <li><Button href="/pricing" title="Planos" onClick={() => setIsMenuOpen(false)} >Planos</Button></li>
             </HeaderUl>
           </HeaderMenuWindow>

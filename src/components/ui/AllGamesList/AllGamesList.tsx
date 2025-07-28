@@ -38,8 +38,8 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
         <AllGamesNav className="container">
 
           <NavUl>
-            <li><Button href="/allGames#games" title="Games" /></li>
-            <li><Button href="/allGames#coming-soon" title="Em Breve" /></li>
+            <li><Button href="/allGames#games" title="Games">Games</Button></li>
+            <li><Button href="/allGames#soonGames" title="Em Breve">Em Breve</Button></li>
 
             {Array.from(new Set(games.map(game => game.details.category)))
               .slice(0, 8)
@@ -50,7 +50,7 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
                     <Button
                       href={`/allGames#${id}`}
                       title={category}
-                    />
+                    >{category}</Button>
                   </li>
                 );
               })}
