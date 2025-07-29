@@ -1,6 +1,7 @@
 'use client'
 
 import { Category } from "@/components/ui/Category/Category";
+import { ErrorMessage } from "@/components/ui/ErrorMessage/ErrorMessage";
 import { Gamelist } from "@/components/ui/GameList/GameList";
 import { Hero } from "@/components/ui/Hero/Hero";
 import { HeroSkeleton } from "@/components/ui/Hero/HeroSkeleton";
@@ -11,21 +12,41 @@ import { useGetFeaturedGameQuery, useGetGamesListQuery, useGetSoonGamesListQuery
 
 export default function Home() {
 
-  const { data: gamesList = [], isLoading: isGamelistLoading, isFetching: isGamesFetching } = useGetGamesListQuery()
-  const { data: soonGamesList = [], isLoading: isSoonGamesListLoading, isFetching: isSoonGamesFetching } = useGetSoonGamesListQuery()
-  const { data: getFeaturedGame, isLoading: isFeaturedGameLoading, isFetching: isFeaturedGameFetching } = useGetFeaturedGameQuery()
+  const { data: gamesList = [], isLoading: isGamelistLoading, error: gamesListError } = useGetGamesListQuery()
+  const { data: soonGamesList = [], isLoading: isSoonGamesListLoading, error: soonGamesListError } = useGetSoonGamesListQuery()
+  const { data: featuredGame, isLoading: isFeaturedGameLoading, error: featuredGameError } = useGetFeaturedGameQuery()
 
-  const isLoading = isGamelistLoading || isSoonGamesListLoading || isGamesFetching || isSoonGamesFetching || isFeaturedGameLoading || isFeaturedGameFetching
+
 
   return (
     <div>
-      {isFeaturedGameLoading ? (<HeroSkeleton />) : (getFeaturedGame && <Hero game={getFeaturedGame} id="home" />)}
+      {featuredGameError ? (
+        <ErrorMessage message="Erro ao carregar jogo em destaque." />
+      ) : isFeaturedGameLoading ? (
+        <HeroSkeleton />
+      ) : (
+        featuredGame && <Hero game={featuredGame} id="home" />
+      )}
 
-      {gamesList && (<Gamelist title="Games" $bgColor="light" allGames={gamesList} isLoading={isLoading} id="games" />)}
+      {gamesListError ? (
+        <ErrorMessage message="Erro ao carregar a lista de jogos." />
+      ) : (
+        <Gamelist title="Todos os Jogos" $bgColor="dark" allGames={gamesList} isLoading={isGamelistLoading} id="allGames"
+        />
+      )}
 
-      {soonGamesList && (<SoonGamesList title="Em Breve" $bgColor="dark" soonGames={soonGamesList} isLoading={isLoading} id="soonGames" />)}
+      {soonGamesListError ? (
+        <ErrorMessage message="Erro ao carregar jogos em breve" />
+      ) : (
+        <SoonGamesList title="Jogos em breve" $bgColor="light" soonGames={soonGamesList} isLoading={isSoonGamesListLoading} id="soonGames" />
+      )}
 
-      {gamesList && (<Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isLoading} id="category" />)}
+      {gamesListError ? (
+        <ErrorMessage message="Erro ao carregar categorias dos jogos" />
+      ) : (
+        <Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isGamelistLoading} id="category" />
+      )}
+
     </div >
   )
 }
