@@ -37,7 +37,7 @@ export const RegisterHeader = styled.div`
   }
 `
 
-export const RegisterForm = styled.form`
+export const RegisterForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -72,7 +72,7 @@ export default function Header() {
               <HeaderUserAvatar>
                 <UserAvatar>
                   <a href="/dashboard" title="Ir para o dashboard">
-                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={40} height={40} />
+                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={40} height={40} priority />
                   </a>
                 </UserAvatar>
               </HeaderUserAvatar>

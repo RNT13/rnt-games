@@ -24,21 +24,28 @@ export const Hero = ({ game, id }: HeroProps) => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isInCart = cartItems.some(item => item.id === +game.id);
 
-
   return (
     <HeroContainer aria-label="Seção principal de destaque" id={id} >
       <OverlayDarck />
-      <HeroImage src={game.media.cover} alt={game.name} fill priority />
+      {game.media && (
+        <HeroImage src={game.media.cover} alt={game.name} fill priority />
+      )}
       <HeroImageContent className="container">
         <TagDiv>
-          <Tag size="md" color="blue">{game.details.category}</Tag>
-          <Tag size="md" color="green">{game.details.system}</Tag>
-          {game.prices.discount > 0 && (<Tag size="md" color="red">-{game.prices.discount}%</Tag>)}
+          {game.details && (
+            <Tag size="md" color="blue">{game.details.category}</Tag>
+          )}
+          {game.details && (
+            <Tag size="md" color="green">{game.details.system}</Tag>
+          )}
+          {game.prices?.discount > 0 && (<Tag size="md" color="red">-{game.prices.discount}%</Tag>)}
         </TagDiv>
         <InfoDiv>
           <h2>{game.name}</h2>
           <p>{game.description}</p>
-          <h3>De <span>{formatToBRL(game.prices.old)}</span> <br /> Por apenas <span>{formatToBRL(game.prices.current)}</span></h3>
+          {game.prices && (
+            <h3>De <span>{formatToBRL(game.prices.old)}</span> <br /> Por apenas <span>{formatToBRL(game.prices.current)}</span></h3>
+          )}
         </InfoDiv>
         <ButtonDiv>
           <Button href={`/gameDetails/${game.id}`} title={`Ver detalhes de ${game.name}`}>

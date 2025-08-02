@@ -1,24 +1,40 @@
-'use client'
-
+import { useField } from 'formik'
 import { IMaskInput } from 'react-imask'
 
-type Props = {
+type MaskedInputProps = {
   name: string
-  mask: string
-  value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
+  mask?: string
   placeholder?: string
   className?: string
+  showError?: boolean
 }
 
-export const MaskedInput = ({ name, mask, value, onChange, onBlur, placeholder, className, }: Props) => {
+//exemplo de uso
+//<MaskedInput name="cep" mask="00000-000" placeholder="Digite seu CEP"/>
+
+export const MaskedInput = ({
+  name,
+  mask,
+  placeholder,
+  className,
+  showError = false,
+}: MaskedInputProps) => {
+  const [field, meta, helpers] = useField(name)
+
   return (
-    <IMaskInput id={name} name={name} mask={mask} value={value} onAccept={(val: string) =>
-      onChange({ target: { name, value: val } } as React.ChangeEvent<HTMLInputElement>)}
-      onBlur={onBlur}
-      placeholder={placeholder}
-      className={className}
-    />
+    <>
+      <IMaskInput
+        {...field}
+        mask={mask}
+        value={field.value || ''}
+        onAccept={(value: string) => helpers.setValue(value)}
+        onBlur={() => helpers.setTouched(true)}
+        placeholder={placeholder}
+        className={className}
+      />
+      {showError && meta.touched && meta.error ? (
+        <div style={{ color: 'red' }}>{meta.error}</div>
+      ) : null}
+    </>
   )
 }

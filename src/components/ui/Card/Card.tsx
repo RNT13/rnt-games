@@ -31,9 +31,9 @@ export const Card = ({ game, $bgColor }: CardProps) => {
             <Tag color="blue" size="sm" >
               {game.details.system}
             </Tag>
-            {game.prices.discount && (
+            {game.prices.discount > 0 && (
               <Tag color="red" size="sm" >
-                {game.prices.discount > 0 && `-${game.prices.discount}%`}
+                {`-${game.prices.discount}%`}
               </Tag>
             )}
           </CardTags>
@@ -56,7 +56,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
                   {game.details.category}
                 </Tag>
               </CardCategory>
-              {game.details.rating && (
+              {game.details.rating === "0.0" ? null : (
                 <CardStars>
                   <span>
                     <FaStar />
@@ -69,7 +69,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
 
         </CardBody>
         <CardFooter>
-          {game.release_date === 'COMING SOON' ? (
+          {new Date(game.releaseDate) > new Date() ? (
             <div>
               <CardPrice>Em Breve</CardPrice>
             </div>
@@ -84,7 +84,7 @@ export const Card = ({ game, $bgColor }: CardProps) => {
               Detalhes
             </Button>
 
-            {game.release_date === 'COMING SOON' ? (
+            {new Date(game.releaseDate) > new Date() ? (
               <Button title="Em Breve" disabled>
                 <FaHourglassHalf />
                 Em Breve

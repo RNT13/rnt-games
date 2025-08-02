@@ -29,7 +29,7 @@ export default function Details({ game }: detailsProps) {
     <DetailsContainer>
       <DetailsHero>
         <OverlayDarck />
-        <HeroImage src={`${game.media.cover}`} alt={game.name} width={1920} height={1080} />
+        <HeroImage src={`${game.media.cover}`} alt={game.name} width={1920} height={1080} priority />
         <DetailsHeroContainer className="container">
           <TagDiv>
             <Tag size="md" color="blue">{game.details.category}</Tag>
@@ -39,7 +39,7 @@ export default function Details({ game }: detailsProps) {
           <DetailsHeroInfo >
             <TitleH2>{game.name}</TitleH2>
 
-            {game.release_date === 'COMING SOON' ? (
+            {new Date(game.releaseDate) > new Date() ? (
               <TitleH3>Em breve</TitleH3>
             ) : game.prices.discount > 0 ? (
               <TitleH3><span>de {formatToBRL(game.prices.old)}</span> <br /> por {formatToBRL(game.prices.current)}</TitleH3>
@@ -47,9 +47,10 @@ export default function Details({ game }: detailsProps) {
               <TitleH3>Por apenas {formatToBRL(game.prices.current)}</TitleH3>
             )}
 
-            {game.release_date === 'COMING SOON' ? (
+            {new Date(game.releaseDate) > new Date() ? (
               <Button title="Em Breve" disabled>
                 <FaHourglassHalf />
+                Em Breve
               </Button>
             ) : isInCart ? (
               <Button title="No carrinho" disabled>
@@ -57,7 +58,7 @@ export default function Details({ game }: detailsProps) {
                 Jogo no carrinho
               </Button>
             ) : (
-              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success("Adicionado ao carrinho com sucesso!") }} title={`Comprar ${game.name}`}>
+              <Button onClick={() => { dispatch(addToCart(mapGameToCartItem(game))); toast.success(`${game.name} Adicionado ao carrinho com sucesso!`) }} title={`Comprar ${game.name}`}>
                 <HiShoppingCart />
                 Comprar Jogo
               </Button>

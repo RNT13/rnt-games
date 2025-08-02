@@ -43,7 +43,7 @@ export default function Gallery({ itemImage, game, }: GalleryProps) {
   return (
     <GalleryContainer>
       {itemImage.map((image, index) => (
-        <GalleryContent key={image.url} onClick={() => setModal({ isOpen: true, type: image.type, url: image.url })}>
+        <GalleryContent key={`${image.url}-${index}`} onClick={() => setModal({ isOpen: true, type: image.type, url: image.url })}>
           {getItemImage(image) && (
             <Image
               src={getItemImage(image)!}
@@ -64,7 +64,7 @@ export default function Gallery({ itemImage, game, }: GalleryProps) {
           <GalleryModal>
             <GalleryModalContent>
               {modal.type === 'image' ? (
-                <Image src={modal.url} alt={game.name} width={1920} height={1080} />
+                <Image src={modal.url} alt={game.name} width={1920} height={1080} priority />
               ) : (
                 <iframe src={modal.url} ></iframe>
               )}

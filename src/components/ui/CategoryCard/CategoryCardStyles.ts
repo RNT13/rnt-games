@@ -1,11 +1,12 @@
 import { theme, transitions } from '@/styles/theme'
+import Link from 'next/link'
 import { styled } from 'styled-components'
 
 export type CardProps = {
   $bgColor: 'light' | 'dark'
 }
 
-export const CategoryCardContainer = styled.div`
+export const CategoryCardContainer = styled(Link)`
   width: 100%;
   height: 100%;
 `

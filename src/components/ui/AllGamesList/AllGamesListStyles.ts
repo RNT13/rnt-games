@@ -33,6 +33,8 @@ export const AllGamesNav = styled.nav`
 
 export const NavUl = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: space-between;
   list-style: none;
   cursor: pointer;
@@ -51,6 +53,13 @@ export const NavUl = styled.ul`
       color: ${theme.colors.baseCyan.light};
       transition: ${transitions.default};
     }
+  }
+
+  li {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    text-overflow: ellipsis;
   }
 
   ${media.tablet} {

@@ -42,7 +42,6 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
               <li><Button href="/allGames#soonGames" title="Em Breve">Em Breve</Button></li>
 
               {Array.from(new Set(games.map(game => game.details.category)))
-                .slice(0, 8)
                 .map((category) => {
                   const id = category.toLowerCase().replace(/\s/g, "-");
                   return (

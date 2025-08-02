@@ -2,13 +2,13 @@
 
 import AllGamesList from "@/components/ui/AllGamesList/AllGamesList";
 import { ErrorMessage } from "@/components/ui/ErrorMessage/ErrorMessage";
-import { useGetGamesListQuery, useGetSoonGamesListQuery } from "@/redux/slices/apiSlice";
+import { useGetGamesListQuery, useGetUpcomingGamesQuery } from "@/redux/slices/apiSlice";
 
 
 export default function AllGames() {
   const { data: gamesList = [], isLoading: isGamesLoading, isFetching: isGamesFetching, error: gamesListError } = useGetGamesListQuery();
 
-  const { data: soonGamesList = [], isLoading: isSoonLoading, isFetching: isSoonFetching, error: soonGamesError } = useGetSoonGamesListQuery();
+  const { data: soonGamesList = [], isLoading: isSoonLoading, isFetching: isSoonFetching, error: soonGamesError } = useGetUpcomingGamesQuery();
 
   const isLoading = isGamesLoading || isSoonLoading || isGamesFetching || isSoonFetching;
   const hasError = !!gamesListError || !!soonGamesError;

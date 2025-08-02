@@ -19,14 +19,6 @@ declare interface CategoryType {
   gamesCount: number
 }
 
-declare interface CheapSharkDeal {
-  dealID: string
-  title: string
-  salePrice: string
-  normalPrice: string
-  savings: string
-}
-
 declare interface GalleryItem {
   type: 'image' | 'video'
   url: string
@@ -36,8 +28,8 @@ declare interface GameType {
   id: string
   name: string
   description: string
-  release_date: string
-  destaque: boolean
+  releaseDate: string
+  highlight: boolean
   media: {
     thumbnail: string
     cover: string
@@ -104,36 +96,20 @@ declare type PurchasePayLoad = {
   }
 }
 
-declare interface RawgGameType {
-  id: number
-  slug: string
-  name: string
-  description: string
-  released: string
-  tba: boolean
-  background_image: string
-  background_image_additional: string
-  rating: number
-  rating_top: number
-  parent_platforms: {
-    platforms: {
+declare type PaymentInfo = {
+  card: {
+    active: boolean
+    code: string
+    name: string
+    number: string
+    owner: {
       name: string
+      document: string
     }
-    name: string
-  }[]
-  stores: {
-    store: {
-      name: string
-      domain: string
+    expires: {
+      month: number
+      year: number
     }
-  }[]
-  developers: {
-    name: string
-  }[]
-  genres: {
-    name: string
-  }[]
-  publishers: {
-    name: string
-  }[]
+  }
+  installments: number
 }

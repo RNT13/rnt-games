@@ -31,9 +31,9 @@ export const CheckoutContent = styled.div`
 `
 
 export const Row = styled.div<StylesProps>`
+  gap: 24px;
   display: flex;
   align-items: flex-end;
-  column-gap: 24px;
   margin-top: ${props => props.$marginTop || 'auto'};
   margin-bottom: ${props => props.$marginBottom || 'auto'};
 

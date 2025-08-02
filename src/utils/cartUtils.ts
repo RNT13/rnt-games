@@ -3,7 +3,7 @@ export function mapGameToCartItem(game: GameType): CartItemType {
     id: +game.id,
     name: game.name,
     media: {
-      thumbnail: game.media.thumbnail
+      thumbnail: game.media.cover
     },
     prices: game.prices,
     quantity: 1

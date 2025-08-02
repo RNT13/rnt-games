@@ -34,7 +34,8 @@ export const Category = ({ $bgColor, title, categoryList, isLoading, id }: Categ
                 name={category.name}
                 image={category.image}
                 gamesCount={category.gamesCount}
-                $bgColor={$bgColor} />
+                $bgColor={$bgColor}
+                href={`/allGames/#${category.id}`} title={`Ver todos os jogos da categoria ${category.name}`} />
             ))
           )}
 

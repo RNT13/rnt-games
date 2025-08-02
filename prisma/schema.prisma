@@ -1,0 +1,125 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id           Int        @id @default(autoincrement())
+  name String @default("Nome temporário")
+  description  String
+  releaseDate  DateTime
+  highlight     Boolean    @default(false)
+
+  // Relações 1:1
+  media        Media?     @relation(fields: [mediaId], references: [id])
+  mediaId      Int? @unique
+
+  details      Details?   @relation(fields: [detailsId], references: [id])
+  detailsId    Int? @unique
+
+  prices       Prices?    @relation(fields: [pricesId], references: [id])
+  pricesId     Int? @unique
+
+  orderItems   OrderItems[]
+
+  createdAt    DateTime   @default(now())
+}
+
+// Media
+model Media {
+  id        Int          @id @default(autoincrement())
+  thumbnail String
+  cover     String
+
+  game      Game?
+  gallery   GalleryItem[]
+}
+
+// Galeria (1:N)
+model GalleryItem {
+  id      Int    @id @default(autoincrement())
+  url     String
+  type    String @default("image") // Pode ser 'image' ou 'video'
+  media   Media  @relation(fields: [mediaId], references: [id])
+  mediaId Int
+}
+
+// Details
+model Details {
+  id        Int    @id @default(autoincrement())
+  system    String
+  category  String
+  developer String
+  publisher String
+  rating    String @default("0.0")  // Avaliação do jogo, pode ser uma string para suportar formatos como '7.8/10'
+
+  game      Game?
+}
+
+// Prices
+model Prices {
+  id      Int     @id @default(autoincrement())
+  discount Float
+  old      Float
+  current  Float
+
+  game     Game?
+}
+
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  name        String
+  document    String
+  email       String
+  totalPrice  Float
+  orderId     String   @unique
+  paymentInfo PaymentInfo?
+  createdAt   DateTime @default(now())
+
+  orderItems  OrderItems[]
+  User User[]
+
+}
+
+model OrderItems {
+  id      Int   @id @default(autoincrement())
+  order   Order @relation(fields: [orderId], references: [id])
+  gameId  Int
+  orderId Int
+
+  game    Game  @relation(fields: [gameId], references: [id])
+}
+
+model PaymentInfo {
+  id            Int      @id @default(autoincrement())
+  paymentType   String   // Ex: 'credit_card', 'boleto'
+  status        String   // Ex: 'pending', 'completed'
+  transactionId String?
+  orderId       Int      @unique
+
+  order         Order    @relation(fields: [orderId], references: [id])
+}
+
+
+model User {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String   @unique
+  password    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orders      Order[]
+}

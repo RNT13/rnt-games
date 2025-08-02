@@ -3,7 +3,7 @@ import { CategoryCardBody, CategoryCardContainer, CategoryCardFooter, CategoryCa
 
 export const CategoryCardSkeleton = () => {
   return (
-    <CategoryCardContainer>
+    <CategoryCardContainer href="#">
       <CategoryCardHeader>
         <Skeleton width='100%' height={150} />
       </CategoryCardHeader>

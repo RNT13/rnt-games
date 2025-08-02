@@ -7,15 +7,13 @@ import { Hero } from "@/components/ui/Hero/Hero";
 import { HeroSkeleton } from "@/components/ui/Hero/HeroSkeleton";
 import { SoonGamesList } from "@/components/ui/SoonGames/SoonGames";
 import { getCategoriesFromGames } from "@/hooks/getCategoriesFromGames";
-import { useGetFeaturedGameQuery, useGetGamesListQuery, useGetSoonGamesListQuery } from "@/redux/slices/apiSlice";
+import { useGetFeaturedGameQuery, useGetGamesListQuery, useGetUpcomingGamesQuery } from "@/redux/slices/apiSlice";
 
 
 export default function Home() {
-
-  const { data: gamesList = [], isLoading: isGamelistLoading, error: gamesListError } = useGetGamesListQuery()
-  const { data: soonGamesList = [], isLoading: isSoonGamesListLoading, error: soonGamesListError } = useGetSoonGamesListQuery()
-  const { data: featuredGame, isLoading: isFeaturedGameLoading, error: featuredGameError } = useGetFeaturedGameQuery()
-
+  const { data: gamesList = [], isLoading: isGamesListLoading, error: gamesListError } = useGetGamesListQuery();
+  const { data: featuredGame, isLoading: isFeaturedGameLoading, error: featuredGameError } = useGetFeaturedGameQuery();
+  const { data: soonGamesList = [], isLoading: isSoonGamesListLoading, error: soonGamesListError } = useGetUpcomingGamesQuery();
 
 
   return (
@@ -25,13 +23,13 @@ export default function Home() {
       ) : isFeaturedGameLoading ? (
         <HeroSkeleton />
       ) : (
-        featuredGame && <Hero game={featuredGame} id="home" />
+        !featuredGame ? null : <Hero game={featuredGame} id="home" />
       )}
 
       {gamesListError ? (
         <ErrorMessage message="Erro ao carregar a lista de jogos." />
       ) : (
-        <Gamelist title="Todos os Jogos" $bgColor="dark" allGames={gamesList} isLoading={isGamelistLoading} id="allGames"
+        <Gamelist title="Todos os Jogos" $bgColor="dark" allGames={gamesList} isLoading={isGamesListLoading} id="allGames"
         />
       )}
 
@@ -44,7 +42,7 @@ export default function Home() {
       {gamesListError ? (
         <ErrorMessage message="Erro ao carregar categorias dos jogos" />
       ) : (
-        <Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isGamelistLoading} id="category" />
+        <Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isGamesListLoading} id="category" />
       )}
 
     </div >

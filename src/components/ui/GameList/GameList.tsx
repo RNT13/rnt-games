@@ -12,6 +12,10 @@ interface GameListProps {
 }
 
 export const Gamelist = ({ $bgColor, allGames, title, isLoading, id }: GameListProps) => {
+  if (!Array.isArray(allGames)) {
+    return <div>Error: allGames is not an array</div>;
+  }
+
   return (
     <GameListContainer id={id}>
       <Section $bgColor={$bgColor} href="/allGames" title={title} >

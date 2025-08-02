@@ -7,7 +7,7 @@ export default function Loading() {
   return (
     <LoadingContainer className="container">
       <LoadingContent >
-        <LoadingImage src="/controle.png" alt="ilustração de controle" width={300} height={300} />
+        <LoadingImage src="/controle.png" alt="ilustração de controle" width={300} height={300} priority />
         <h2>Carregando...</h2>
       </LoadingContent >
     </LoadingContainer >
