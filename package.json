@@ -16,6 +16,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
     "@prisma/client": "^6.13.0",
+    "@prisma/extension-accelerate": "^2.0.2",
     "@reduxjs/toolkit": "^2.8.2",
     "@svgr/webpack": "^8.1.0",
     "bcrypt-ts": "^7.1.0",
