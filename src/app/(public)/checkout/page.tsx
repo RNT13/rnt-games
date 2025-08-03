@@ -244,7 +244,6 @@ export default function Checkout() {
                     </Row>
 
                     <Row $marginTop="24px">
-
                       <InputGroup>
                         <label htmlFor="cardName" >Nome no Cartão</label>
                         <MaskedInput
