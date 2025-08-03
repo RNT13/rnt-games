@@ -113,3 +113,15 @@ declare type PaymentInfo = {
   }
   installments: number
 }
+
+declare type RegisterPayLoad = {
+  name: string
+  email: string
+  password: string
+}
+
+declare type RegisterResponse = {
+  id: string
+  name: string
+  email: string
+}

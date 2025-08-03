@@ -24,8 +24,22 @@ export const apiSlice = createApi({
         method: 'POST',
         body
       })
+    }),
+    registerUser: builder.mutation<RegisterResponse, RegisterPayLoad>({
+      query: body => ({
+        url: 'users',
+        method: 'POST',
+        body
+      })
     })
   })
 })
 
-export const { useGetFeaturedGameQuery, useGetGamesListQuery, usePostPurchaseMutation, useGetGameByIdQuery, useGetUpcomingGamesQuery } = apiSlice
+export const {
+  useGetFeaturedGameQuery,
+  useGetGamesListQuery,
+  usePostPurchaseMutation,
+  useGetGameByIdQuery,
+  useGetUpcomingGamesQuery,
+  useRegisterUserMutation
+} = apiSlice

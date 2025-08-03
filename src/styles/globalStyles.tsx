@@ -83,6 +83,8 @@ export const CloseButton = styled.button`
 `
 
 export const TitleH2 = styled.h2`
+  display: flex;
+  align-items: center;
   font-size: 24px;
   font-weight: 600;
   color: ${theme.colors.baseBlue.light30};

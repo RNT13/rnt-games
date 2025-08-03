@@ -34,6 +34,12 @@ export const RegisterHeader = styled.div`
 
   h2 {
     margin-bottom: 12px;
+    color: ${theme.colors.baseBlue.dark};
+
+    svg {
+      font-size: 36px;
+      margin-left: 12px;
+    }
   }
 `
 
@@ -73,6 +79,11 @@ export const RegisterForm = styled.div`
         outline: none;
         border: 2px solid ${theme.colors.baseBlue.dark};
       }
+
+      &.error {
+        border: 2px solid ${theme.colors.baseRed.base};
+        background-color: ${theme.colors.baseRed.light02};
+      }
     }
   }
 `
@@ -84,8 +95,8 @@ export const RegisterFooter = styled.div`
   gap: 12px;
   padding: 0 12px;
 
-  a {
-    color: ${theme.colors.baseBlue.dark};
+  a,
+  button {
     text-decoration: none;
 
     &:hover {
