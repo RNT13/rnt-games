@@ -34,9 +34,9 @@ export default function Home() {
       )}
 
       {soonGamesListError ? (
-        <ErrorMessage message="Erro ao carregar jogos em breve" />
+        <ErrorMessage message="Erro ao carregar Em breve" />
       ) : (
-        <SoonGamesList title="Jogos em breve" $bgColor="light" soonGames={soonGamesList} isLoading={isSoonGamesListLoading} id="soonGames" />
+        <SoonGamesList title="Em breve" $bgColor="light" soonGames={soonGamesList} isLoading={isSoonGamesListLoading} id="soonGames" />
       )}
 
       {gamesListError ? (

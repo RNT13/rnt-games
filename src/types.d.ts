@@ -125,3 +125,17 @@ declare type RegisterResponse = {
   name: string
   email: string
 }
+
+declare type LoginPayLoad = {
+  email: string
+  password: string
+}
+
+declare type LoginResponse = {
+  token: string
+  user: {
+    id: string
+    name: string
+    email: string
+  }
+}

@@ -31,6 +31,13 @@ export const apiSlice = createApi({
         method: 'POST',
         body
       })
+    }),
+    loginUser: builder.mutation<LoginResponse, LoginPayLoad>({
+      query: body => ({
+        url: 'auth/login',
+        method: 'POST',
+        body
+      })
     })
   })
 })
@@ -41,5 +48,6 @@ export const {
   usePostPurchaseMutation,
   useGetGameByIdQuery,
   useGetUpcomingGamesQuery,
-  useRegisterUserMutation
+  useRegisterUserMutation,
+  useLoginUserMutation
 } = apiSlice

@@ -1,9 +1,10 @@
-import { theme } from '@/styles/theme'
+import { media, theme } from '@/styles/theme'
 import { styled } from 'styled-components'
 
 export const EmptyCartContainer = styled.div``
 
 export const EmptyCartContent = styled.div`
+  width: 100%;
   padding: 24px;
   margin: 0 24px;
   border-radius: 12px;
@@ -19,6 +20,10 @@ export const EmptyCartContent = styled.div`
   p {
     color: ${theme.colors.baseBlue.dark30};
     margin-bottom: 24px;
+  }
+
+  ${media.mobile} {
+    margin: 0;
   }
 `
 

@@ -38,9 +38,6 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
           <AllGamesNav >
 
             <NavUl>
-              <li><Button href="/allGames#games" title="Games">Games</Button></li>
-              <li><Button href="/allGames#soonGames" title="Em Breve">Em Breve</Button></li>
-
               {Array.from(new Set(games.map(game => game.details.category)))
                 .map((category) => {
                   const id = category.toLowerCase().replace(/\s/g, "-");
@@ -82,41 +79,6 @@ export default function AllGamesList({ games, soonGames, isLoading }: AllGamesPr
             </SectionCardWrapper>
           </Section>
         )}
-
-        <section id="games">
-          <Section className="firstSection" $bgColor="light" title="Games">
-            <SectionCardWrapper>
-              {isLoading ? (
-                <>
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                </>
-              ) : (
-                games.map((game) => (<Card key={game.id} game={game} $bgColor="light" />))
-              )}
-
-            </SectionCardWrapper>
-          </Section>
-        </section>
-
-        <section id="soonGames">
-          <Section $bgColor="dark" title="Em Breve" >
-            <SectionCardWrapper>
-              {isLoading ? (
-                <>
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                  <CardSkeleton />
-                </>
-              ) : (
-                soonGames.map((game) => (<Card key={game.id} game={game} $bgColor="dark" />))
-              )}
-            </SectionCardWrapper>
-          </Section>
-        </section>
 
         {/* mostra jogos por categoria */}
         {generateCategorySections({ games, soonGames, isLoading })}
