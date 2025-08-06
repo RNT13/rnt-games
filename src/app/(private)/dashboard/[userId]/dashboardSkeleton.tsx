@@ -1,26 +1,34 @@
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { DashboardColumn, DashboardContainer, DashboardContent, DashboardHeader } from "./dashboardStyles";
+import { DashboardColumn, DashboardContainer, DashboardContent, SkeletonBody, SkeletonHeader, SkeletonRightBar } from "./dashboardStyles";
 
 
 export const DashboardSkeleton = () => {
   return (
     <DashboardContainer className="container">
+
       <DashboardContent>
-        <Skeleton height={600} width={200} />
+        <SkeletonRightBar>
+          <Skeleton height="100%" width="100%" />
+        </SkeletonRightBar>
 
         <DashboardColumn>
-          <Skeleton height={20} width="100%" style={{ marginBottom: 15 }} />
+          <Skeleton height={30} width="50%" />
 
-          <DashboardHeader>
-            <Skeleton width={300} height={150} />
-            <Skeleton width={300} height={150} />
-            <Skeleton width={300} height={150} />
-          </DashboardHeader>
+          <SkeletonHeader >
+            <Skeleton height="100%" width="100%" />
+            <Skeleton height="100%" width="100%" />
+            <Skeleton height="100%" width="100%" />
+          </SkeletonHeader>
 
-          <Skeleton width='100%' height={395} />
+          <SkeletonBody>
+            <Skeleton height="100%" width="100%" />
+          </SkeletonBody>
+
         </DashboardColumn>
-      </DashboardContent >
+
+      </DashboardContent>
+
     </DashboardContainer>
   );
 };

@@ -13,7 +13,7 @@ export const DashboardContainer = styled.div``
 export const DashboardContent = styled.div`
   margin: 24px 0;
   width: 100%;
-  height: 600px;
+  height: 100%;
   display: flex;
   gap: 24px;
 
@@ -24,14 +24,14 @@ export const DashboardContent = styled.div`
 `
 
 export const DashboardRightBar = styled.div`
+  padding: 16px;
+  width: 100%;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   border-radius: 8px;
-  padding: 16px;
-  width: 100%;
-  max-width: 200px;
   background-color: ${theme.colors.baseBlue.light30};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
 
@@ -48,7 +48,7 @@ export const DashboardAvatarDiv = styled.div`
   padding-bottom: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   border-bottom: 1px solid ${theme.colors.baseBlue.dark40};
 
@@ -64,11 +64,9 @@ export const DashboardAvatarDiv = styled.div`
 `
 
 export const DashboardAvatar = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 `
 
@@ -105,6 +103,7 @@ export const AvatarInfo = styled.div`
 
 export const DashboardButtonDiv = styled.div<DashBoardProps>`
   width: 100%;
+  height: 100%;
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -147,8 +146,10 @@ export const DashboardDetails = styled.div``
 export const DashboardColumn = styled.div`
   width: 100%;
   height: 100%;
+  gap: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   color: ${theme.colors.baseBlue.light20};
 
   span {
@@ -162,8 +163,8 @@ export const DashboardColumn = styled.div`
 `
 
 export const DashboardRow = styled.div`
-  width: 100%;
   display: grid;
+  overflow: hidden;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
 
@@ -186,6 +187,8 @@ export const DashboardRow = styled.div`
 `
 
 export const DashboardHeader = styled.div`
+  width: 100%;
+  height: 150px;
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
@@ -232,6 +235,7 @@ export const DashboardHeaderItem = styled.div`
 
 export const DashboardBody = styled.div`
   width: 100%;
+  height: 500px;
   padding: 16px;
   border-radius: 8px;
   background-color: ${theme.colors.baseBlue.light30};
@@ -308,5 +312,46 @@ export const DashboardCardItem = styled.div`
       display: flex;
       justify-content: center;
     }
+  }
+`
+
+export const SkeletonBody = styled.div`
+  width: 100%;
+  height: 500px;
+`
+
+export const SkeletonRightBar = styled.div`
+  width: 100%;
+  max-width: 200px;
+
+  ${media.tablet}, ${media.mobile} {
+    width: 100%;
+    max-width: 100%;
+    height: 120px;
+  }
+`
+
+export const SkeletonColumn = styled.div`
+  width: 100%;
+  height: 100%;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const SkeletonHeader = styled.div`
+  width: 100%;
+  height: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+
+  ${media.tablet}, ${media.mobile} {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: 500px;
+    width: 100%;
   }
 `

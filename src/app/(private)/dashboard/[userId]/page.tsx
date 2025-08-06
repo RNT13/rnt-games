@@ -206,6 +206,54 @@ export default function Dashboard() {
                     </Button>
                   </div>
                 </DashboardCardItem>
+                <DashboardCardItem>
+                  <div>
+                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={300} height={150} />
+                  </div>
+                  <div>
+                    <TitleH3>Games</TitleH3>
+                    <Button title="Baixar" >
+                      <FaDownload />
+                      Baixar
+                    </Button>
+                  </div>
+                </DashboardCardItem>
+                <DashboardCardItem>
+                  <div>
+                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={300} height={150} />
+                  </div>
+                  <div>
+                    <TitleH3>Games</TitleH3>
+                    <Button title="Baixar" >
+                      <FaDownload />
+                      Baixar
+                    </Button>
+                  </div>
+                </DashboardCardItem>
+                <DashboardCardItem>
+                  <div>
+                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={300} height={150} />
+                  </div>
+                  <div>
+                    <TitleH3>Games</TitleH3>
+                    <Button title="Baixar" >
+                      <FaDownload />
+                      Baixar
+                    </Button>
+                  </div>
+                </DashboardCardItem>
+                <DashboardCardItem>
+                  <div>
+                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={300} height={150} />
+                  </div>
+                  <div>
+                    <TitleH3>Games</TitleH3>
+                    <Button title="Baixar" >
+                      <FaDownload />
+                      Baixar
+                    </Button>
+                  </div>
+                </DashboardCardItem>
               </DashboardRow>
             </DashboardBody>
 
