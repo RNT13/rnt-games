@@ -15,7 +15,9 @@ import { IoLogoGameControllerA } from "react-icons/io";
 import { IoBag, IoMenu, IoPerson } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { TbListDetails } from "react-icons/tb";
+import { DashboardSkeleton } from "./dashboardSkeleton";
 import { AvatarInfo, AvatarMenu, DashboardAvatar, DashboardAvatarDiv, DashboardAvatarImage, DashboardBody, DashboardButton, DashboardButtonDiv, DashboardCardItem, DashboardCardLine, DashboardColumn, DashboardContainer, DashboardContent, DashboardHeader, DashboardHeaderItem, DashboardRightBar, DashboardRow } from "./dashboardStyles";
+
 
 export default function Dashboard() {
   const dispatch = useAppDispatch();
@@ -39,13 +41,13 @@ export default function Dashboard() {
     }
   };
 
-
   if (!user) {
-    return null;
+    return <DashboardSkeleton />;
   }
 
   return (
-    <DashboardContainer>
+    <DashboardContainer className="container">
+
       <DashboardContent>
         <DashboardRightBar>
 
@@ -361,6 +363,7 @@ export default function Dashboard() {
         )}
 
       </DashboardContent>
+
     </DashboardContainer>
   )
 }

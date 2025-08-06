@@ -8,12 +8,10 @@ type DashBoardProps = {
   $isActive?: boolean
 }
 
-export const DashboardContainer = styled.div`
-  margin: 12px;
-  font-weight: 700;
-`
+export const DashboardContainer = styled.div``
 
 export const DashboardContent = styled.div`
+  margin: 24px 0;
   width: 100%;
   height: 600px;
   display: flex;
