@@ -1,4 +1,4 @@
-export function mapGameToCartItem(game: GameType): CartItemType {
+export function mapGameToCartItem(game: GameType): CartItem {
   return {
     id: +game.id,
     name: game.name,
