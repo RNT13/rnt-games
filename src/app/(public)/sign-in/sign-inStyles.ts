@@ -45,7 +45,8 @@ export const SignInForm = styled.form`
   width: 100%;
   gap: 12px;
 
-  a {
+  a,
+  button {
     width: 200px;
     display: flex;
     justify-content: center;
@@ -57,19 +58,6 @@ export const SignInForm = styled.form`
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
-
-    input {
-      padding: 8px;
-      width: 100%;
-      height: 40px;
-      border-radius: 8px;
-      border: 2px solid ${theme.colors.baseBlue.light20};
-
-      &:focus {
-        outline: none;
-        border: 2px solid ${theme.colors.baseBlue.dark};
-      }
-    }
   }
 `
 

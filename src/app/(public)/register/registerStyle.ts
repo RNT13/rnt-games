@@ -32,6 +32,15 @@ export const RegisterHeader = styled.div`
   border-bottom: 1px solid ${theme.colors.baseBlue.dark};
   margin-bottom: 12px;
 
+  svg {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 34px;
+    cursor: pointer;
+    color: ${theme.colors.baseBlue.dark20};
+  }
+
   h2 {
     margin-bottom: 12px;
     color: ${theme.colors.baseBlue.dark};
@@ -43,7 +52,7 @@ export const RegisterHeader = styled.div`
   }
 `
 
-export const RegisterForm = styled.div`
+export const RegisterForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

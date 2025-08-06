@@ -42,7 +42,7 @@ export default function Home() {
       {gamesListError ? (
         <ErrorMessage message="Erro ao carregar categorias dos jogos" />
       ) : (
-        <Category title="Categorias" $bgColor="light" categoryList={getCategoriesFromGames(gamesList)} isLoading={isGamesListLoading} id="category" />
+        <Category title="Categorias" $bgColor="dark" categoryList={getCategoriesFromGames(gamesList)} isLoading={isGamesListLoading} id="category" />
       )}
 
     </div >

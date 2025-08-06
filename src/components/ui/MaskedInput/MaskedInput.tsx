@@ -1,5 +1,6 @@
 import { useField } from 'formik'
 import { IMaskInput } from 'react-imask'
+import { MaskedInputContainer } from './MaskedInputStyles'
 
 type MaskedInputProps = {
   name: string
@@ -8,16 +9,10 @@ type MaskedInputProps = {
   className?: string
   showError?: boolean
   type?: string
+  id?: string
 }
 
-export const MaskedInput = ({
-  name,
-  mask,
-  placeholder,
-  className,
-  showError = false,
-  type = 'text'
-}: MaskedInputProps) => {
+export const MaskedInput = ({ name, mask, placeholder, className, showError = false, type = 'text', id }: MaskedInputProps) => {
   const [field, meta, helpers] = useField(name)
 
   const commonProps = {
@@ -25,11 +20,12 @@ export const MaskedInput = ({
     placeholder,
     className,
     type,
+    id,
     onBlur: () => helpers.setTouched(true),
   }
 
   return (
-    <>
+    <MaskedInputContainer>
       {mask ? (
         <IMaskInput
           {...commonProps}
@@ -49,6 +45,6 @@ export const MaskedInput = ({
           {meta.error}
         </div>
       )}
-    </>
+    </MaskedInputContainer>
   )
 }

@@ -4,27 +4,21 @@ import { Button } from "@/components/ui/Button/Button";
 import EmptyCart from "@/components/ui/EmptyCart/EmptyCart";
 import { FormCard } from "@/components/ui/FormCard/FormCard";
 import { MaskedInput } from "@/components/ui/MaskedInput/MaskedInput";
+import { useAppSelector } from "@/hooks/useAppDispatch";
 import { usePostPurchaseMutation } from "@/redux/slices/apiSlice";
 import { RootState } from "@/redux/store";
 import { formatToBRL } from "@/utils/converterUtils";
-import { checkInputHasError } from "@/utils/maskedInputCheck";
+import { MaskedInputCheck } from "@/utils/maskedInputCheck";
 import { getTotalPrice } from "@/utils/priceUtils";
 import { FormikProvider, useFormik } from 'formik';
 import { useEffect, useState } from "react";
 import { CiBarcode } from "react-icons/ci";
 import { FaRegCreditCard } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import * as yup from 'yup';
 import { CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabDiv, TabStyledButton } from "./checkoutStyles";
 
 
 export default function Checkout() {
-  const [payWithCard, setPayWithCard] = useState(false)
-  const [purchase, { isLoading, isSuccess, data }] = usePostPurchaseMutation()
-  const { items } = useSelector((state: RootState) => state.cart)
-  const [installments, setInstallments] = useState<InstallmentType[]>([])
-
-  const totalPrice = getTotalPrice(items)
 
   const form = useFormik({
     initialValues: {
@@ -60,7 +54,7 @@ export default function Checkout() {
       cardCode: yup.string().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
       instalments: yup.number().when((values, schema) => payWithCard ? schema.required('Campo obrigatório') : schema),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       purchase({
         billing: {
           name: values.fullName,
@@ -95,6 +89,14 @@ export default function Checkout() {
       })
     }
   })
+
+  const [purchase, { isLoading, isSuccess, data }] = usePostPurchaseMutation()
+
+  const [payWithCard, setPayWithCard] = useState(false)
+  const { items } = useAppSelector((state: RootState) => state.cart)
+  const [installments, setInstallments] = useState<InstallmentType[]>([])
+
+  const totalPrice = getTotalPrice(items)
 
   useEffect(() => {
     const calculateInstallments = () => {
@@ -160,8 +162,9 @@ export default function Checkout() {
                     <label htmlFor="fullName">Nome completo</label>
                     <MaskedInput
                       name="fullName"
+                      id="fullName"
                       placeholder="Digite seu nome completo"
-                      className={checkInputHasError('fullName', form) ? 'error' : ''}
+                      className={MaskedInputCheck('fullName', form) ? 'error' : ''}
                     />
                   </InputGroup>
 
@@ -169,8 +172,9 @@ export default function Checkout() {
                     <label htmlFor="email" >Seu e-mail</label>
                     <MaskedInput
                       name="email"
+                      id="email"
                       placeholder="seu@email.com"
-                      className={checkInputHasError('email', form) ? 'error' : ''}
+                      className={MaskedInputCheck('email', form) ? 'error' : ''}
                     />
                   </InputGroup>
 
@@ -178,9 +182,10 @@ export default function Checkout() {
                     <label htmlFor="cpf" >CPF</label>
                     <MaskedInput
                       name="cpf"
+                      id="cpf"
                       mask="000.000.000-00"
                       placeholder="000.000.000-00"
-                      className={checkInputHasError('cpf', form) ? 'error' : ''}
+                      className={MaskedInputCheck('cpf', form) ? 'error' : ''}
                     />
 
                   </InputGroup>
@@ -191,8 +196,11 @@ export default function Checkout() {
 
                   <InputGroup>
                     <label htmlFor="deliveryEmail" >E-mail</label>
-                    <MaskedInput name="deliveryEmail" placeholder="seu@email.com"
-                      className={checkInputHasError('deliveryEmail', form) ? 'error' : ''}
+                    <MaskedInput
+                      name="deliveryEmail"
+                      id="deliveryEmail"
+                      placeholder="seu@email.com"
+                      className={MaskedInputCheck('deliveryEmail', form) ? 'error' : ''}
                     />
                   </InputGroup>
 
@@ -200,8 +208,9 @@ export default function Checkout() {
                     <label htmlFor="confirmDeliveryEmail" >Confirme seu E-mail</label>
                     <MaskedInput
                       name="confirmDeliveryEmail"
+                      id="confirmDeliveryEmail"
                       placeholder="seu@email.com"
-                      className={checkInputHasError('confirmDeliveryEmail', form) ? 'error' : ''}
+                      className={MaskedInputCheck('confirmDeliveryEmail', form) ? 'error' : ''}
                     />
                   </InputGroup>
 
@@ -227,8 +236,9 @@ export default function Checkout() {
                         <label htmlFor="cardOwner" >Nome do titular do Cartão</label>
                         <MaskedInput
                           name="cardOwner"
+                          id="cardOwner"
                           placeholder="Nome do titular do Cartão"
-                          className={checkInputHasError('cardOwner', form) ? 'error' : ''}
+                          className={MaskedInputCheck('cardOwner', form) ? 'error' : ''}
                         />
                       </InputGroup>
 
@@ -236,9 +246,10 @@ export default function Checkout() {
                         <label htmlFor="cpfCardOwner" >CPF do titular do Cartão</label>
                         <MaskedInput
                           name="cpfCardOwner"
+                          id="cpfCardOwner"
                           placeholder="000.000.000-00"
                           mask={'000.000.000-00'}
-                          className={checkInputHasError('cpfCardOwner', form) ? 'error' : ''} />
+                          className={MaskedInputCheck('cpfCardOwner', form) ? 'error' : ''} />
                       </InputGroup>
 
                     </Row>
@@ -248,8 +259,9 @@ export default function Checkout() {
                         <label htmlFor="cardName" >Nome no Cartão</label>
                         <MaskedInput
                           name="cardName"
+                          id="cardName"
                           placeholder="Nome no Cartão"
-                          className={checkInputHasError('cardName', form) ? 'error' : ''}
+                          className={MaskedInputCheck('cardName', form) ? 'error' : ''}
                         />
                       </InputGroup>
 
@@ -257,8 +269,9 @@ export default function Checkout() {
                         <label htmlFor="cardNumber" >Numero do Cartão</label>
                         <MaskedInput
                           name="cardNumber"
+                          id="cardNumber"
                           placeholder="Numero do Cartão"
-                          className={checkInputHasError('cardNumber', form) ? 'error' : ''}
+                          className={MaskedInputCheck('cardNumber', form) ? 'error' : ''}
                           mask={'0000 0000 0000 0000'} />
                       </InputGroup>
 
@@ -266,19 +279,29 @@ export default function Checkout() {
                         <label htmlFor="expiresMonth" >Mes de vencimento</label>
                         <MaskedInput
                           name="expiresMonth"
+                          id="expiresMonth"
                           placeholder="MM"
                           mask={'00'}
-                          className={checkInputHasError('expiresMonth', form) ? 'error' : ''} />
+                          className={MaskedInputCheck('expiresMonth', form) ? 'error' : ''} />
                       </InputGroup>
 
                       <InputGroup $maxWidth="150px">
                         <label htmlFor="expiresYear" >Ano de vencimento</label>
-                        <MaskedInput name="expiresYear" placeholder="AA" mask={'00'} className={checkInputHasError('expiresYear', form) ? 'error' : ''} />
+                        <MaskedInput
+                          name="expiresYear"
+                          id="expiresYear"
+                          placeholder="AA"
+                          mask={'00'}
+                          className={MaskedInputCheck('expiresYear', form) ? 'error' : ''} />
                       </InputGroup>
 
                       <InputGroup $maxWidth="50px">
                         <label htmlFor="cardCode" >CVV</label>
-                        <MaskedInput name="cardCode" placeholder="CVV" mask={'000'} className={checkInputHasError('cardCode', form) ? 'error' : ''} />
+                        <MaskedInput name="cardCode"
+                          placeholder="CVV"
+                          id="cardCode"
+                          mask={'000'}
+                          className={MaskedInputCheck('cardCode', form) ? 'error' : ''} />
                       </InputGroup>
                     </Row>
 
@@ -292,7 +315,7 @@ export default function Checkout() {
                           value={form.values.instalments}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
-                          className={checkInputHasError('instalments', form) ? 'error' : ''}
+                          className={MaskedInputCheck('instalments', form) ? 'error' : ''}
                         >
                           {installments.map((installment) => (
                             <option key={installment.quantity} value={installment.quantity}>

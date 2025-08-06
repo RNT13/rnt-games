@@ -1,13 +1,13 @@
 import { addToCart } from "@/redux/slices/cartSlice"
 import { RootState } from "@/redux/store"
 
+import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch"
 import { mapGameToCartItem } from "@/utils/cartUtils"
 import { formatToBRL } from "@/utils/converterUtils"
 import toast from "react-hot-toast"
 import { FaHourglassHalf, FaStar, FaThumbsUp } from "react-icons/fa"
 import { HiShoppingCart } from "react-icons/hi"
 import { TbListDetails } from "react-icons/tb"
-import { useDispatch, useSelector } from "react-redux"
 import { Button } from "../Button/Button"
 import { Tag } from "../Tag/Tag"
 import { CardBody, CardButtonDiv, CardCategory, CardContainer, CardContent, CardDescription, CardFooter, CardHeader, CardImage, CardPrice, CardStars, CardTags, CardTitle } from "./CardStyles"
@@ -18,9 +18,12 @@ interface CardProps {
 }
 
 export const Card = ({ game, $bgColor }: CardProps) => {
-  const dispatch = useDispatch()
-  const cartItems = useSelector((state: RootState) => state.cart.items)
-  const isInCart = cartItems.some(item => item.id === +game.id)
+  const dispatch = useAppDispatch()
+
+  const { items } = useAppSelector((state: RootState) => state.cart)
+
+  const isInCart = items.some(item => item.id === +game.id)
+
 
   return (
     <CardContainer>

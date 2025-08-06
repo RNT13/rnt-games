@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api'
+    baseUrl: '/api',
+    credentials: 'include'
   }),
   endpoints: builder => ({
     getFeaturedGame: builder.query<GameType, void>({
@@ -38,6 +39,12 @@ export const apiSlice = createApi({
         method: 'POST',
         body
       })
+    }),
+    logoutUser: builder.mutation<{ success: boolean }, void>({
+      query: () => ({
+        url: 'auth/logout',
+        method: 'POST'
+      })
     })
   })
 })
@@ -49,5 +56,6 @@ export const {
   useGetGameByIdQuery,
   useGetUpcomingGamesQuery,
   useRegisterUserMutation,
-  useLoginUserMutation
+  useLoginUserMutation,
+  useLogoutUserMutation
 } = apiSlice

@@ -8,7 +8,7 @@ import { FormikProps } from 'formik'
 //
 // e adicione no componente o className={checkInputHasError('email', form) ? 'error' : ''}
 
-export const checkInputHasError = <T>(fieldName: keyof T, form: FormikProps<T>): boolean => {
+export const MaskedInputCheck = <T>(fieldName: keyof T, form: FormikProps<T>): boolean => {
   const isTouched = fieldName in form.touched
   const hasError = fieldName in form.errors
   return isTouched && hasError

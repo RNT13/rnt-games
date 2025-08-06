@@ -1,5 +1,6 @@
 'use client'
 
+import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { RootState } from "@/redux/store";
 import { OverlayDarck, TitleH2, TitleH3 } from "@/styles/globalStyles";
@@ -8,7 +9,6 @@ import { formatToBRL } from "@/utils/converterUtils";
 import toast from "react-hot-toast";
 import { FaHourglassHalf, FaThumbsUp } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
-import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import Gallery from "../Gallery/Gallery";
 import Section from "../Section/Section";
@@ -21,9 +21,9 @@ type detailsProps = {
 
 
 export default function Details({ game }: detailsProps) {
-  const dispatch = useDispatch()
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-  const isInCart = cartItems.some(item => item.id === +game.id);
+  const dispatch = useAppDispatch()
+  const { items } = useAppSelector((state: RootState) => state.cart);
+  const isInCart = items.some(item => item.id === +game.id);
 
   return (
     <DetailsContainer>

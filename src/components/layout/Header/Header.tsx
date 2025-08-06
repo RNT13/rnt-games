@@ -3,29 +3,19 @@
 import { Button } from "@/components/ui/Button/Button";
 import { Cart } from "@/components/ui/Cart/Cart";
 import { CartWrapper } from "@/components/ui/CartWrapper/CartWrapper";
-import { login } from "@/redux/slices/authSlice";
+import HeaderAuth from "@/components/ui/HeaderAuth/HeaderAuth";
+import { useAppSelector } from "@/hooks/useAppDispatch";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
-import { HeaderButtons, HeaderCart, HeaderContainer, HeaderLogin, HeaderLogo, HeaderMenu, HeaderMenuWindow, HeaderNav, HeaderRegister, HeaderRight, HeaderUl, HeaderUlDiv, HeaderUserAvatar, Row, UserAvatar } from "./HeaderStyles";
+import { HeaderCart, HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuWindow, HeaderNav, HeaderRight, HeaderUl, HeaderUlDiv, Row } from "./HeaderStyles";
 
 export default function Header() {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const { items } = useAppSelector((state: RootState) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      dispatch(login())
-    }
-  }, [dispatch])
-
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
   return (
     <HeaderContainer>
@@ -41,7 +31,7 @@ export default function Header() {
                 <Button href="/" title="Home">Home</Button>
               </li>
               <li>
-                <Button href="/#games" title="Games" >Games</Button>
+                <Button href="/#allGames" title="Games" >Jogos</Button>
               </li>
               <li>
                 <Button href="/#soonGames" title="Em Breve">Em Breve</Button>
@@ -60,7 +50,7 @@ export default function Header() {
             <HeaderCart>
               <Button onClick={() => setIsCartOpen(true)}>
                 <HiShoppingCart />
-                <span>{cartItems.reduce((acc, item) => acc + item.quantity, 0)}</span>
+                <span>{items.reduce((acc, item) => acc + item.quantity, 0)}</span>
               </Button>
             </HeaderCart>
 
@@ -68,24 +58,7 @@ export default function Header() {
               <Cart onClick={() => setIsCartOpen(false)} />
             </CartWrapper>
 
-            {isAuthenticated ? (
-              <HeaderUserAvatar>
-                <UserAvatar>
-                  <a href="/dashboard" title="Ir para o dashboard">
-                    <Image src="/armoredCoreGame.jpg" alt="avatar" width={40} height={40} priority />
-                  </a>
-                </UserAvatar>
-              </HeaderUserAvatar>
-            ) : (
-              <HeaderButtons>
-                <HeaderLogin>
-                  <Button href="/sign-in" title="Fazer Login" >Login</Button>
-                </HeaderLogin>
-                <HeaderRegister>
-                  <Button href="/register" title="Fazer Cadastro" >Cadastro</Button>
-                </HeaderRegister>
-              </HeaderButtons>
-            )}
+            <HeaderAuth />
 
           </HeaderRight>
         </Row>
@@ -95,7 +68,7 @@ export default function Header() {
           <HeaderMenuWindow className="container" $isOpen={isMenuOpen} >
             <HeaderUl>
               <li><Button href="/" title="Home" onClick={() => { setIsMenuOpen(false) }} >Home</Button></li>
-              <li><Button href="/#games" title="Games" onClick={() => { setIsMenuOpen(false) }} >Games</Button></li>
+              <li><Button href="/#allGames" title="Games" onClick={() => { setIsMenuOpen(false) }} >Jogos</Button></li>
               <li><Button href="/#soonGames" title="Em Breve" onClick={() => { setIsMenuOpen(false) }} >Em Breve</Button></li>
               <li><Button href="/#category" title="Categorias" onClick={() => { setIsMenuOpen(false) }} >Categorias</Button></li>
               <li><Button href="/pricing" title="Planos" onClick={() => setIsMenuOpen(false)} >Planos</Button></li>

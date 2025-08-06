@@ -1,73 +1,81 @@
 'use client'
 
 import { Button } from "@/components/ui/Button/Button";
+import { MaskedInput } from "@/components/ui/MaskedInput/MaskedInput";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useLoginUserMutation } from "@/redux/slices/apiSlice";
 import { login } from "@/redux/slices/authSlice";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { MaskedInputCheck } from "@/utils/maskedInputCheck";
+import { FormikProvider, useFormik } from "formik";
+import { useRouter } from 'next/navigation';
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import * as yup from 'yup';
 import { SignInContainer, SignInContent, SignInFooter, SignInForm, SignInHeader } from "./sign-inStyles";
 
+
+
 export default function SignIn() {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const searchParams = useSearchParams();
+  const dispatch = useAppDispatch()
+  const router = useRouter()
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const form = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema: yup.object({
+      email: yup.string().email('E-mail inválido').required('Campo obrigatório'),
+      password: yup.string().min(6, 'Minimo de 6 caracteres').required('Campo obrigatório'),
+    }),
+    onSubmit: async (values) => {
+      try {
+        const response = await loginUser(values).unwrap() // Chama o endpoint
 
-  const toastShown = useRef(false);
+        dispatch(login(response.user)) // Atualiza o Redux
 
-  useEffect(() => {
-    const isLogout = searchParams.get('logout') === '1';
-    if (isLogout && !toastShown.current) {
-      toast.success("Deslogado com sucesso!");
-      toastShown.current = true;
+        router.push(`/dashboard/${response.user.id}`)
+
+        toast.success('Login realizado com sucesso!');
+      } catch {
+        toast.error('E-mail ou senha incorretos');
+      }
     }
-  }, [searchParams]);
+  })
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Simula token
-    const fakeToken = 'fake-token-123';
-
-    // Salva o token localmente
-    localStorage.setItem('token', fakeToken);
-    document.cookie = `token=${fakeToken}; path=/`;
-
-    // Atualiza Redux
-    dispatch(login());
-
-    // Redireciona com ?login=1 apenas para exibir o toast lá no dashboard
-    router.push('/dashboard?login=1');
-  };
-
+  const [loginUser, { isLoading, isError }] = useLoginUserMutation()
 
   return (
     <SignInContainer>
       <SignInContent>
+
         <SignInHeader>
           <h2>Entre na sua conta</h2>
+          {isError && <p className="error">E-mail ou senha incorretos</p>}
         </SignInHeader>
-        <SignInForm onSubmit={handleLogin}>
-          <label htmlFor="email">
-            E-mail
-            <input name="email" id="email" type="email" value={email} placeholder="seu@email.com" onChange={e => setEmail(e.target.value)}
-            />
-          </label>
-          <label htmlFor="password">
-            Senha
-            <input name="password" id="password" type="password" value={password} placeholder="Sua senha" onChange={e => setPassword(e.target.value)}
-            />
-          </label>
-          <Button type="submit">Entrar</Button>
-        </SignInForm>
+
+        <FormikProvider value={form}>
+          <SignInForm onSubmit={form.handleSubmit}>
+            <label htmlFor="email">
+              E-mail
+              <MaskedInput type="email" name="email" id="email" placeholder="Digite seu e-mail" className={MaskedInputCheck('email', form) ? 'error' : ''} />
+            </label>
+            <label htmlFor="password">
+              Senha
+              <MaskedInput type="password" name="password" id="password" placeholder="Digite sua senha" className={MaskedInputCheck('password', form) ? 'error' : ''} />
+            </label>
+            <Button disabled={isLoading} type="submit">
+              {isLoading ? 'Entrando ...' : 'Entrar'}
+            </Button>
+          </SignInForm>
+        </FormikProvider>
+
         <SignInFooter>
           <p>Esqueceu sua senha? <a href="#">Clique aqui</a></p>
           <p>Ainda não possui uma conta? <a href="/register">Clique aqui</a></p>
         </SignInFooter>
+
       </SignInContent>
     </SignInContainer>
   );
 }
+

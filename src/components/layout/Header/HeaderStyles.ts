@@ -57,8 +57,8 @@ export const HeaderMenuWindow = styled.div<MenuWindowProps>`
   max-height: ${({ $isOpen }) => ($isOpen ? '200px' : '0')};
   opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
   transition:
-    max-height 0.5s ease,
-    opacity 0.5s ease;
+    max-height 0.2s ease,
+    opacity 0.4s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,17 +113,6 @@ export const HeaderRight = styled.div`
   align-items: center;
 `
 
-export const HeaderButtons = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  ${media.mobile} {
-    flex-direction: column;
-  }
-`
-
 export const HeaderCart = styled.div`
   button {
     position: relative;
@@ -161,57 +150,5 @@ export const HeaderCart = styled.div`
       background-color: ${theme.colors.baseRed.light};
       color: ${theme.colors.baseBlue.light50};
     }
-  }
-`
-
-export const HeaderLogin = styled.div`
-  width: 100%;
-
-  a {
-    width: 100%;
-    background-color: ${theme.colors.baseGreen.dark20};
-    border: 2px solid ${theme.colors.baseGreen.dark20};
-    color: ${theme.colors.baseGreen.light50};
-
-    &:hover {
-      background-color: ${theme.colors.baseGreen.dark30};
-      border: 2px solid ${theme.colors.baseGreen.dark30};
-      box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
-      color: ${theme.colors.baseCyan.light};
-    }
-  }
-`
-
-export const HeaderRegister = styled.div`
-  width: 100%;
-
-  a {
-    width: 100%;
-    background-color: ${theme.colors.baseBlue.dark30};
-    border: 2px solid ${theme.colors.baseBlue.dark30};
-    color: ${theme.colors.baseBlue.light50};
-
-    &:hover {
-      background-color: ${theme.colors.baseBlue.dark40};
-      border: 2px solid ${theme.colors.baseBlue.dark40};
-      box-shadow: 4px 4px 4px ${theme.colors.baseCyan.light};
-      color: ${theme.colors.baseCyan.light};
-    }
-  }
-`
-
-export const HeaderUserAvatar = styled.div``
-
-export const UserAvatar = styled.div`
-  width: 100%;
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `

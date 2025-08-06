@@ -27,9 +27,9 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
   return (
     <html lang="pt-BR">
       <body className={roboto.className}>
-        <StyledComponentsRegistry>
-          <GlobalStyles />
-          <Providers>
+        <Providers>
+          <StyledComponentsRegistry>
+            <GlobalStyles />
             <SkeletonTheme baseColor={theme.colors.baseCyan.light30} highlightColor={theme.colors.baseCyan.dark30} borderRadius={8} duration={1.2}>
               <main>
                 <Header />
@@ -70,8 +70,8 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
                 />
               </main>
             </SkeletonTheme>
-          </Providers>
-        </StyledComponentsRegistry>
+          </StyledComponentsRegistry>
+        </Providers>
       </body>
     </html>
   )

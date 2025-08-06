@@ -3,10 +3,10 @@ import { CloseButton, OverlayBlur } from "@/styles/globalStyles";
 import { formatToBRL } from "@/utils/converterUtils";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { IoIosCloseCircle } from "react-icons/io";
-import { useSelector } from "react-redux";
 import { Button } from "../Button/Button";
 import { CartItem } from "../CartItem/CartItem";
 
+import { useAppSelector } from "@/hooks/useAppDispatch";
 import { getTotalPrice } from "@/utils/priceUtils";
 import { CardBody } from "../Card/CardStyles";
 import EmptyCart from "../EmptyCart/EmptyCart";
@@ -23,7 +23,7 @@ type CartProps = {
 };
 
 export const Cart = ({ onClick }: CartProps) => {
-  const { items } = useSelector((state: RootState) => state.cart);
+  const { items } = useAppSelector((state: RootState) => state.cart);
 
   return (
     <CartContainer>

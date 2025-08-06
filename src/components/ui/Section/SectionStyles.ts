@@ -29,7 +29,7 @@ export const SectionContainer = styled.div<Omit<SectionProps, 'light' | 'dark'>>
   }
 
   ${media.tablet}, ${media.mobile} {
-    padding: 48px 0;
+    padding: 70px 0;
   }
 `
 
@@ -47,12 +47,12 @@ export const Row = styled.div`
   align-items: center;
 
   h2 {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   ${media.tablet}, ${media.mobile} {
     flex-direction: column;
     align-items: start;
-    margin: 48px 0;
+    margin: 48px 0 24px 0;
   }
 `

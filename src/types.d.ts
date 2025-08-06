@@ -1,6 +1,7 @@
-declare type CartItemType = {
+declare interface CartItem {
   id: number
   name: string
+  quantity: number
   media: {
     thumbnail: string
   }
@@ -9,7 +10,6 @@ declare type CartItemType = {
     old: number
     current: number
   }
-  quantity: number
 }
 
 declare interface CategoryType {
@@ -138,4 +138,10 @@ declare type LoginResponse = {
     name: string
     email: string
   }
+}
+
+declare interface User {
+  id: string
+  name: string
+  email: string
 }

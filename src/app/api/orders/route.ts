@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     const data = await request.json()
     const uniqueOrderId = `Pedido-${Date.now()}-${Math.floor(Math.random() * 10000)}`
 
-    const order = await prisma.order.create({
+    await prisma.order.create({
       data: {
         name: data.billing.name,
         email: data.billing.email,
@@ -30,8 +30,6 @@ export async function POST(request: NextRequest) {
         orderItems: true
       }
     })
-
-    console.log('Pedido criado com sucesso:', order)
 
     return NextResponse.json({ message: 'Pedido recebido com sucesso!', orderId: uniqueOrderId })
   } catch (err) {

@@ -1,19 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export interface CartItem {
-  id: number
-  name: string
-  quantity: number
-  media: {
-    thumbnail: string
-  }
-  prices: {
-    discount: number
-    old: number
-    current: number
-  }
-}
-
 export interface CartState {
   items: CartItem[]
   total: number

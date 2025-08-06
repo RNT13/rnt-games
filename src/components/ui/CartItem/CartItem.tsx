@@ -1,10 +1,10 @@
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { decrementQuantity, incrementQuantity, removeFromCart } from "@/redux/slices/cartSlice";
 import { CloseButton } from "@/styles/globalStyles";
 import { formatToBRL } from "@/utils/converterUtils";
 import toast from "react-hot-toast";
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
-import { useDispatch } from "react-redux";
 import { CardInfo, CartItemBody, CartItemContainer, CartItemContent, CartItemImage, CartItemNav, CartItemPrice } from "./CartItemStyles";
 
 interface CartItemProps {
@@ -16,7 +16,7 @@ interface CartItemProps {
 }
 
 export const CartItem = ({ id, name, quantity, price, media }: CartItemProps) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <CartItemContainer>

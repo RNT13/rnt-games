@@ -1,48 +1,48 @@
 'use client'
 
 import { Button } from "@/components/ui/Button/Button";
+import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
+import { useLogoutUserMutation } from "@/redux/slices/apiSlice";
 import { logout } from "@/redux/slices/authSlice";
+import { RootState } from '@/redux/store';
 import { MinorTextH4, TitleH2, TitleH3 } from "@/styles/globalStyles";
 import Image from "next/image";
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaCalendar, FaDownload } from "react-icons/fa";
 import { IoLogoGameControllerA } from "react-icons/io";
 import { IoBag, IoMenu, IoPerson } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { TbListDetails } from "react-icons/tb";
-import { useDispatch } from "react-redux";
 import { AvatarInfo, AvatarMenu, DashboardAvatar, DashboardAvatarDiv, DashboardAvatarImage, DashboardBody, DashboardButton, DashboardButtonDiv, DashboardCardItem, DashboardCardLine, DashboardColumn, DashboardContainer, DashboardContent, DashboardHeader, DashboardHeaderItem, DashboardRightBar, DashboardRow } from "./dashboardStyles";
 
 export default function Dashboard() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
+
   const [activeSection, setActiveSection] = useState<'visaoGeral' | 'biblioteca' | 'compras'>('visaoGeral');
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const searchParams = useSearchParams();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toastShown = useRef(false);
+  const { user } = useAppSelector((state: RootState) => state.auth);
 
-  useEffect(() => {
-    const isLogin = searchParams.get('login') === '1';
-    if (isLogin && !toastShown.current) {
-      toast.success("Logado com sucesso!");
-      toastShown.current = true;
+  const [logoutUser] = useLogoutUserMutation();
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser().unwrap(); // Chama o endpoint que limpa o cookie
+      dispatch(logout()); // Limpa o Redux
+      toast.success('Logout realizado com sucesso!');
+      router.push('/sign-in');
+    } catch {
+      toast.error('Erro ao fazer logout');
     }
-  }, [searchParams]);
-
-  const handleLogout = () => {
-    // Remove token local
-    localStorage.removeItem('token');
-    document.cookie = 'token=; Max-Age=0; path=/';
-
-    // Atualiza Redux
-    dispatch(logout());
-
-    // Redireciona para login com uma flag para exibir o toast lá
-    router.push('/sign-in?logout=1');
   };
+
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <DashboardContainer>
@@ -53,8 +53,8 @@ export default function Dashboard() {
             <DashboardAvatar>
               <DashboardAvatarImage src="/armoredCoreGame.jpg" alt="avatar" width={80} height={80} />
               <AvatarInfo>
-                <p>Nome</p>
-                <p>email</p>
+                <p>{user.name}</p>
+                <p>{user.email}</p>
               </AvatarInfo>
             </DashboardAvatar>
 
@@ -86,7 +86,7 @@ export default function Dashboard() {
 
         {activeSection === 'visaoGeral' && (
           <DashboardColumn>
-            <TitleH2>Bem-vindo de volta, Nome</TitleH2>
+            <TitleH2>Bem-vindo de volta, {user.name}</TitleH2>
             <DashboardHeader >
               <DashboardHeaderItem>
                 <div>
