@@ -1,21 +1,18 @@
 import { Button } from '@/components/ui/Button/Button'
-import { media, theme } from '@/styles/theme'
+import { media, theme, transitions } from '@/styles/theme'
 import { styled } from 'styled-components'
 
-type StylesProps = {
+type CheckoutProps = {
   $maxWidth?: string
   $marginTop?: string
   $marginBottom?: string
   $isActive?: boolean
+  isOpen?: boolean
 }
 
-export const CheckoutContainer = styled.div<StylesProps>`
+export const CheckoutContainer = styled.div<CheckoutProps>`
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: ${theme.colors.baseBlue.dark30};
 
   .marginTop {
@@ -30,7 +27,7 @@ export const CheckoutContent = styled.div`
   }
 `
 
-export const Row = styled.div<StylesProps>`
+export const Row = styled.div<CheckoutProps>`
   gap: 24px;
   display: flex;
   align-items: flex-end;
@@ -48,6 +45,12 @@ export const TabDiv = styled.div`
   align-items: center;
   gap: 12px;
   margin-bottom: 24px;
+`
+
+export const CardForm = styled.div<CheckoutProps>`
+  height: ${props => (props.isOpen ? '250px' : '80px')};
+  overflow: hidden;
+  transition: ${transitions.default};
 `
 
 export const TabStyledButton = styled(Button)<{ $isActive?: boolean }>`
@@ -68,7 +71,7 @@ export const TabStyledButton = styled(Button)<{ $isActive?: boolean }>`
   }
 `
 
-export const InputGroup = styled.div<StylesProps>`
+export const InputGroup = styled.div<CheckoutProps>`
   width: 100%;
   flex: auto;
   max-width: ${props => props.$maxWidth || 'auto'};

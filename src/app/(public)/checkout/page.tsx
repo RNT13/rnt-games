@@ -4,18 +4,20 @@ import { Button } from "@/components/ui/Button/Button";
 import EmptyCart from "@/components/ui/EmptyCart/EmptyCart";
 import { FormCard } from "@/components/ui/FormCard/FormCard";
 import { MaskedInput } from "@/components/ui/MaskedInput/MaskedInput";
-import { useAppSelector } from "@/hooks/useAppDispatch";
+import { useAppDispatch, useAppSelector } from "@/hooks/useAppDispatch";
 import { usePostPurchaseMutation } from "@/redux/slices/apiSlice";
+import { clearCart } from "@/redux/slices/cartSlice";
 import { RootState } from "@/redux/store";
 import { formatToBRL } from "@/utils/converterUtils";
 import { MaskedInputCheck } from "@/utils/maskedInputCheck";
 import { getTotalPrice } from "@/utils/priceUtils";
 import { FormikProvider, useFormik } from 'formik';
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiBarcode } from "react-icons/ci";
 import { FaRegCreditCard } from "react-icons/fa";
 import * as yup from 'yup';
-import { CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabDiv, TabStyledButton } from "./checkoutStyles";
+import { CardForm, CheckoutContainer, CheckoutContent, Disclaimer, InputGroup, Row, TabDiv, TabStyledButton } from "./checkoutStyles";
 
 
 export default function Checkout() {
@@ -93,10 +95,14 @@ export default function Checkout() {
   const [purchase, { isLoading, isSuccess, data }] = usePostPurchaseMutation()
 
   const [payWithCard, setPayWithCard] = useState(false)
-  const { items } = useAppSelector((state: RootState) => state.cart)
   const [installments, setInstallments] = useState<InstallmentType[]>([])
+  const [isOpen, setIsOpen] = useState(false)
+  const { items } = useAppSelector((state: RootState) => state.cart)
 
   const totalPrice = getTotalPrice(items)
+
+  const dispatch = useAppDispatch()
+  const router = useRouter()
 
   useEffect(() => {
     const calculateInstallments = () => {
@@ -116,7 +122,20 @@ export default function Checkout() {
     }
   }, [totalPrice])
 
-  if (items.length === 0) {
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clearCart())
+    }
+  }, [isSuccess, dispatch])
+
+  useEffect(() => {
+    if (items.length === 0) {
+      router.push("/")
+    }
+  }
+    , [items, router])
+
+  if (items.length === 0 && !isSuccess) {
     return (
       <CheckoutContainer $marginTop="24px" >
         <EmptyCart />
@@ -148,7 +167,7 @@ export default function Checkout() {
                 Caso tenha alguma dúvida ou necessite de mais informações, por favor, entre em contato conosco através dos nossos canais de atendimento ao cliente.
               </p>
               <p>
-                Agradecemos por escolher a EPLAY e esperamos que desfrute do seu jogo!
+                Agradecemos por escolher a RNT Games e esperamos que desfrute do seu jogo!
               </p>
             </Disclaimer>
           </FormCard>
@@ -216,20 +235,23 @@ export default function Checkout() {
 
                 </Row>
               </FormCard>
+
               <FormCard title="Dados de Pagamento">
+
                 <TabDiv>
                   <TabStyledButton type="button" $isActive={!payWithCard} onClick={() => setPayWithCard(false)} title="Trocar forma de pagamento para boleto bancario">
                     <CiBarcode />
                     Boleto bancario
                   </TabStyledButton>
-                  <TabStyledButton type="button" $isActive={payWithCard} onClick={() => setPayWithCard(true)} title="Trocar forma de pagamento para cartão de crédito">
+
+                  <TabStyledButton type="button" $isActive={payWithCard} onClick={() => { setPayWithCard(true); setIsOpen(true) }} title="Trocar forma de pagamento para cartão de crédito">
                     <FaRegCreditCard />
                     Cartão de crédito
                   </TabStyledButton>
                 </TabDiv>
 
                 {payWithCard ? (
-                  <>
+                  <CardForm isOpen={isOpen}>
                     <Row>
 
                       <InputGroup>
@@ -325,11 +347,14 @@ export default function Checkout() {
                         </select>
                       </InputGroup>
                     </Row>
-                  </>
+                  </CardForm>
                 ) : (
-                  <p>
-                    Ao optar por essa forma de pagamento, é importante lembrar que a confirmação pode levar até 24 horas, dependendo do banco emissor. Portanto, a liberação do código de ativação do jogo adquirido ocorre somente após a aprovação do pagamento do boleto.
-                  </p>
+                  <CardForm>
+
+                    <p>
+                      Ao optar por essa forma de pagamento, é importante lembrar que a confirmação pode levar até 24 horas, dependendo do banco emissor. Portanto, a liberação do código de ativação do jogo adquirido ocorre somente após a aprovação do pagamento do boleto.
+                    </p>
+                  </CardForm>
                 )}
               </FormCard>
               <div className="container">

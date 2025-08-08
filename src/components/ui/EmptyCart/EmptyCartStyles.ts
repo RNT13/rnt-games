@@ -4,11 +4,10 @@ import { styled } from 'styled-components'
 export const EmptyCartContainer = styled.div``
 
 export const EmptyCartContent = styled.div`
-  width: 100%;
+  height: 100%;
   padding: 24px;
-  margin: 0 24px;
+  margin: 24px;
   border-radius: 12px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

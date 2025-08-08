@@ -9,7 +9,7 @@ type FormCardProps = {
 export const FormCard = ({ children, title }: FormCardProps) => {
   return (
     <FormCardContainer className="container">
-      <FormCardContent>
+      <FormCardContent >
         <TitleH2>{title}</TitleH2>
         {children}
       </FormCardContent>
