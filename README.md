@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 RNT Games - Your Ultimate Game Store
 
-## Getting Started
+A modern and responsive online game store platform, built with:
 
-First, run the development server:
+- ▲ Next.js for server-side rendering and routing
+- ⚛️ React + TypeScript
+- 🗄️ Prisma ORM for database management
+- 🧩 RTK Query for API consumption
+- 💳 Authentication for secure game purchases
+- ⏳ React Skeletons for enhanced loading experience
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Access the live page: [RNT Games](https://rnt-games.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Tech Stack
 
-## Learn More
+**Next.js** – React framework for SSR, SSG, and optimized routing.
+**React + TypeScript** – Component-based UI with static typing.
+**Prisma** – Modern ORM for database queries and schema management.
+**RTK Query** – Data fetching and caching built into Redux Toolkit.
+**React Skeletons** – Beautiful and responsive loading placeholders.
+**Authentication** – Login and secure checkout for game purchases.
+**Vercel** – Hosting and deployment platform for modern web apps.
 
-To learn more about Next.js, take a look at the following resources:
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Responsive design for all screen sizes
+- Game catalog with database-powered content
+- Secure login system with authentication
+- Payment form with authentication protection
+- User dashboard for managing orders
+- Enhanced loading states with React Skeletons
+- Clean, organized, and scalable codebase
 
-## Deploy on Vercel
+<br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 References
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [▲ Next.js](https://nextjs.org/)
+- [⚛️ React](https://react.dev/)
+- [📘 TypeScript](https://www.typescriptlang.org/)
+- [🗄️ Prisma](https://www.prisma.io/)
+- [🧩 RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+- [⏳ React Skeletons](https://github.com/dvtng/react-loading-skeleton)
+- [▲ Vercel](https://vercel.com/)
+
+<br>
+
+## 👤 Author
+
+Made with 💙 by [Renato Minoita](https://www.linkedin.com/in/renato-minoita/)
+Check out more on [GitHub](https://github.com/RNT13)
+
+<br>
