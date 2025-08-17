@@ -1,4 +1,4 @@
-# 🎮 RNT Games - Your Ultimate Game Store
+# 🎮 RNT Games
 
 A modern and responsive online game store platform, built with:
 
